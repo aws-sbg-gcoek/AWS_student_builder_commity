@@ -36,7 +36,14 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
         <div className="flex items-center justify-between">
           
           {/* ── Left: Exact AWS Student Builder Group Logo from user image ── */}
-          <a href="#home" className="flex items-center space-x-3 group z-20">
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              onTabChange?.('Home');
+            }}
+            className="flex items-center space-x-3 group z-20 cursor-pointer"
+          >
             {/* Purple Chip Logo (SVG matching provided user image with fallback image) */}
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
               <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">

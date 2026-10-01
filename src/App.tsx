@@ -1,20 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { TeamSection } from './components/TeamSection';
+import { TeamPage } from './components/TeamPage';
 import { RupeeGrowthIcon, HandshakeShieldIcon, TrophyPodiumIcon, GraduationCapsIcon } from './components/StatIcons';
 import { ThreeCanvas } from './components/ThreeCanvas';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { StickyEventsStack } from './components/StickyEventsStack';
 import { ProjectsMarquee } from './components/ProjectsMarquee';
 import { SpotlightFooter } from './components/SpotlightFooter';
-import { ChevronRight, Cloud, Sparkles, Terminal, CheckCircle2, ArrowRight, X } from 'lucide-react';
+import { CursorGlow } from './components/CursorGlow';
+import { ChevronRight, Cloud, Sparkles, Terminal, CheckCircle2, ArrowRight, X, Users } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'Home' | 'Team' | 'Events' | 'Join Us'>('Home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'team'>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#team' || hash === '#/team') return 'team';
+    }
+    return 'home';
+  });
+
+  const [activeTab, setActiveTab] = useState<'Home' | 'Team' | 'Events' | 'Join Us'>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#team' || hash === '#/team') return 'Team';
+      if (hash === '#events') return 'Events';
+    }
+    return 'Home';
+  });
+
   const [statMode, setStatMode] = useState<'career' | 'club'>('career');
   const [interactiveMode, setInteractiveMode] = useState<'3d' | 'cli'>('3d');
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [joinSubmitted, setJoinSubmitted] = useState(false);
+
+  // Synchronize browser history and hash navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#team' || hash === '#/team') {
+        setCurrentPage('team');
+        setActiveTab('Team');
+      } else {
+        setCurrentPage('home');
+        if (hash === '#events') {
+          setActiveTab('Events');
+        } else {
+          setActiveTab('Home');
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateTo = (page: 'home' | 'team', sectionId?: string) => {
+    if (page === 'team') {
+      setCurrentPage('team');
+      setActiveTab('Team');
+      window.location.hash = '#team';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setCurrentPage('home');
+      setActiveTab(sectionId === 'events' ? 'Events' : 'Home');
+      if (sectionId) {
+        window.location.hash = `#${sectionId}`;
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.location.hash = '#home';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
 
   // Form State
   const [formData, setFormData] = useState({
@@ -47,20 +106,20 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white">
+    <div className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white overflow-x-hidden">
+      {/* ─── Smooth Flowing Light Purple Cursor Glow ─── */}
+      <CursorGlow />
 
       {/* ─── Top Navbar ─── */}
       <Navbar
-        activeTab={activeTab}
+        activeTab={currentPage === 'team' ? 'Team' : activeTab}
         onTabChange={(tab) => {
-          setActiveTab(tab as any);
-
           if (tab === 'Home') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            navigateTo('home');
           } else if (tab === 'Team') {
-            document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' });
+            navigateTo('team');
           } else if (tab === 'Events') {
-            document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+            navigateTo('home', 'events');
           } else if (tab === 'Join Us') {
             setIsJoinModalOpen(true);
           }
@@ -68,9 +127,16 @@ export default function App() {
         onJoinClick={() => setIsJoinModalOpen(true)}
       />
 
-      {/* ─── HERO SECTION ─── */}
-      <section
-        id="home"
+      {currentPage === 'team' ? (
+        <TeamPage
+          onNavigateHome={() => navigateTo('home')}
+          onJoinClick={() => setIsJoinModalOpen(true)}
+        />
+      ) : (
+        <>
+          {/* ─── HERO SECTION ─── */}
+          <section
+            id="home"
         className="relative min-h-[92vh] flex flex-col justify-between pt-32 pb-14 overflow-hidden bg-purple-atmosphere"
       >
         {/* Subtle Fine Grid Mesh Overlay */}
@@ -85,25 +151,49 @@ export default function App() {
           aria-hidden="true"
           className="absolute top-[35%] md:top-[36%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[19vw] md:text-[17vw] font-black tracking-widest text-transparent watermark-outline pointer-events-none select-none z-0 whitespace-nowrap opacity-25 leading-none"
         >
-          KODR
+          AWS
+        </div>
+
+        {/* Floating Mini Highlight Badges on Desktop */}
+        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#14082c]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute left-8 top-1/2 -translate-y-8 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20">
+          <span className="flex h-2 w-2 rounded-full bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
+          <span>500+ Active Builders</span>
+        </div>
+
+        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#14082c]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute right-8 top-1/2 -translate-y-16 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20" style={{ animationDelay: '-3.5s' }}>
+          <span className="text-[#FF9900]">☁️</span>
+          <span>100% Free Sandbox Labs</span>
         </div>
 
         {/* ── Main Hero Content ── */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center">
+
+          {/* Official Chapter Beacon Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/35 shadow-[0_0_24px_rgba(168,85,247,0.3)] mb-6 hover:border-purple-400/70 transition-all duration-300">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
+            </span>
+            <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF9900]">
+              OFFICIAL AWS STUDENT BUILDER CHAPTER • GCOEK
+            </span>
+          </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black text-white leading-[1.08] tracking-tight max-w-5xl mx-auto mb-6">
             Welcome to{' '}
             <span className="neon-green-glow text-[#4EF35E] font-black inline-block px-1">
               AWS
             </span>{' '}
-            STUDENT BUILDER COMMUNITY
+            <span className="block mt-1 bg-gradient-to-r from-white via-purple-100 to-indigo-200 bg-clip-text text-transparent">
+              STUDENT BUILDER COMMUNITY
+            </span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-[#d4cde3] max-w-2xl mx-auto mb-9 leading-relaxed font-normal">
-            Enhance your skills by joining our club
+            Architect scalable cloud solutions, build modern serverless systems, and accelerate your career with hands-on peer workshops.
           </p>
 
-          <div className="flex items-center justify-center mb-14">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
             <button
               type="button"
               onClick={() => {
@@ -115,6 +205,15 @@ export default function App() {
             >
               <span>Explore Program</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigateTo('team')}
+              className="px-7 py-3.5 sm:py-4 rounded-full bg-[#180a32]/90 border border-purple-500/35 text-purple-200 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 text-sm sm:text-base font-semibold inline-flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+            >
+              <Users className="w-4 h-4 text-[#FF9900]" />
+              <span>Meet The Team</span>
             </button>
           </div>
         </div>
@@ -362,29 +461,39 @@ export default function App() {
 
               </div>
 
-              <div className="w-full max-w-lg p-2 rounded-2xl bg-[#0f0720]/80 border border-purple-500/25 backdrop-blur-md">
-
-                {interactiveMode === '3d' ? (
-                  <div>
-                    <ThreeCanvas />
-
-                    <div className="text-center text-xs font-mono text-zinc-400 pb-3">
-                      ✦ Click and drag inside to rotate the 3D Cloud Core
-                    </div>
+              <div className="w-full max-w-lg rounded-2xl bg-[#0f0720]/90 border border-purple-500/30 backdrop-blur-xl shadow-[0_12px_45px_rgba(0,0,0,0.6)] overflow-hidden">
+                {/* Console Window Header with Traffic Light Dots */}
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#14082b] border-b border-purple-500/25">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
                   </div>
-                ) : (
-                  <InteractiveTerminal />
-                )}
+                  <span className="font-mono text-[11px] text-purple-300/80 font-medium">
+                    {interactiveMode === '3d' ? 'aws-mesh://cloud-core-v3' : 'bash — aws-cli@gcoek-node'}
+                  </span>
+                  <div className="w-8" />
+                </div>
 
+                <div className="p-2">
+                  {interactiveMode === '3d' ? (
+                    <div>
+                      <ThreeCanvas />
+
+                      <div className="text-center text-xs font-mono text-zinc-400 pb-3">
+                        ✦ Click and drag inside to rotate the 3D Cloud Core
+                      </div>
+                    </div>
+                  ) : (
+                    <InteractiveTerminal />
+                  )}
+                </div>
               </div>
             </div>
 
           </div>
         </div>
       </section>
-
-      {/* ─── TEAM SECTION ─── */}
-      <TeamSection />
 
       {/* ─── EVENTS SECTION ─── */}
       <StickyEventsStack
@@ -396,6 +505,8 @@ export default function App() {
 
       {/* ─── FOOTER ─── */}
       <SpotlightFooter />
+        </>
+      )}
 
       {/* ─── JOIN NOW POPUP MODAL ─── */}
       {isJoinModalOpen && (
