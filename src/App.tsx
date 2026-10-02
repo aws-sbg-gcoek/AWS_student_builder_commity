@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { TeamPage } from './components/TeamPage';
+import { ProjectsPage } from './components/ProjectsPage';
+import { ProjectDetailPage } from './components/ProjectDetailPage';
+import { EventsPage } from './components/EventsPage';
 import { RupeeGrowthIcon, HandshakeShieldIcon, TrophyPodiumIcon, GraduationCapsIcon } from './components/StatIcons';
 import { ThreeCanvas } from './components/ThreeCanvas';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
@@ -11,19 +14,31 @@ import { CursorGlow } from './components/CursorGlow';
 import { ChevronRight, Cloud, Sparkles, Terminal, CheckCircle2, ArrowRight, X, Users } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'team'>(() => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'team' | 'projects' | 'project-detail' | 'events'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#team' || hash === '#/team') return 'team';
+      if (hash === '#projects' || hash === '#/projects') return 'projects';
+      if (hash.startsWith('#/projects/')) return 'project-detail';
+      if (hash === '#events' || hash === '#/events') return 'events';
     }
     return 'home';
   });
 
-  const [activeTab, setActiveTab] = useState<'Home' | 'Team' | 'Events' | 'Join Us'>(() => {
+  const [currentProjectId, setCurrentProjectId] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.startsWith('#/projects/')) return hash.replace('#/projects/', '');
+    }
+    return null;
+  });
+
+  const [activeTab, setActiveTab] = useState<'Home' | 'Team' | 'Events' | 'Join Us' | 'Projects'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#team' || hash === '#/team') return 'Team';
-      if (hash === '#events') return 'Events';
+      if (hash === '#projects' || hash === '#/projects' || hash.startsWith('#/projects/')) return 'Projects';
+      if (hash === '#events' || hash === '#/events') return 'Events';
     }
     return 'Home';
   });
@@ -38,31 +53,39 @@ export default function App() {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#team' || hash === '#/team') {
-        setCurrentPage('team');
-        setActiveTab('Team');
+        setCurrentPage('team'); setActiveTab('Team');
+      } else if (hash === '#projects' || hash === '#/projects') {
+        setCurrentPage('projects'); setActiveTab('Projects');
+      } else if (hash.startsWith('#/projects/')) {
+        setCurrentPage('project-detail');
+        setCurrentProjectId(hash.replace('#/projects/', ''));
+        setActiveTab('Projects');
+      } else if (hash === '#events' || hash === '#/events') {
+        setCurrentPage('events'); setActiveTab('Events');
       } else {
         setCurrentPage('home');
-        if (hash === '#events') {
-          setActiveTab('Events');
-        } else {
-          setActiveTab('Home');
-        }
+        setActiveTab('Home');
       }
     };
-
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'team', sectionId?: string) => {
+  const navigateTo = (page: 'home' | 'team' | 'projects' | 'events', sectionId?: string) => {
     if (page === 'team') {
-      setCurrentPage('team');
-      setActiveTab('Team');
+      setCurrentPage('team'); setActiveTab('Team');
       window.location.hash = '#team';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'projects') {
+      setCurrentPage('projects'); setActiveTab('Projects');
+      window.location.hash = '#projects';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'events') {
+      setCurrentPage('events'); setActiveTab('Events');
+      window.location.hash = '#events';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setCurrentPage('home');
-      setActiveTab(sectionId === 'events' ? 'Events' : 'Home');
+      setCurrentPage('home'); setActiveTab('Home');
       if (sectionId) {
         window.location.hash = `#${sectionId}`;
         setTimeout(() => {
@@ -73,6 +96,14 @@ export default function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
+  };
+
+  const navigateToProject = (projectId: string) => {
+    setCurrentPage('project-detail');
+    setCurrentProjectId(projectId);
+    setActiveTab('Projects');
+    window.location.hash = `#/projects/${projectId}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Form State
@@ -112,23 +143,41 @@ export default function App() {
 
       {/* ─── Top Navbar ─── */}
       <Navbar
-        activeTab={currentPage === 'team' ? 'Team' : activeTab}
+        activeTab={
+          currentPage === 'team' ? 'Team' :
+          currentPage === 'projects' || currentPage === 'project-detail' ? 'Projects' :
+          currentPage === 'events' ? 'Events' :
+          activeTab
+        }
         onTabChange={(tab) => {
-          if (tab === 'Home') {
-            navigateTo('home');
-          } else if (tab === 'Team') {
-            navigateTo('team');
-          } else if (tab === 'Events') {
-            navigateTo('home', 'events');
-          } else if (tab === 'Join Us') {
-            setIsJoinModalOpen(true);
-          }
+          if (tab === 'Home') navigateTo('home');
+          else if (tab === 'Projects') navigateTo('projects');
+          else if (tab === 'Team') navigateTo('team');
+          else if (tab === 'Events') navigateTo('events');
+          else if (tab === 'Join Us') setIsJoinModalOpen(true);
         }}
         onJoinClick={() => setIsJoinModalOpen(true)}
       />
 
       {currentPage === 'team' ? (
         <TeamPage
+          onNavigateHome={() => navigateTo('home')}
+          onJoinClick={() => setIsJoinModalOpen(true)}
+        />
+      ) : currentPage === 'projects' ? (
+        <ProjectsPage
+          onNavigateHome={() => navigateTo('home')}
+          onNavigateToProject={navigateToProject}
+          onJoinClick={() => setIsJoinModalOpen(true)}
+        />
+      ) : currentPage === 'project-detail' && currentProjectId ? (
+        <ProjectDetailPage
+          projectId={currentProjectId}
+          onNavigateProjects={() => navigateTo('projects')}
+          onJoinClick={() => setIsJoinModalOpen(true)}
+        />
+      ) : currentPage === 'events' ? (
+        <EventsPage
           onNavigateHome={() => navigateTo('home')}
           onJoinClick={() => setIsJoinModalOpen(true)}
         />
@@ -501,7 +550,7 @@ export default function App() {
       />
 
       {/* ─── PROJECTS ─── */}
-      <ProjectsMarquee />
+      <ProjectsMarquee onViewAllProjects={() => navigateTo('projects')} />
 
       {/* ─── FOOTER ─── */}
       <SpotlightFooter />
