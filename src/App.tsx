@@ -106,7 +106,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white overflow-x-clip">
       {/* ─── Smooth Flowing Light Purple Cursor Glow ─── */}
       <CursorGlow />
 
