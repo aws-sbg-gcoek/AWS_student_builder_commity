@@ -19,6 +19,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
 
   const navLinks = [
     { name: 'Home', id: 'home' },
+    { name: 'Resources', id: 'resources' },
     { name: 'Projects', id: 'projects' },
     { name: 'Team', id: 'team' },
     { name: 'Events', id: 'events' },
