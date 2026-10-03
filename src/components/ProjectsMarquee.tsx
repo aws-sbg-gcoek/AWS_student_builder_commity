@@ -164,7 +164,11 @@ const PROJECTS_DATA: ProjectCard[] = [
   }
 ];
 
-export function ProjectsMarquee() {
+interface ProjectsMarqueeProps {
+  onViewAllProjects?: () => void;
+}
+
+export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}) {
   const [selectedProject, setSelectedProject] = useState<ProjectCard | null>(null);
   const [likedProjects, setLikedProjects] = useState<Record<string, boolean>>({});
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>(() => {

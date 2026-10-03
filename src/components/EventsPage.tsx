@@ -317,12 +317,12 @@ function runDust(canvas: HTMLCanvasElement, cardW: number, cardH: number, mode: 
 }
 
 // ─── Event Card ───────────────────────────────────────────────────────────────
-function EventCard({ event, onClick }: { event: AppEvent; index: number; onClick: () => void }) {
+function EventCard({ event, index, onClick }: { event: AppEvent; index: number; onClick: () => void }) {
   type Phase = 'hidden'|'assembling'|'visible'|'dissolving';
   const [phase, setPhase] = useState<Phase>('hidden');
   const cardRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const cleanupRef = useRef<(()=>void)|void>();
+  const cleanupRef = useRef<(() => void) | undefined>(undefined);
   const style = getStyle(event.type);
 
   useEffect(() => {
@@ -337,7 +337,7 @@ function EventCard({ event, onClick }: { event: AppEvent; index: number; onClick
   useEffect(() => {
     if (phase !== 'assembling' && phase !== 'dissolving') return;
     const card = cardRef.current, canvas = canvasRef.current; if (!card || !canvas) return;
-    if (cleanupRef.current) cleanupRef.current();
+    if (typeof cleanupRef.current === 'function') cleanupRef.current();
     const { offsetWidth: w, offsetHeight: h } = card;
     cleanupRef.current = runDust(canvas, w, h, phase==='assembling'?'assemble':'dissolve', () => {
       setPhase(phase==='assembling'?'visible':'hidden');

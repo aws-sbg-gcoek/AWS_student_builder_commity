@@ -5,6 +5,7 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { EventsPage } from './components/EventsPage';
 import { ResourcesPage } from './components/ResourcesPage';
+import { JoinUsPage } from './components/JoinUsPage';
 import { RupeeGrowthIcon, HandshakeShieldIcon, TrophyPodiumIcon, GraduationCapsIcon } from './components/StatIcons';
 import { ThreeCanvas } from './components/ThreeCanvas';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
@@ -15,7 +16,7 @@ import { CursorGlow } from './components/CursorGlow';
 import { ChevronRight, Cloud, Sparkles, Terminal, CheckCircle2, ArrowRight, X, Users } from 'lucide-react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'team' | 'projects' | 'project-detail' | 'events' | 'resources'>(() => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'team' | 'projects' | 'project-detail' | 'events' | 'resources' | 'join'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#team' || hash === '#/team') return 'team';
@@ -23,6 +24,7 @@ export default function App() {
       if (hash.startsWith('#/projects/')) return 'project-detail';
       if (hash === '#events' || hash === '#/events') return 'events';
       if (hash === '#resources' || hash === '#/resources') return 'resources';
+      if (hash === '#join' || hash === '#/join' || hash === '#join-us' || hash === '#/join-us') return 'join';
     }
     return 'home';
   });
@@ -42,6 +44,7 @@ export default function App() {
       if (hash === '#projects' || hash === '#/projects' || hash.startsWith('#/projects/')) return 'Projects';
       if (hash === '#events' || hash === '#/events') return 'Events';
       if (hash === '#resources' || hash === '#/resources') return 'Resources';
+      if (hash === '#join' || hash === '#/join' || hash === '#join-us' || hash === '#/join-us') return 'Join Us';
     }
     return 'Home';
   });
@@ -67,6 +70,8 @@ export default function App() {
         setCurrentPage('events'); setActiveTab('Events');
       } else if (hash === '#resources' || hash === '#/resources') {
         setCurrentPage('resources'); setActiveTab('Resources');
+      } else if (hash === '#join' || hash === '#/join' || hash === '#join-us' || hash === '#/join-us') {
+        setCurrentPage('join'); setActiveTab('Join Us');
       } else {
         setCurrentPage('home');
         setActiveTab('Home');
@@ -76,7 +81,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'team' | 'projects' | 'events' | 'resources', sectionId?: string) => {
+  const navigateTo = (page: 'home' | 'team' | 'projects' | 'events' | 'resources' | 'join', sectionId?: string) => {
     if (page === 'team') {
       setCurrentPage('team'); setActiveTab('Team');
       window.location.hash = '#team';
@@ -92,6 +97,10 @@ export default function App() {
     } else if (page === 'resources') {
       setCurrentPage('resources'); setActiveTab('Resources');
       window.location.hash = '#resources';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'join') {
+      setCurrentPage('join'); setActiveTab('Join Us');
+      window.location.hash = '#join';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentPage('home'); setActiveTab('Home');
@@ -157,6 +166,7 @@ export default function App() {
           currentPage === 'projects' || currentPage === 'project-detail' ? 'Projects' :
           currentPage === 'events' ? 'Events' :
           currentPage === 'resources' ? 'Resources' :
+          currentPage === 'join' ? 'Join Us' :
           activeTab
         }
         onTabChange={(tab) => {
@@ -165,37 +175,41 @@ export default function App() {
           else if (tab === 'Team') navigateTo('team');
           else if (tab === 'Events') navigateTo('events');
           else if (tab === 'Resources') navigateTo('resources');
-          else if (tab === 'Join Us') setIsJoinModalOpen(true);
+          else if (tab === 'Join Us') navigateTo('join');
         }}
-        onJoinClick={() => setIsJoinModalOpen(true)}
+        onJoinClick={() => navigateTo('join')}
       />
 
       {currentPage === 'team' ? (
         <TeamPage
           onNavigateHome={() => navigateTo('home')}
-          onJoinClick={() => setIsJoinModalOpen(true)}
+          onJoinClick={() => navigateTo('join')}
         />
       ) : currentPage === 'projects' ? (
         <ProjectsPage
           onNavigateHome={() => navigateTo('home')}
           onNavigateToProject={navigateToProject}
-          onJoinClick={() => setIsJoinModalOpen(true)}
+          onJoinClick={() => navigateTo('join')}
         />
       ) : currentPage === 'project-detail' && currentProjectId ? (
         <ProjectDetailPage
           projectId={currentProjectId}
           onNavigateProjects={() => navigateTo('projects')}
-          onJoinClick={() => setIsJoinModalOpen(true)}
+          onJoinClick={() => navigateTo('join')}
         />
       ) : currentPage === 'events' ? (
         <EventsPage
           onNavigateHome={() => navigateTo('home')}
-          onJoinClick={() => setIsJoinModalOpen(true)}
+          onJoinClick={() => navigateTo('join')}
         />
       ) : currentPage === 'resources' ? (
         <ResourcesPage
           onNavigateHome={() => navigateTo('home')}
-          onJoinClick={() => setIsJoinModalOpen(true)}
+          onJoinClick={() => navigateTo('join')}
+        />
+      ) : currentPage === 'join' ? (
+        <JoinUsPage
+          onNavigateHome={() => navigateTo('home')}
         />
       ) : (
         <>
@@ -562,14 +576,14 @@ export default function App() {
 
       {/* ─── EVENTS SECTION ─── */}
       <StickyEventsStack
-        onJoinClick={() => setIsJoinModalOpen(true)}
+        onJoinClick={() => navigateTo('join')}
       />
 
       {/* ─── PROJECTS ─── */}
       <ProjectsMarquee onViewAllProjects={() => navigateTo('projects')} />
 
       {/* ─── FOOTER ─── */}
-      <SpotlightFooter />
+      <SpotlightFooter onJoinClick={() => navigateTo('join')} />
         </>
       )}
 

@@ -1,10 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Github, Linkedin, Youtube, Twitter, Mail, MapPin, 
-  Clock, ArrowUp, Sparkles, Send, CheckCircle2, MessageSquare
+  Github, Linkedin, Instagram, Mail, MapPin, 
+  Clock, ArrowUp, Sparkles, Send, CheckCircle2, MessageSquare, ExternalLink
 } from 'lucide-react';
 
-export function SpotlightFooter() {
+interface SpotlightFooterProps {
+  onJoinClick?: () => void;
+}
+
+// Custom Meetup Logo SVG component matching official branding
+function MeetupIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M19.14 10.04c-.38-.26-.88-.23-1.22.08l-2.02 1.88-2.02-1.88c-.34-.31-.84-.34-1.22-.08-.41.28-.53.83-.28 1.25l2.71 4.54c.18.3.5.48.85.48s.67-.18.85-.48l2.71-4.54c.25-.42.13-.97-.28-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+    </svg>
+  );
+}
+
+export function SpotlightFooter({ onJoinClick }: SpotlightFooterProps = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [containerMousePos, setContainerMousePos] = useState({ x: 500, y: 150 });
@@ -99,6 +112,37 @@ export function SpotlightFooter() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      handle: 'AWSCloudClubGCOE',
+      url: 'https://github.com/AWSCloudClubGCOE',
+      icon: <Github className="w-4 h-4" />,
+      color: 'hover:text-white hover:border-white/50 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]',
+    },
+    {
+      name: 'Meetup',
+      handle: 'AWS SBG GCOEK',
+      url: 'https://www.meetup.com/aws-sbg-at-government-college-of-engineering-kolhapur/',
+      icon: <MeetupIcon className="w-4 h-4" />,
+      color: 'hover:text-[#F64060] hover:border-[#F64060]/60 hover:bg-[#F64060]/15 hover:shadow-[0_0_15px_rgba(246,64,96,0.3)]',
+    },
+    {
+      name: 'LinkedIn',
+      handle: 'AWS Cloud Club GCOE Kolhapur',
+      url: 'https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/',
+      icon: <Linkedin className="w-4 h-4" />,
+      color: 'hover:text-[#0A66C2] hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/15 hover:shadow-[0_0_15px_rgba(10,102,194,0.3)]',
+    },
+    {
+      name: 'Instagram',
+      handle: '@aws.sbg.gcoe.kolhapur',
+      url: 'https://www.instagram.com/aws.sbg.gcoe.kolhapur/',
+      icon: <Instagram className="w-4 h-4" />,
+      color: 'hover:text-[#E4405F] hover:border-[#E4405F]/60 hover:bg-[#E4405F]/15 hover:shadow-[0_0_15px_rgba(228,64,95,0.3)]',
+    },
+  ];
 
   return (
     <footer className="relative bg-[#000000] text-white border-t border-purple-950/60 overflow-hidden select-none">
@@ -209,68 +253,26 @@ export function SpotlightFooter() {
               Empowering undergraduate engineering students with real-world cloud architectures, serverless microservices, and Generative AI on AWS.
             </p>
 
-            {/* Horizontal row of social media icons: LinkedIn, GitHub, YouTube, Discord, X/Twitter */}
+            {/* Horizontal row of social media icons: GitHub, Meetup, LinkedIn, Instagram */}
             <div>
-              <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-3">
-                CONNECT WITH THE COMMUNITY
+              <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#FF9900]" />
+                <span>OFFICIAL SOCIAL CHANNELS</span>
               </div>
-              <div className="flex items-center space-x-2.5">
-                
-                {/* LinkedIn */}
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-xl bg-[#110524] border border-purple-500/25 flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 hover:scale-110 transition-all cursor-pointer shadow-sm"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-
-                {/* GitHub */}
-                <a 
-                  href="https://github.com/AWSCloudClubGCOE" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="GitHub"
-                  className="w-9 h-9 rounded-xl bg-[#110524] border border-purple-500/25 flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 hover:scale-110 transition-all cursor-pointer shadow-sm"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-
-                {/* YouTube */}
-                <a 
-                  href="https://youtube.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="YouTube"
-                  className="w-9 h-9 rounded-xl bg-[#110524] border border-purple-500/25 flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 hover:scale-110 transition-all cursor-pointer shadow-sm"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-
-                {/* Discord */}
-                <a 
-                  href="https://discord.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="Discord"
-                  className="w-9 h-9 rounded-xl bg-[#110524] border border-purple-500/25 flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 hover:scale-110 transition-all cursor-pointer shadow-sm"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                </a>
-
-                {/* X / Twitter */}
-                <a 
-                  href="https://twitter.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="Twitter"
-                  className="w-9 h-9 rounded-xl bg-[#110524] border border-purple-500/25 flex items-center justify-center text-zinc-400 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 hover:scale-110 transition-all cursor-pointer shadow-sm"
-                >
-                  <Twitter className="w-4 h-4" />
-                </a>
-
+              <div className="flex items-center space-x-3">
+                {socialLinks.map((s) => (
+                  <a 
+                    key={s.name}
+                    href={s.url} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    aria-label={s.name}
+                    title={`${s.name}: ${s.handle}`}
+                    className={`w-10 h-10 rounded-xl bg-[#110524] border border-purple-500/30 flex items-center justify-center text-zinc-300 transition-all duration-300 hover:scale-110 cursor-pointer shadow-md ${s.color}`}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -304,60 +306,67 @@ export function SpotlightFooter() {
 
           </div>
 
-          {/* ── MIDDLE / RIGHT COLUMNS (Cols 5-12): Organised Categories ── */}
+          {/* ── MIDDLE / RIGHT COLUMNS (Cols 5-12): Navigation, Official Platforms & Contact ── */}
           
-          {/* Column: ABOUT */}
+          {/* Column: QUICK NAVIGATION */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-mono font-bold text-white tracking-widest uppercase">
-              ABOUT
+              NAVIGATION
             </h4>
             <ul className="space-y-2.5 text-xs text-zinc-400 font-medium">
               <li>
-                <a href="#home" className="hover:text-purple-300 transition-colors">Our Mission</a>
+                <a href="#home" className="hover:text-purple-300 transition-colors">Home Page</a>
               </li>
               <li>
-                <a href="#events" className="hover:text-purple-300 transition-colors">Student Leaders</a>
+                <a href="#team" className="hover:text-purple-300 transition-colors">Team Members</a>
               </li>
               <li>
-                <a href="#events" className="hover:text-purple-300 transition-colors">Cloud Bootcamps</a>
+                <a href="#projects" className="hover:text-purple-300 transition-colors">Cloud Projects</a>
               </li>
               <li>
-                <a href="#events" className="hover:text-purple-300 transition-colors">24h Hackathons</a>
+                <a href="#events" className="hover:text-purple-300 transition-colors">Events & Workshops</a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-purple-300 transition-colors">Community Guidelines</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column: COMPANY / COMMUNITY */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono font-bold text-white tracking-widest uppercase">
-              COMPANY
-            </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400 font-medium">
-              <li>
-                <a href="#home" className="hover:text-purple-300 transition-colors">AWS Builder Network</a>
+                <a href="#resources" className="hover:text-purple-300 transition-colors">Study Resources</a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-purple-300 transition-colors">Student Projects</a>
-              </li>
-              <li>
-                <a href="#events" className="hover:text-purple-300 transition-colors">Certification Perks</a>
-              </li>
-              <li>
-                <a href="#events" className="hover:text-purple-300 transition-colors">Partner Companies</a>
-              </li>
-              <li>
-                <a href="https://github.com/AWSCloudClubGCOE" target="_blank" rel="noreferrer" className="hover:text-purple-300 transition-colors">
-                  Open Source Repo
+                <a href="#join" className="hover:text-[#4EF35E] font-semibold transition-colors flex items-center gap-1 text-[#4EF35E]">
+                  <span>Join Us Now</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Column: OFFICIAL PLATFORMS */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-mono font-bold text-white tracking-widest uppercase flex items-center gap-1.5">
+              <span>OFFICIAL CHANNELS</span>
+            </h4>
+            <ul className="space-y-2 text-xs font-medium">
+              {socialLinks.map((s) => (
+                <li key={s.name}>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center justify-between p-2 rounded-xl bg-[#100624]/70 border border-purple-500/20 text-zinc-300 hover:text-white hover:border-purple-400/60 hover:bg-purple-900/30 transition-all"
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden">
+                      <span className="p-1 rounded-lg bg-purple-950/80 text-purple-300 group-hover:text-white flex-shrink-0">
+                        {s.icon}
+                      </span>
+                      <span className="truncate">{s.name}</span>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-purple-400 group-hover:text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0 ml-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Column: CONTACT & SUPPORT */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-mono font-bold text-white tracking-widest uppercase">
               CONTACT & CAMPUS
             </h4>
@@ -366,9 +375,9 @@ export function SpotlightFooter() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                 <span>
-                  Department of Computer Science & Engineering,<br />
-                  Government College of Engineering, Kolhapur (GCOEK),<br />
-                  Maharashtra, India - 416012
+                  Dept. of CS & Engineering,<br />
+                  Govt. College of Engg., Kolhapur (GCOEK),<br />
+                  Maharashtra - 416012
                 </span>
               </div>
 
@@ -384,7 +393,6 @@ export function SpotlightFooter() {
                 <div>
                   <div className="text-zinc-300 font-medium">Support & Lab Hours:</div>
                   <div className="text-[11px] text-zinc-400">Mon - Fri: 9:00 AM – 5:30 PM IST</div>
-                  <div className="text-[11px] text-purple-300">Saturday Hack Nights on Discord</div>
                 </div>
               </div>
 
