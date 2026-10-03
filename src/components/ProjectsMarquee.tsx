@@ -25,123 +25,141 @@ export interface ProjectCard {
 
 const PROJECTS_DATA: ProjectCard[] = [
   {
-    id: 'aethernet-ai-ops',
-    title: 'AetherNet AI: Enterprise Bedrock LLMOps Platform',
-    category: 'GenAI & Cloud Architecture',
-    badge: 'AWS Bedrock Flagship',
-    badgeColor: 'bg-purple-900/60 text-purple-300 border-purple-500/40',
-    image: '/images/project_bedrock.jpg',
-    version: 'v2.1 Production',
-    views: 4820,
-    initialLikes: 892,
-    techStack: ['Amazon Bedrock', 'AWS Lambda', 'OpenSearch', 'Next.js 15'],
-    description: 'An enterprise-grade LLM inference observability platform. Monitors latency, token throughput, and multi-agent RAG reasoning chains across Anthropic Claude and Amazon Titan models.',
+    id: 'fraudlens-ai',
+    title: 'FraudLens AI: AI-Powered Financial Evidence Forensics',
+    category: 'AI + Digital Forensics',
+    badge: 'AI Forensics Platform',
+    badgeColor: 'bg-blue-900/60 text-blue-300 border-blue-500/40',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.0 Live Demo',
+    views: 5820,
+    initialLikes: 1120,
+    techStack: ['React', 'TypeScript', 'Node.js', 'Python', 'AWS CloudFront', 'Elastic Beanstalk', 'Amazon S3'],
+    description: 'A multimodal fraud investigation platform that combines financial evidence analysis, OCR, computer vision, machine learning, anomaly detection, and AI-assisted investigation in a unified forensic workspace.',
     architectureDetails: [
-      'Serverless ingestion pipeline processing 10,000+ token telemetry events/sec with AWS Kinesis',
-      'Vector semantic search and hybrid caching layer backed by Amazon OpenSearch Serverless',
-      'Dynamic fallback routing with AWS Lambda to optimize token billing by 42%'
+      'Multimodal evidence processing combining OCR document intelligence and computer vision',
+      'ML anomaly detection pipeline with XGBoost and Scikit-learn for fraud pattern identification',
+      'Deployed on AWS Elastic Beanstalk with Amazon CloudFront CDN and Amazon S3 storage'
     ],
-    githubUrl: 'https://github.com/AWSCloudClubGCOE',
-    liveDemoUrl: 'https://github.com/AWSCloudClubGCOE',
+    githubUrl: 'https://github.com/pathananas2007/fraudlens-ai',
+    liveDemoUrl: 'https://d21zw6n2b48e0s.cloudfront.net/',
     contributors: [
-      { name: 'Aditya Patil', role: 'Solutions Architect' },
-      { name: 'Neha Deshmukh', role: 'AI Systems Lead' }
+      { name: 'Anas Pathan', role: 'Project Creator' }
     ]
   },
   {
-    id: 'campustwin-iot-core',
-    title: 'CampusTwin: 3D Holographic IoT Smart Energy Grid',
-    category: 'AWS IoT & Digital Twin',
-    badge: 'IoT Hackathon Winner',
-    badgeColor: 'bg-emerald-900/60 text-[#4EF35E] border-emerald-500/40',
-    image: '/images/project_iot.jpg',
-    version: 'v3.0 Live Telemetry',
-    views: 6240,
-    initialLikes: 1240,
-    techStack: ['AWS IoT Core', 'Amazon Timestream', 'Grafana', 'MQTT'],
-    description: 'A real-time 3D digital twin of our college campus. Collects telemetry from 4,800+ edge sensors to predict lab energy surges, HVAC load, and optimize solar battery distribution.',
-    architectureDetails: [
-      'Microcontroller sensor telemetry ingested via AWS IoT Core through secure MQTT over TLS',
-      'Time-series sensor telemetry indexed in Amazon Timestream with millisecond analytical queries',
-      'Automated load shedding triggers via AWS Step Functions during peak campus energy demand'
-    ],
-    githubUrl: 'https://github.com/AWSCloudClubGCOE',
-    liveDemoUrl: 'https://github.com/AWSCloudClubGCOE',
-    contributors: [
-      { name: 'Vikas Patil', role: 'IoT & Firmware Lead' },
-      { name: 'Rohan Kulkarni', role: 'Cloud Lead' }
-    ]
-  },
-  {
-    id: 'cloudforge-iac-engine',
-    title: 'CloudForge: Automated Architecture-to-CDK Synthesizer',
-    category: 'DevOps & Automation',
-    badge: 'Open Source Engine',
-    badgeColor: 'bg-sky-900/60 text-sky-300 border-sky-500/40',
-    image: '/images/aws_hackathon.jpg',
-    version: 'v1.4 Verified',
-    views: 3410,
-    initialLikes: 645,
-    techStack: ['AWS CDK', 'TypeScript', 'Docker', 'Amazon ECS'],
-    description: 'A developer tool that compiles interactive architecture diagrams directly into production-ready AWS Cloud Development Kit (CDK) and CloudFormation stacks with security guardrails.',
-    architectureDetails: [
-      'Automated compliance auditing using AWS Config rules and cdk-nag security policies',
-      'One-click ephemeral review environments deployed through AWS CodeBuild and Fargate',
-      'Synthesizes over 30+ AWS resources including VPCs, IAM roles, and RDS clusters in seconds'
-    ],
-    githubUrl: 'https://github.com/AWSCloudClubGCOE',
-    liveDemoUrl: 'https://github.com/AWSCloudClubGCOE',
-    contributors: [
-      { name: 'Gaurav Shinde', role: 'DevOps Architect' },
-      { name: 'Pooja Jadhav', role: 'Full-Stack Developer' }
-    ]
-  },
-  {
-    id: 'kachestore-serverless',
-    title: 'KacheStore: Sub-Millisecond Multi-Region Event Cache',
-    category: 'Serverless Systems',
-    badge: 'Production Deployed',
+    id: 'devinsight-guardian',
+    title: 'DevInsight Guardian: Autonomous Serverless AI Manager',
+    category: 'AI + Serverless',
+    badge: 'AWS SAM & Lambda',
     badgeColor: 'bg-amber-900/60 text-[#FF9900] border-amber-500/40',
-    image: '/images/aws_keynote.jpg',
-    version: 'v2.0 Low Latency',
-    views: 5120,
-    initialLikes: 915,
-    techStack: ['DynamoDB Streams', 'ElastiCache', 'Go', 'API Gateway'],
-    description: 'Ultra-low latency serverless cache developed to sustain sudden traffic spikes during collegiate hackathon registrations and student voting systems without downtime.',
+    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.0 Production',
+    views: 6420,
+    initialLikes: 1350,
+    techStack: ['AWS Lambda', 'AWS SAM', 'TypeScript', 'EventBridge', 'Amazon SES', 'CloudWatch'],
+    description: 'An autonomous serverless AI engineering manager that watches GitHub activity, analyzes engineering patterns, and delivers a personalized morning brief with prioritized recommendations.',
     architectureDetails: [
-      'Global active-active data replication with Amazon DynamoDB Global Tables and Go microservices',
-      'Redis cluster automated scaling with sub-5 millisecond p99 latency during 15k concurrent registrations',
-      'Zero cold-start overhead utilizing optimized Go runtimes on AWS Lambda'
+      '8-stage agentic pipeline running on AWS Lambda scheduled via EventBridge',
+      'Automated daily morning briefs delivered via Amazon SES with priority recommendations',
+      'Fault-tolerant processing with SQS dead-letter queues and CloudWatch monitoring'
     ],
-    githubUrl: 'https://github.com/AWSCloudClubGCOE',
-    liveDemoUrl: 'https://github.com/AWSCloudClubGCOE',
+    githubUrl: 'https://github.com/ShardulOnGit/DevInsight',
+    liveDemoUrl: 'https://dev-insight-shardul-kolekar.vercel.app/',
     contributors: [
-      { name: 'Tanmay More', role: 'Backend Engineer' },
-      { name: 'Snehal Pawar', role: 'System Architect' }
+      { name: 'Shardul Kolekar', role: 'Project Creator' }
     ]
   },
   {
-    id: 'skillbadge-verification',
-    title: 'SkillBadge: Cryptographic AWS Club Certificate Registry',
-    category: 'EdTech & Cloud Verification',
-    badge: '1,200+ Verified Badges',
-    badgeColor: 'bg-purple-900/60 text-purple-200 border-purple-500/40',
-    image: '/images/aws_swags.jpg',
-    version: 'v1.8 Audited',
-    views: 7530,
-    initialLikes: 1530,
-    techStack: ['AWS Lambda', 'Amazon S3', 'DynamoDB', 'Node.js'],
-    description: 'Tamper-proof verifiable digital certification and badge distribution system. Allows students to showcase verifiable proof of AWS bootcamp completion directly to recruiters.',
+    id: 'iot-health-monitoring',
+    title: 'IoT Health Monitoring Dashboard',
+    category: 'IoT + Analytics',
+    badge: 'AWS IoT Core',
+    badgeColor: 'bg-cyan-900/60 text-[#38BDF8] border-cyan-500/40',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.2 Open Source',
+    views: 3890,
+    initialLikes: 740,
+    techStack: ['AWS IoT Core', 'AWS Amplify', 'React', 'Amazon Timestream'],
+    description: 'Real-time dashboard for monitoring patient vitals collected from simulated IoT devices. Uses MQTT for data ingestion and React for visualization.',
     architectureDetails: [
-      'Cryptographically signed credentials stored immutably on Amazon S3 with CloudFront CDN distribution',
-      'Automated certificate generation workers running on AWS Lambda with PDF rendering engines',
-      'QR code instant LinkedIn & resume verification API resolving in under 120ms'
+      'Real-time MQTT telemetry ingestion via AWS IoT Core',
+      'Time-series storage and fast analytical queries with Amazon Timestream',
+      'Frontend web dashboard hosted on AWS Amplify'
     ],
-    githubUrl: 'https://github.com/AWSCloudClubGCOE',
-    liveDemoUrl: 'https://github.com/AWSCloudClubGCOE',
+    githubUrl: 'https://github.com/aws-samples',
+    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
-      { name: 'Akshay Salunkhe', role: 'Cloud Lead' },
-      { name: 'Pranali Joshi', role: 'Frontend Architect' }
+      { name: 'AWS Student Builder Community', role: 'Open Source' }
+    ]
+  },
+  {
+    id: 'cloud-attendance-system',
+    title: 'Cloud Attendance System: Facial Recognition Log',
+    category: 'AI + Vision',
+    badge: 'Amazon Rekognition',
+    badgeColor: 'bg-purple-900/60 text-purple-300 border-purple-500/40',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.0 Verified',
+    views: 4210,
+    initialLikes: 890,
+    techStack: ['Amazon Rekognition', 'AWS Lambda', 'Amazon S3', 'Amazon DynamoDB'],
+    description: 'An automated attendance tracking system using facial recognition. Students scan their faces at the entrance, and attendance is logged in a database.',
+    architectureDetails: [
+      'Facial matching against image vault using Amazon Rekognition',
+      'Event-driven facial verification trigger via S3 upload to Lambda',
+      'Sub-second log creation in DynamoDB database'
+    ],
+    githubUrl: 'https://github.com/aws-samples',
+    liveDemoUrl: 'https://github.com/aws-samples',
+    contributors: [
+      { name: 'AWS Student Builder Community', role: 'Open Source' }
+    ]
+  },
+  {
+    id: 'automated-data-pipeline',
+    title: 'Serverless ETL & Data Analytics Pipeline',
+    category: 'Data Engineering',
+    badge: 'AWS Glue & Athena',
+    badgeColor: 'bg-emerald-900/60 text-[#4EF35E] border-emerald-500/40',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
+    version: 'v2.0 Production',
+    views: 3560,
+    initialLikes: 680,
+    techStack: ['AWS Glue', 'Amazon Athena', 'Amazon S3', 'AWS Step Functions'],
+    description: 'A serverless ETL pipeline that extracts data from external APIs, transforms it using Python, and loads it into a data warehouse for analysis.',
+    architectureDetails: [
+      'Serverless orchestration of data jobs using AWS Step Functions',
+      'Automated data crawling and cataloging with AWS Glue',
+      'Interactive SQL analytics over S3 data lake using Amazon Athena'
+    ],
+    githubUrl: 'https://github.com/aws-samples',
+    liveDemoUrl: 'https://github.com/aws-samples',
+    contributors: [
+      { name: 'AWS Student Builder Community', role: 'Open Source' }
+    ]
+  },
+  {
+    id: 'containerized-microservices',
+    title: 'Containerized Microservices Platform',
+    category: 'Cloud Architecture',
+    badge: 'Amazon ECS & Docker',
+    badgeColor: 'bg-rose-900/60 text-rose-300 border-rose-500/40',
+    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.5 Containerized',
+    views: 4980,
+    initialLikes: 980,
+    techStack: ['Amazon ECS', 'AWS Fargate', 'Docker', 'Application Load Balancer'],
+    description: 'An e-commerce backend broken down into microservices, containerized with Docker, and orchestrated using Amazon ECS and Fargate.',
+    architectureDetails: [
+      'Container orchestration with Amazon ECS on AWS Fargate serverless compute',
+      'Dynamic traffic routing using Application Load Balancer',
+      'Automated container image storage in Amazon ECR'
+    ],
+    githubUrl: 'https://github.com/aws-samples',
+    liveDemoUrl: 'https://github.com/aws-samples',
+    contributors: [
+      { name: 'AWS Student Builder Community', role: 'Open Source' }
     ]
   }
 ];

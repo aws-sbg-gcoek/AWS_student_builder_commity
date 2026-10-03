@@ -35,163 +35,163 @@ export interface StickyEventCard {
 
 const STACKED_EVENTS: StickyEventCard[] = [
   {
-    id: 'event-hackathon',
-    badge: 'FLAGSHIP HACKATHON',
+    id: 'chai-coffee-aws-2026',
+    badge: 'COMMUNITY MEETUP',
     badgeColor: 'bg-emerald-500/20 text-[#4EF35E] border-emerald-500/40',
-    category: 'Hackathon & Competitions',
-    title: 'AWS Cloud Innovate: 24-Hour Collegiate Hackathon',
-    date: 'Oct 14 - 15, 2026',
-    time: '10:00 AM IST Onwards',
-    location: 'Central Advanced Computing Lab & Hybrid Discord',
-    attendees: '350+ Builders Registered',
-    pricing: '100% Free Entry • ₹1,00,000 Prize Pool',
+    category: 'Meetup & Community',
+    title: 'Chai, Coffee & AWS — Annual Community Meet',
+    date: '05 Sep 2026',
+    time: '11:00 AM – 1:00 PM',
+    location: 'GCOE Kolhapur',
+    attendees: '120+ Community Builders',
+    pricing: '100% Free Entry • Core Swags & Refreshments',
     bgGradient: 'from-[#190a30] via-[#100523] to-[#080214]',
     borderColor: 'border-purple-500/40',
     accentColor: '#4EF35E',
     images: [
-      '/images/aws_hackathon.jpg',
-      '/images/aws_swags.jpg',
-      '/images/aws_keynote.jpg'
+      'https://secure.meetupstatic.com/photos/event/1/1/f/1/600_535984593.jpeg',
+      'https://i.ibb.co/wh3WN4c8/highres-532347430.avif',
+      'https://i.ibb.co/mC48zSdN/highres-532347431.avif'
     ],
-    description: 'Our flagship 24-hour non-stop collegiate cloud hackathon! Student teams design, architect, and deploy intelligent cloud-native applications using Amazon Bedrock, AWS Lambda, DynamoDB, and Docker.',
+    description: 'Join us for the AWS Student Builder Group Annual Community Meet as we celebrate a year of growth, achievements, and community building. We recognize core team contributions, welcome new members, and discuss our vision for the upcoming year.',
     highlights: [
-      '₹1,00,000 cash prize pool + official AWS Certification vouchers',
-      '1-on-1 mentorship from certified AWS Solutions Architects & Community Builders',
-      'Midnight energy drinks, meals, and official AWS Club merchandise',
-      'Direct interview fast-track opportunities with cloud partner companies'
+      'Year in Review — milestones, achievements & community growth',
+      'Core Team Swag Distribution & Special Recognition',
+      'Signup Challenge Winner Recognition & AWS Quiz',
+      'Future Roadmap — Hackathons, Community Days & Technical Workshops'
     ],
-    techStack: ['Amazon Bedrock', 'AWS Lambda', 'DynamoDB', 'Amazon S3', 'Docker'],
-    swags: 'Official AWS Hackathon Hoodie, Tech Stickers, $100 Cloud Credits Voucher',
+    techStack: ['AWS Community', 'SkillBuilder', 'Educate', 'Cloud Certifications'],
+    swags: 'Core Team Swag Kits, Stickers, AWS Badges & Goodies',
     speaker: {
-      name: 'Aditya Patil',
-      role: 'AWS Community Builder & Senior Cloud Architect',
-      company: 'AWS User Group'
+      name: 'AWS SBG Core Team',
+      role: 'Community Organizers',
+      company: 'AWS Student Builder Group GCOEK'
     },
     schedule: [
-      { time: '10:00 AM', activity: 'Opening Keynote & Problem Statements Release' },
-      { time: '12:00 PM', activity: 'Hacking Commences & Cloud Architecture Mentoring' },
-      { time: '08:00 PM', activity: 'Mid-Way Architecture Evaluation & Dinner' },
-      { time: '10:00 AM (Day 2)', activity: 'Code Freeze & Live Jury Pitches' }
+      { time: '11:00 AM', activity: 'Welcome & Opening Remarks' },
+      { time: '11:10 AM', activity: 'Year in Review & Core Team Recognition' },
+      { time: '11:55 AM', activity: 'Future Roadmap & AWS Student Benefits' },
+      { time: '12:35 PM', activity: 'Open Q&A, Tea/Coffee & Networking' }
     ]
   },
   {
-    id: 'event-bedrock-masterclass',
+    id: 'portfolio-website-workshop',
     badge: 'LIVE WORKSHOP',
     badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40',
-    category: 'Hands-on Cloud Lab',
-    title: 'Generative AI & Amazon Bedrock Architecture Masterclass',
-    date: 'Saturday • Nov 2, 2026',
-    time: '2:30 PM - 6:30 PM IST',
-    location: 'Seminar Auditorium 1, GCOEK',
-    attendees: '250+ Seats Filled',
-    pricing: 'Free Access • $50 Sandbox Credits Included',
+    category: 'Web Dev & AI Workshop',
+    title: 'AI-Powered Portfolio Website Development Workshop',
+    date: '09 Apr 2026',
+    time: '10:00 AM – 2:00 PM',
+    location: 'E Computer Lab (GCOEK New Campus)',
+    attendees: '150+ Hands-on Participants',
+    pricing: 'Free Workshop • Certificates & Deployment Included',
     bgGradient: 'from-[#200d3d] via-[#14082a] to-[#0a0317]',
     borderColor: 'border-violet-500/40',
     accentColor: '#A855F7',
     images: [
-      '/images/aws_keynote.jpg',
-      '/images/aws_hackathon.jpg',
-      '/images/aws_swags.jpg'
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop',
+      'https://i.ibb.co/sd6ZXFt4/highres-532347403-1.avif',
+      'https://i.ibb.co/h1RwtVP4/highres-532347403.avif'
     ],
-    description: 'A deep-dive, interactive masterclass on building enterprise Generative AI agents. Students connect Claude 3.5 Sonnet and open foundation models to private data using Retrieval-Augmented Generation (RAG) on AWS.',
+    description: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using HTML, CSS, JavaScript, and AI tools, complete with Git version control and live cloud deployment.',
     highlights: [
-      'Live code walkthrough: Deploy a serverless RAG pipeline in under 45 minutes',
-      'Prepaid AWS sandbox accounts provided for all attendees with zero risk',
-      'Hands-on vector embeddings with AWS OpenSearch Serverless',
-      'Official Certificate of Attendance accredited by AWS Student Builder Group'
+      'Build a complete portfolio website from scratch with live deployment',
+      'Learn HTML, CSS & JavaScript fundamentals alongside modern AI coding tools',
+      'Git & GitHub setup with live hosting link to showcase on your resume',
+      'Certificates of participation & refreshments provided'
     ],
-    techStack: ['Claude 3.5 on Bedrock', 'LangChain', 'Python', 'AWS OpenSearch'],
-    swags: 'AWS Swag Badges, Notebooks, $50 AWS Sandbox Credits',
+    techStack: ['HTML5', 'CSS3', 'JavaScript', 'AI Coding Assistants', 'GitHub Pages'],
+    swags: 'Participation Certificates, Stickers, Live Portfolio Domain Link',
     speaker: {
-      name: 'Neha Deshmukh',
-      role: 'AI/ML Cloud Engineer & Club Technical Lead',
-      company: 'AWS Student Builder Club'
+      name: 'Shardul & Yash',
+      role: 'Lead Speakers & Facilitators',
+      company: 'AWS Student Builder Group GCOEK'
     },
     schedule: [
-      { time: '02:30 PM', activity: 'Introduction to Generative AI on AWS & Bedrock' },
-      { time: '03:30 PM', activity: 'Hands-on Lab 1: Configuring Foundation Models' },
-      { time: '04:45 PM', activity: 'Hands-on Lab 2: Building your Vector RAG Knowledge Base' },
-      { time: '06:00 PM', activity: 'Q&A, Quiz Competition & Swag Giveaway' }
+      { time: '10:00 AM', activity: 'Web Dev & UI/UX Design Fundamentals' },
+      { time: '11:00 AM', activity: 'Portfolio Structure Planning' },
+      { time: '12:00 PM', activity: 'Hands-on Build Session with AI Tools' },
+      { time: '01:30 PM', activity: 'GitHub Setup & Live Deployment' }
     ]
   },
   {
-    id: 'event-swag-fest',
-    badge: 'ANNUAL FESTIVAL',
+    id: 'seminar-genai-deep-learning',
+    badge: 'DEEP LEARNING SEMINAR',
     badgeColor: 'bg-amber-500/20 text-[#FF9900] border-amber-500/40',
-    category: 'Community Celebration',
-    title: 'AWS Swag Fest & Cloud Certification Bootcamp',
-    date: 'Dec 05, 2026',
-    time: '1:00 PM - 5:30 PM IST',
-    location: 'Open Tech Amphitheater, Campus',
-    attendees: '450+ Attendees',
-    pricing: 'Free For All Students • Swag Kits for Registrations',
+    category: 'AI & Machine Learning',
+    title: 'Seminar on Generative AI & Deep Learning',
+    date: '13 Apr 2026',
+    time: '2:00 PM – 4:00 PM',
+    location: 'Seminar Hall (Old Building), GCOE Kolhapur',
+    attendees: '200+ Attendees',
+    pricing: 'Free Entry • Certificates Provided to All',
     bgGradient: 'from-[#240d2f] via-[#160620] to-[#0c0314]',
     borderColor: 'border-amber-500/40',
     accentColor: '#FF9900',
     images: [
-      '/images/aws_swags.jpg',
-      '/images/aws_keynote.jpg',
-      '/images/aws_hackathon.jpg'
+      'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=2070&auto=format&fit=crop',
+      'https://i.ibb.co/n8kj4dLH/highres-532347401.avif',
+      'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif'
     ],
-    description: 'Celebration of AWS certified student builders! Distribution of official AWS swag kits, metal water bottles, developer t-shirts, lapel pins, stickers, and exam walkthroughs for AWS Certified Cloud Practitioner.',
+    description: 'A hands-on seminar exploring cutting-edge Generative AI and Deep Learning. From GANs and VAEs to Transformers, LSTMs, and computer vision tasks like image denoising and object detection.',
     highlights: [
-      'Over 250+ official AWS Developer T-Shirts, metal bottles & sticker sets distributed',
-      'Exclusive 50% discount vouchers for official AWS Certification exams',
-      'Fireside networking chat with alumni working at top cloud enterprises',
-      'Project showcase expo with peer feedback and awards'
+      'Generative Deep Learning: Neural Style Transfer, VAE & GAN architectures',
+      'Deep Learning Models: MLP, LSTM, GRU, and Transformer Networks',
+      'Supervised Tasks: Image Denoising, Semantic Segmentation & Object Detection',
+      'Official Certificates provided to all participants'
     ],
-    techStack: ['AWS Cloud Practitioner', 'Solutions Architect', 'SkillBuilder'],
-    swags: 'Official AWS Bags, T-Shirts, Metal Water Bottles, Stickers',
+    techStack: ['PyTorch', 'TensorFlow', 'GANs', 'Transformers', 'OpenCV', 'Python'],
+    swags: 'Generative AI Participation Certificates & Learning Handouts',
     speaker: {
-      name: 'Rohan Kulkarni',
-      role: 'President - AWS Student Builder Group',
-      company: 'GCOE Kolhapur'
+      name: 'AI/ML Core Domain Team',
+      role: 'Technical Researchers',
+      company: 'AWS Student Builder Group GCOEK'
     },
     schedule: [
-      { time: '01:00 PM', activity: 'Certification Hall of Fame & Keynote' },
-      { time: '02:15 PM', activity: 'Exam Preparation Tips & Free Practice Tests' },
-      { time: '03:45 PM', activity: 'Swag Kit Distribution & Stage Photo Session' },
-      { time: '04:30 PM', activity: 'Networking High Tea & Project Demos' }
+      { time: '02:00 PM', activity: 'Introduction to Generative AI, VAE & GANs' },
+      { time: '02:45 PM', activity: 'Deep Learning Models & Transformer Networks' },
+      { time: '03:30 PM', activity: 'Hands-on Supervised Tasks & Computer Vision' },
+      { time: '03:50 PM', activity: 'Q&A & Certificate Distribution' }
     ]
   },
   {
-    id: 'event-devops-bootcamp',
-    badge: 'INTENSIVE BOOTCAMP',
+    id: 'expert-lecture-cloud-aws',
+    badge: 'EXPERT LECTURE',
     badgeColor: 'bg-sky-500/20 text-sky-400 border-sky-500/40',
-    category: 'Cloud Engineering',
-    title: 'Serverless DevOps & CI/CD Pipelines on AWS',
-    date: 'Jan 18 - 19, 2027',
-    time: '11:00 AM - 4:00 PM IST',
-    location: 'Software Engineering Wing & Live Stream',
-    attendees: '280+ Seats Enrolled',
-    pricing: 'Free Registration • Capstone Project Included',
+    category: 'Cloud & DevOps',
+    title: 'Expert Lecture on Cloud Computing & AWS',
+    date: '27 Mar 2026',
+    time: '11:00 AM Onwards',
+    location: 'Seminar Hall, GCOE Kolhapur',
+    attendees: '180+ Students Attended',
+    pricing: 'Free Entry • Industry Guest Speaker',
     bgGradient: 'from-[#0e163b] via-[#090e29] to-[#050718]',
     borderColor: 'border-sky-500/40',
     accentColor: '#38BDF8',
     images: [
-      '/images/aws_hackathon.jpg',
-      '/images/aws_keynote.jpg',
-      '/images/aws_swags.jpg'
+      'https://i.ibb.co/tM6WTD8D/Green-White-Minimalis-Webinar-Digital-Marketing-Expert-Instagram-Post-3.png',
+      'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
+      'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg'
     ],
-    description: 'Master enterprise-grade DevOps automation. Students construct end-to-end continuous integration and deployment pipelines using AWS CodePipeline, GitHub Actions, AWS CDK, and automated CloudFormation stacks.',
+    description: 'An expert session on Cloud Computing and Amazon Web Services (AWS), providing students with practical insights into cloud architectures, real-world industry applications, and DevOps career opportunities.',
     highlights: [
-      'Construct automated zero-downtime serverless deployment pipelines',
-      'Infrastructure as Code (IaC) using AWS Cloud Development Kit (CDK) & TypeScript',
-      'Deploy containerized microservices to Amazon ECS & Fargate',
-      'Earn verifiable digital badge for DevOps on AWS upon capstone submission'
+      'Introduction to Cloud Computing fundamentals and global infrastructure',
+      'Overview of core Amazon Web Services (EC2, S3, IAM, CloudFront)',
+      'Insights into real-world production cloud deployments',
+      'Guidance from an experienced industry professional with 10+ years in IT'
     ],
-    techStack: ['AWS CDK', 'GitHub Actions', 'CodePipeline', 'ECS Fargate', 'TypeScript'],
-    swags: 'DevOps Digital Badge, AWS Cloud Architect Desk Pad, Stickers',
+    techStack: ['AWS Cloud', 'DevOps', 'EC2', 'Amazon S3', 'Cloud Architecture'],
+    swags: 'Industry Guidance Notes, AWS Learning Path Diagrams',
     speaker: {
-      name: 'Vikas Patil',
-      role: 'DevOps & Infrastructure Architect',
-      company: 'Cloud Native Labs'
+      name: 'Aditya Bhosale',
+      role: 'Senior Software Developer (AWS & DevOps)',
+      company: '10+ Years Industry Experience'
     },
     schedule: [
-      { time: '11:00 AM', activity: 'Modern DevOps Principles & Architecture on AWS' },
-      { time: '12:30 PM', activity: 'Hands-on Lab 1: GitHub Actions to AWS CodeDeploy' },
-      { time: '02:00 PM', activity: 'Hands-on Lab 2: Infrastructure as Code with AWS CDK' },
-      { time: '03:30 PM', activity: 'Automated Testing, Production Rollouts & Q&A' }
+      { time: '11:00 AM', activity: 'Opening & Introduction to Cloud Computing' },
+      { time: '11:30 AM', activity: 'Deep Dive into Amazon Web Services (AWS)' },
+      { time: '12:15 PM', activity: 'Real-World Production Architectures & Use Cases' },
+      { time: '12:45 PM', activity: 'DevOps Career Path & Student Q&A' }
     ]
   }
 ];
