@@ -13,6 +13,7 @@ import {
   Cpu,
   Layers,
   ArrowRight,
+  ChevronDown,
   HelpCircle,
   RefreshCw,
 } from 'lucide-react';
@@ -25,6 +26,7 @@ interface JoinUsPageProps {
 export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const googleFormUrl = 'https://forms.gle/KaSxQhoMMXv8hBsq9';
 
@@ -156,7 +158,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
             
             {/* Why Join Us Card Group */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[#4EF35E]">
+              <div className="flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase text-[#4EF35E]">
                 <Sparkles className="w-4 h-4" />
                 <span>WHY JOIN US?</span>
               </div>
@@ -168,7 +170,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
                 {whyJoinPoints.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`p-5 rounded-2xl bg-gradient-to-br ${item.gradient} bg-[#120826]/90 border ${item.border} backdrop-blur-xl shadow-lg hover:border-purple-400/50 transition-all duration-300 group`}
+                    className="p-5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-xl shadow-lg transition-all duration-300 group"
                   >
                     <div className="p-2.5 rounded-xl bg-purple-950/60 w-fit border border-purple-500/20 mb-3 group-hover:scale-110 transition-transform">
                       {item.icon}
@@ -185,7 +187,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
             </div>
 
             {/* What You Will Learn */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#0f0722]/90 border border-purple-500/30 backdrop-blur-2xl shadow-2xl space-y-6">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-2xl shadow-2xl space-y-6">
               <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[#FF9900]">
                 <BookOpen className="w-4 h-4" />
                 <span>CURRICULUM & SKILLS</span>
@@ -218,7 +220,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
             </div>
 
             {/* Member Perks & Benefits */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-purple-950/40 via-[#13072b] to-indigo-950/40 border border-purple-500/30 shadow-xl space-y-4">
+            <div className="bg-[#120824]/90 border border-purple-500/20 p-6 sm:p-8 rounded-2xl shadow-xl space-y-4">
               <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-purple-300">
                 <Award className="w-4 h-4 text-purple-400" />
                 <span>EXCLUSIVE MEMBER PERKS</span>
@@ -240,7 +242,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
           {/* ── RIGHT COLUMN: Embedded Google Form (6 cols on desktop) ── */}
           <div className="lg:col-span-6 xl:col-span-6 sticky top-24">
             
-            <div className="rounded-3xl bg-[#0e0620] border border-purple-500/40 shadow-[0_0_50px_rgba(168,85,247,0.25)] overflow-hidden">
+            <div className="rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-[0_0_50px_rgba(168,85,247,0.25)] overflow-hidden">
               
               {/* Form Container Top Toolbar */}
               <div className="bg-[#170c35] px-5 py-4 border-b border-purple-500/30 flex items-center justify-between flex-wrap gap-3">
@@ -268,7 +270,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
                     href={googleFormUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-[0_0_12px_rgba(168,85,247,0.4)] transition-all cursor-pointer"
+                    className="purple-glow-btn px-3 py-1.5 rounded-lg font-semibold text-xs gap-1.5"
                   >
                     <span>Open in New Tab</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -336,21 +338,38 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-[#120728]/80 border border-purple-500/20 backdrop-blur-md space-y-2"
-              >
-                <h3 className="font-bold text-base text-white flex items-center gap-2">
-                  <span className="text-[#FF9900] font-mono">Q:</span>
-                  <span>{faq.q}</span>
-                </h3>
-                <p className="text-xs sm:text-sm text-purple-200/70 leading-relaxed pl-5">
-                  {faq.a}
-                </p>
-              </div>
-            ))}
+          <div className="flex flex-col gap-4 max-w-3xl mx-auto">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md overflow-hidden"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer"
+                  >
+                    <span className="font-bold text-base text-white flex items-center gap-2">
+                      <span className="text-[#FF9900] font-mono">Q:</span>
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 flex-shrink-0 text-purple-300 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div>
+                      <p className="px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-purple-200/70 leading-relaxed pl-12 sm:pl-14">
+                        {faq.a}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 

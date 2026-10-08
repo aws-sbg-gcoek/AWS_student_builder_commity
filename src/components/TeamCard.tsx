@@ -147,12 +147,9 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
         group
         relative
         rounded-2xl
-        border
-        border-purple-500/20
-        bg-[#0f0720]/95
+        bg-[#120824]/90 border border-purple-500/20
         backdrop-blur-md
         opacity-100
-        hover:border-purple-400/60
         hover:shadow-[0_25px_60px_rgba(139,92,246,0.3)]
         flex
         flex-col

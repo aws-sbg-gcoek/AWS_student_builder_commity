@@ -90,7 +90,7 @@ const PROJECTS_DATA: ProjectCard[] = [
     githubUrl: 'https://github.com/aws-samples',
     liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
-      { name: 'AWS Student Builder Community', role: 'Open Source' }
+      { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
   },
   {
@@ -113,7 +113,7 @@ const PROJECTS_DATA: ProjectCard[] = [
     githubUrl: 'https://github.com/aws-samples',
     liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
-      { name: 'AWS Student Builder Community', role: 'Open Source' }
+      { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
   },
   {
@@ -136,7 +136,7 @@ const PROJECTS_DATA: ProjectCard[] = [
     githubUrl: 'https://github.com/aws-samples',
     liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
-      { name: 'AWS Student Builder Community', role: 'Open Source' }
+      { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
   },
   {
@@ -159,7 +159,30 @@ const PROJECTS_DATA: ProjectCard[] = [
     githubUrl: 'https://github.com/aws-samples',
     liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
-      { name: 'AWS Student Builder Community', role: 'Open Source' }
+      { name: 'AWS Student Builder Group', role: 'Open Source' }
+    ]
+  },
+  {
+    id: 'serverless-chatbot',
+    title: 'Serverless Chatbot',
+    category: 'AI + NLP',
+    badge: 'Amazon Lex',
+    badgeColor: 'bg-amber-900/60 text-amber-300 border-amber-500/40',
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2000&auto=format&fit=crop',
+    version: 'v1.0 Open Source',
+    views: 3120,
+    initialLikes: 590,
+    techStack: ['Amazon Lex', 'AWS Lambda', 'Amazon DynamoDB'],
+    description: 'An intelligent conversational agent built using Amazon Lex and integrated with Slack for answering student queries about the club.',
+    architectureDetails: [
+      'Natural language intent recognition with Amazon Lex',
+      'Serverless fulfillment logic running on AWS Lambda',
+      'FAQ knowledge base lookups from Amazon DynamoDB'
+    ],
+    githubUrl: 'https://github.com/aws-samples',
+    liveDemoUrl: 'https://github.com/aws-samples',
+    contributors: [
+      { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
   }
 ];
@@ -242,7 +265,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
               <div
                 key={`${project.id}-${index}`}
                 onClick={() => setSelectedProject(project)}
-                className="w-[280px] sm:w-[340px] md:w-[380px] flex-shrink-0 rounded-2xl sm:rounded-3xl bg-[#120826]/90 border border-purple-500/25 hover:border-purple-400 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-xl p-3.5 sm:p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(147,51,234,0.35)] cursor-pointer group flex flex-col justify-between"
+                className="w-[280px] sm:w-[340px] md:w-[380px] flex-shrink-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-xl p-3.5 sm:p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(147,51,234,0.35)] cursor-pointer group flex flex-col justify-between"
               >
                 {/* ── Card Project Screenshot Showcase (Realistic Window Frame) ── */}
                 <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black/60 shadow-inner group/img">
@@ -353,7 +376,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
       {/* ─── INTERACTIVE HIGH-RES PROJECT ARCHITECTURE & DETAILS MODAL ─── */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
-          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0d041d] border border-purple-500/40 shadow-2xl p-6 sm:p-8 text-white">
+          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-2xl p-6 sm:p-8 text-white">
             
             {/* Close Button */}
             <button
@@ -498,7 +521,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
                     href={selectedProject.liveDemoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="white-pill-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                    className="purple-glow-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold gap-2 cursor-pointer"
                   >
                     <span>Launch Live Interactive App</span>
                     <ExternalLink className="w-4 h-4" />

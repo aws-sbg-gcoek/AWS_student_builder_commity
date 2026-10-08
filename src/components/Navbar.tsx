@@ -27,11 +27,12 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
   ];
 
   return (
+    <>
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#07020E]/90 backdrop-blur-xl border-b border-purple-900/30 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)]'
-          : 'bg-transparent py-5'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,7 +94,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
                     onClick={() => onTabChange?.(link.name)}
                     className={`relative px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium tracking-wide rounded-full transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-[#291746] text-white border border-[#4e277a] shadow-[0_0_15px_rgba(124,58,237,0.3)]'
+                        ? 'bg-purple-600/50 text-white border shadow-[0_0_15px_rgba(124,58,237,0.3)]'
                         : 'text-[#9c93af] hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -109,7 +110,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
             <button
               type="button"
               onClick={onJoinClick}
-              className="white-pill-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide flex items-center gap-1.5 hover:scale-105 active:scale-95 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+              className="purple-glow-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide gap-1.5 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(124,58,237,0.35)]"
             >
               Join Now!
             </button>
@@ -158,7 +159,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
                   onJoinClick?.();
                   setIsOpen(false);
                 }}
-                className="white-pill-btn block w-full text-center py-3 rounded-full text-sm font-semibold"
+                className="purple-glow-btn block w-full text-center py-3 rounded-full text-sm font-semibold"
               >
                 Join Now!
               </button>
@@ -167,5 +168,6 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
         </div>
       )}
     </nav>
+    </>
   );
 }

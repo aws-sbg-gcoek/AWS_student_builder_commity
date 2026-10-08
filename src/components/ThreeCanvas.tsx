@@ -24,7 +24,7 @@ export function ThreeCanvas() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    const purpleLight = new THREE.PointLight(0x8b5cf6, 4, 15);
+    const purpleLight = new THREE.PointLight(0x7c3aed, 4, 15);
     purpleLight.position.set(4, 4, 4);
     scene.add(purpleLight);
 
@@ -39,7 +39,7 @@ export function ThreeCanvas() {
     const coreGeo = new THREE.IcosahedronGeometry(1.2, 1);
     const coreMat = new THREE.MeshStandardMaterial({
       color: 0x7c3aed,
-      emissive: 0x6d28d9,
+      emissive: 0x5b21b6,
       emissiveIntensity: 0.8,
       wireframe: true,
       roughness: 0.1,
@@ -68,9 +68,9 @@ export function ThreeCanvas() {
       return ring;
     };
 
-    const ring1 = createRing(2.0, 0x8b5cf6, Math.PI / 3, 0);
+    const ring1 = createRing(2.0, 0x7c3aed, Math.PI / 3, 0);
     const ring2 = createRing(2.5, 0x4ef35e, -Math.PI / 4, Math.PI / 6);
-    const ring3 = createRing(3.0, 0xc084fc, Math.PI / 2.2, -Math.PI / 4);
+    const ring3 = createRing(3.0, 0xa855f7, Math.PI / 2.2, -Math.PI / 4);
     group.add(ring1);
     group.add(ring2);
     group.add(ring3);
@@ -88,7 +88,7 @@ export function ThreeCanvas() {
       positions[i + 2] = r * Math.cos(phi);
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMat = new THREE.PointsMaterial({ color: 0xc084fc, size: 0.08, transparent: true, opacity: 0.8 });
+    const particleMat = new THREE.PointsMaterial({ color: 0xa855f7, size: 0.08, transparent: true, opacity: 0.8 });
     const particles = new THREE.Points(particleGeo, particleMat);
     group.add(particles);
 

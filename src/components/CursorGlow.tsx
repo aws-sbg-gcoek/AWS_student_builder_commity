@@ -94,7 +94,8 @@ export function CursorGlow() {
               : 'w-36 h-36 bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-purple-600/25 blur-2xl'
           }`}
           style={{
-            boxShadow: '0 0 45px rgba(192, 132, 252, 0.35)',
+            backgroundColor: 'rgba(124,58,237,0.25)',
+            boxShadow: '0 0 45px rgba(124,58,237,0.25)',
           }}
         />
       </div>

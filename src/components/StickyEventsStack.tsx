@@ -447,7 +447,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
 
                 {/* ── Inner Animated Card with Scale-Down & Drop-Shadow Stacking ── */}
                 <div 
-                  className={`card-inner-motion relative rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-gradient-to-br ${event.bgGradient} border ${event.borderColor} shadow-[0_-18px_45px_rgba(0,0,0,0.95),0_10px_30px_rgba(0,0,0,0.8)] p-4 sm:p-7 lg:p-9 backdrop-blur-2xl transition-all duration-150 ease-out overflow-hidden group origin-top`}
+                  className={`card-inner-motion relative rounded-2xl bg-[#120824]/90 border ${event.borderColor} shadow-[0_-18px_45px_rgba(0,0,0,0.95),0_10px_30px_rgba(0,0,0,0.8)] p-4 sm:p-7 lg:p-9 backdrop-blur-2xl transition-all duration-150 ease-out overflow-hidden group origin-top`}
                 >
                   {/* Glowing top line accent with individual event color */}
                   <div 
@@ -603,7 +603,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         <button
                           type="button"
                           onClick={() => openModal(event)}
-                          className="purple-glow-btn text-white text-xs sm:text-sm font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full inline-flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                           className="purple-glow-btn text-white text-xs sm:text-sm font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full inline-flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform"
                         >
                           <span>View Details</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -612,7 +612,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         <button
                           type="button"
                           onClick={onJoinClick}
-                          className="white-pill-btn text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full cursor-pointer hover:scale-105 active:scale-95 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                           className="purple-glow-btn text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full cursor-pointer hover:scale-105 active:scale-95 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.25)]"
                         >
                           RSVP Free Seat
                         </button>
@@ -785,7 +785,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         setIsRsvpd(true);
                         setTimeout(() => onJoinClick?.(), 600);
                       }}
-                      className="white-pill-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                       className="purple-glow-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
                     >
                       Confirm Free Registration
                     </button>

@@ -307,7 +307,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
       >
         {/* ── FRONT SIDE ── */}
         <div
-          className="absolute inset-0 rounded-2xl bg-[#13082a]/90 border border-purple-900/40 p-5 backdrop-blur-xl flex flex-col justify-between shadow-lg group-hover:border-emerald-500/50 transition-colors"
+          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-5 backdrop-blur-xl flex flex-col justify-between shadow-lg transition-colors"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <div>
@@ -319,7 +319,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
                 {item.actionText}
               </span>
             </div>
-            <h3 className="text-lg font-bold font-heading text-white group-hover:text-emerald-400 transition-colors">
+            <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
               {item.title}
             </h3>
             <p className="text-xs text-zinc-400 mt-2 leading-relaxed line-clamp-2">
@@ -348,7 +348,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
             <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest">
               OFFICIAL AWS DOCUMENTATION
             </span>
-            <h4 className="text-base font-extrabold text-white font-heading">
+            <h4 className="text-base font-extrabold text-white">
               {item.title}
             </h4>
             <p className="text-xs text-zinc-300 leading-relaxed">
@@ -361,7 +361,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="w-full py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/35 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(78,243,94,0.25)]"
+            className="purple-glow-btn w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2"
           >
             <span>Launch Resource</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -393,7 +393,7 @@ function GitHubResourceFlipCard({ item }: { item: ResourceLink }) {
       >
         {/* ── FRONT SIDE ── */}
         <div
-          className="absolute inset-0 rounded-3xl bg-[#150930]/90 border border-purple-900/50 p-6 backdrop-blur-xl flex items-start gap-4 shadow-lg group-hover:border-purple-400/60 transition-colors"
+          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 backdrop-blur-xl flex items-start gap-4 shadow-lg transition-colors"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform flex-shrink-0">
@@ -453,7 +453,7 @@ function GitHubResourceFlipCard({ item }: { item: ResourceLink }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="w-full py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-white text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+            className="purple-glow-btn w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2"
           >
             <span>Explore Repository on GitHub</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -614,7 +614,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-5 font-heading leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[1.05]">
               Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">Resources</span>
             </h1>
 
@@ -681,10 +681,10 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer border ${
                   selectedCategory === cat
-                    ? 'bg-purple-600 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] border border-purple-400'
-                    : 'bg-[#180d35]/70 text-zinc-400 hover:text-white border border-purple-900/30 hover:border-purple-600/40'
+                    ? 'bg-purple-600/50 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]'
+                    : 'bg-[#180d35]/70 text-zinc-400 hover:text-white border-purple-900/30 hover:border-purple-600/40'
                 }`}
               >
                 {cat}
@@ -707,7 +707,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Compass className="w-4 h-4" />
                 <span>Structured Pathway</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                 Cloud Beginner Roadmap
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -726,7 +726,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
 
                 return (
                   <AssemblyCard key={step.stepNumber}>
-                    <div className="relative group rounded-3xl bg-[#120826]/90 border border-purple-900/40 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-purple-500/50 transition-all duration-300">
+                    <div className="relative group rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300">
                       
                       {/* Glowing Accent line top */}
                       <div 
@@ -749,7 +749,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                           </div>
                           <div>
                             <div className="flex items-center gap-3 flex-wrap">
-                              <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
+                              <h3 className="text-xl sm:text-2xl font-bold text-white">
                                 {step.title}
                               </h3>
                               <span className={`px-3 py-0.5 rounded-full text-xs font-mono border ${step.badgeColor}`}>
@@ -802,7 +802,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Rocket className="w-4 h-4" />
                 <span>Hands-On Experience</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                 Interactive Learning – Learn by Doing
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -818,13 +818,13 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -6, scale: 1.02 }}
-                    className="relative flex flex-col justify-between p-6 rounded-3xl bg-[#14092b]/90 border border-purple-900/50 hover:border-cyan-500/60 backdrop-blur-xl group transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.4)] h-full"
+                    className="relative flex flex-col justify-between p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-xl group transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.4)] h-full"
                   >
                     <div className="space-y-3">
                       <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
                         <GamepadIcon idx={idx} />
                       </div>
-                      <h3 className="text-xl font-bold font-heading text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2">
+                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2">
                         {item.title}
                         <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" />
                       </h3>
@@ -855,7 +855,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Globe className="w-4 h-4" />
                 <span>Frontend & Fullstack</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                 Web Development – Static Website & Web Dev on AWS
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -871,7 +871,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5, scale: 1.02 }}
-                    className="flex flex-col justify-between p-5 rounded-2xl bg-[#120726]/90 border border-purple-900/40 hover:border-purple-500/60 backdrop-blur-xl group transition-all shadow-md h-full"
+                    className="flex flex-col justify-between p-5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-xl group transition-all shadow-md h-full"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
@@ -882,7 +882,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                           {item.actionText}
                         </span>
                       </div>
-                      <h3 className="text-lg font-bold font-heading text-white group-hover:text-purple-300 transition-colors">
+                      <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
                         {item.title}
                       </h3>
                       <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
@@ -910,7 +910,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Award className="w-4 h-4" />
                 <span>Industry Recognition</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                 Certification Guide – AWS Certified Cloud Practitioner
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -920,7 +920,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
 
             {/* Featured Certification Banner Card */}
             <AssemblyCard>
-              <div className="relative rounded-3xl bg-gradient-to-r from-[#1b0d38] via-[#240e48] to-[#16082e] border border-amber-500/40 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_35px_rgba(255,153,0,0.15)] overflow-hidden">
+              <div className="relative rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_35px_rgba(255,153,0,0.15)] overflow-hidden">
                 <div className="absolute right-0 top-0 w-80 h-80 bg-amber-500/10 blur-3xl pointer-events-none rounded-full" />
                 
                 <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -929,7 +929,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       <Award className="w-3.5 h-3.5" />
                       <span>FOUNDATIONAL LEVEL (CLF-C02)</span>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
                       AWS Certified Cloud Practitioner
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
@@ -942,7 +942,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       href="https://aws.amazon.com/certification/certified-cloud-practitioner/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="white-pill-btn px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                      className="purple-glow-btn px-6 py-3 rounded-full text-sm font-semibold gap-2"
                     >
                       <span>View Exam Portal</span>
                       <ExternalLink className="w-4 h-4" />
@@ -951,7 +951,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       href="https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-full text-sm font-semibold bg-purple-900/50 hover:bg-purple-800/60 border border-purple-500/40 text-purple-200 flex items-center justify-center gap-2 transition-all"
+                      className="purple-glow-btn px-6 py-3 rounded-full text-sm font-semibold gap-2"
                     >
                       <span>Download Exam Guide</span>
                       <ArrowUpRight className="w-4 h-4" />
@@ -996,7 +996,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     <Terminal className="w-4 h-4" />
                     <span>Technical Hub</span>
                   </div>
-                  <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white mt-1">
+                  <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
                     Developer Resources – Extra Dev Resources
                   </h2>
                   <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -1024,7 +1024,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     <Github className="w-4 h-4" />
                     <span>Open Source Repositories</span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-white mt-1">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
                     GitHub Resources
                   </h2>
                   <p className="text-sm sm:text-base text-zinc-400 mt-1">

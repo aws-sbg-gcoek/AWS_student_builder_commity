@@ -73,10 +73,10 @@ function FlipCard({
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
-            background: palette.grad,
+            background: '#120824',
             boxShadow: `0 0 0 1px rgba(255,255,255,0.05), 0 32px 80px -16px rgba(0,0,0,0.8), 0 0 60px -10px ${palette.glow}`,
           }}
-          className="absolute inset-0 rounded-3xl border border-white/[0.07] overflow-hidden flex flex-col group"
+          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 overflow-hidden flex flex-col group"
         >
           {/* Noise grain */}
           <div
@@ -125,7 +125,6 @@ function FlipCard({
             {/* Title */}
             <h3
               className="text-[1.5rem] font-black text-white leading-[1.15] tracking-tight mb-2"
-              style={{ fontFamily: 'var(--font-heading)' }}
             >
               {project.title}
             </h3>
@@ -195,13 +194,7 @@ function FlipCard({
                 )}
                 <button
                   onClick={e => { e.stopPropagation(); onNavigateToProject(project.id); }}
-                  className="flex items-center gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95"
-                  style={{
-                    background: `linear-gradient(135deg,${palette.accent}22,${palette.accent}0a)`,
-                    border: `1px solid ${palette.accent}44`,
-                    color: palette.accent,
-                    boxShadow: `0 0 18px ${palette.glow}`,
-                  }}
+                    className="purple-glow-btn gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-xl hover:scale-105 active:scale-95"
                 >
                   Explore
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -223,10 +216,10 @@ function FlipCard({
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
-            background: palette.grad,
+            background: '#120824',
             boxShadow: `0 0 0 1px rgba(255,255,255,0.05), 0 32px 80px -16px rgba(0,0,0,0.8)`,
           }}
-          className="absolute inset-0 rounded-3xl border border-white/[0.07] overflow-hidden flex flex-col items-center justify-center"
+          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 overflow-hidden flex flex-col items-center justify-center"
         >
           {/* Big radial glow */}
           <div
@@ -262,7 +255,7 @@ function FlipCard({
                 {project.category}
               </div>
               {/* Big bold title — the premium moment */}
-              <h3 className="text-2xl font-black text-white leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+              <h3 className="text-2xl font-black text-white leading-tight">
                 {project.title}
               </h3>
               {project.tagline && (
@@ -348,7 +341,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
               {/* Headline */}
               <h1
                 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tight mb-6"
-                style={{ animation: 'fadeInUp 0.7s ease 0.15s both', fontFamily: 'var(--font-heading)' }}
+                style={{ animation: 'fadeInUp 0.7s ease 0.15s both' }}
               >
                 Our{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-200">
@@ -648,13 +641,8 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
-                  style={active ? {
-                    background: 'linear-gradient(135deg,#7C3AED,#A855F7)',
-                    color: '#fff',
-                    boxShadow: '0 0 18px rgba(147,51,234,0.5)',
-                    border: '1px solid rgba(168,85,247,0.5)',
-                  } : {
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 border ${active ? 'bg-purple-600/50 text-white shadow-[0_0_18px_rgba(124,58,237,0.5)]' : ''}`}
+                  style={active ? undefined : {
                     background: 'rgba(255,255,255,0.04)',
                     border: '1px solid rgba(255,255,255,0.08)',
                     color: '#a1a1aa',
@@ -723,7 +711,6 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
           {/* Headline */}
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6"
-            style={{ fontFamily: 'var(--font-heading)' }}
           >
             Have a project to showcase?
           </h2>
@@ -748,8 +735,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
             </a>
             <a
               href="mailto:awssbggcoek@gmail.com"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-[0_0_32px_rgba(255,153,0,0.5)] border-2"
-              style={{ background: 'transparent', color: '#FF9900', borderColor: '#FF9900' }}
+              className="purple-glow-btn gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:scale-105 active:scale-95"
             >
               {/* Email icon */}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.586 5.379a2 2 0 0 0 2.828 0L22 7"/></svg>

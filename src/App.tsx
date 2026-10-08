@@ -143,15 +143,44 @@ export default function App() {
 
   const TECH_TICKER_ITEMS = [
     { name: 'AWS Lambda', color: '#FF9900' },
-    { name: 'Amazon Bedrock', color: '#A855F7' },
-    { name: 'DynamoDB', color: '#38BDF8' },
     { name: 'Amazon S3', color: '#22C55E' },
-    { name: 'Docker & K8s', color: '#38BDF8' },
-    { name: 'TypeScript', color: '#3178C6' },
+    { name: 'DynamoDB', color: '#38BDF8' },
+    { name: 'Amazon EC2', color: '#FF9900' },
     { name: 'CloudFormation', color: '#EC4899' },
-    { name: 'API Gateway', color: '#FF9900' },
-    { name: 'Next.js 15', color: '#FFFFFF' },
-    { name: 'GraphQL', color: '#E10098' },
+    { name: 'Rekognition', color: '#A855F7' },
+    { name: 'Amplify', color: '#FF9900' },
+    { name: 'API Gateway', color: '#38BDF8' },
+    { name: 'IoT Core', color: '#4EF35E' },
+    { name: 'AWS CDK', color: '#22C55E' },
+    { name: 'Cognito', color: '#E10098' },
+    { name: 'CloudWatch', color: '#3178C6' },
+  ];
+
+  const WHAT_WE_DO = [
+    {
+      title: 'Hands-on Workshops',
+      desc: 'Weekly peer-led labs on Lambda, S3, Amplify and GenAI — build live, not just watch slides.',
+    },
+    {
+      title: 'Cloud Certifications',
+      desc: 'Guided prep paths for Cloud Practitioner and Solutions Architect with free vouchers.',
+    },
+    {
+      title: 'Hackathons & Build Days',
+      desc: 'Ship serverless prototypes in 24–48 hours with mentors, credits and swag on the line.',
+    },
+    {
+      title: 'Peer Learning Circles',
+      desc: 'Small study squads across all branches — seniors mentor freshers from Class of 2029 up.',
+    },
+    {
+      title: 'Open-Source Projects',
+      desc: 'Contribute to real club repos deployed on AWS, and graduate with a public portfolio.',
+    },
+    {
+      title: 'Industry Talks',
+      desc: 'Engineers from the field break down production architectures, DevOps and career maps.',
+    },
   ];
 
   return (
@@ -247,14 +276,14 @@ export default function App() {
         {/* ── Main Hero Content ── */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center">
 
-          {/* Official Chapter Beacon Badge */}
+          {/* Eyebrow pill — Freshers Welcome */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/35 shadow-[0_0_24px_rgba(168,85,247,0.3)] mb-6 hover:border-purple-400/70 transition-all duration-300">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
             </span>
             <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF9900]">
-              OFFICIAL AWS STUDENT BUILDER CHAPTER • GCOEK
+              Freshers Welcome • Class of 2029 • Official AWS Student Builder Chapter GCOEK
             </span>
           </div>
 
@@ -264,11 +293,11 @@ export default function App() {
               AWS
             </span>{' '}
             <span className="block mt-1 bg-gradient-to-r from-white via-purple-100 to-indigo-200 bg-clip-text text-transparent">
-              STUDENT BUILDER COMMUNITY
+              STUDENT BUILDER GROUP
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-[#d4cde3] max-w-2xl mx-auto mb-9 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-9 leading-relaxed font-normal">
             Architect scalable cloud solutions, build modern serverless systems, and accelerate your career with hands-on peer workshops.
           </p>
 
@@ -280,7 +309,7 @@ export default function App() {
                   .getElementById('interactive-section')
                   ?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="purple-glow-btn text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full inline-flex items-center gap-2 group cursor-pointer hover:scale-105 active:scale-95"
+              className="purple-glow-btn text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gap-2 group cursor-pointer hover:scale-105 active:scale-95"
             >
               <span>Explore Program</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -289,7 +318,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => navigateTo('team')}
-              className="px-7 py-3.5 sm:py-4 rounded-full bg-[#180a32]/90 border border-purple-500/35 text-purple-200 hover:text-white hover:border-purple-400 hover:bg-purple-900/40 text-sm sm:text-base font-semibold inline-flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+              className="px-7 py-3.5 sm:py-4 rounded-full bg-transparent text-white/80 border border-white/15 hover:bg-white/5 hover:text-white text-sm sm:text-base font-semibold inline-flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95"
             >
               <Users className="w-4 h-4 text-[#FF9900]" />
               <span>Meet The Team</span>
@@ -337,14 +366,14 @@ export default function App() {
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
                   <span>{statMode === 'career' ? '7.5' : '940+'}</span>
                   <span className="text-xl sm:text-2xl font-bold text-zinc-300 ml-1.5">
-                    {statMode === 'career' ? 'Lakh' : 'Builders'}
+                    {statMode === 'career' ? 'Lakh' : 'Members'}
                   </span>
                 </div>
 
                 <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
                   {statMode === 'career'
                     ? 'Average Package'
-                    : 'Active Club Community'}
+                    : 'Active Student Members'}
                 </div>
               </div>
 
@@ -407,7 +436,7 @@ export default function App() {
                 <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
                   {statMode === 'career'
                     ? 'Monthly Tech Reach'
-                    : 'AWS Vouchers & Credits'}
+                    : 'Free For All Branches'}
                 </div>
               </div>
 
@@ -422,21 +451,55 @@ export default function App() {
 
       {/* ─── MARQUEE TECH TICKER ─── */}
       <div className="relative overflow-hidden py-3 bg-[#0a0316]/90 border-y border-purple-500/20 backdrop-blur-md">
-        <div className="ticker-track items-center gap-8">
-          {[...TECH_TICKER_ITEMS, ...TECH_TICKER_ITEMS].map((item, i) => (
-            <div key={i} className="flex items-center gap-2 flex-shrink-0">
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: item.color }}
-              />
-              <span className="font-mono text-xs text-zinc-300 tracking-wider font-medium">
-                {item.name}
-              </span>
-              <span className="mx-2 text-zinc-700">✦</span>
-            </div>
-          ))}
-        </div>
+        {[0, 1].map((row) => (
+          <div key={row} aria-hidden={row === 1} className="ticker-track items-center gap-8">
+            {TECH_TICKER_ITEMS.map((item, i) => (
+              <div key={i} className="flex items-center gap-2 flex-shrink-0">
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: item.color }}
+                />
+                <span className="font-mono text-xs text-zinc-300 tracking-wider font-medium">
+                  {item.name}
+                </span>
+                <span className="mx-2 text-zinc-700">✦</span>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
+
+      {/* ─── WHAT WE DO ─── */}
+      <section id="what-we-do" className="bg-[#07020E] py-20 sm:py-24 relative overflow-hidden border-b border-purple-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-[#4EF35E]" />
+              <span>WHAT WE DO</span>
+            </div>
+            <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight mb-4">
+              Learn. Build.{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
+                Ship to Cloud.
+              </span>
+            </h2>
+            <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Six tracks, one community — every member finds a lane from fresher year to final year.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {WHAT_WE_DO.map((card, i) => (
+              <div key={card.title} className="stat-card-image p-6 sm:p-7 group">
+                <div className="text-2xl font-black text-[#4EF35E] font-mono mb-2">
+                  0{i + 1}
+                </div>
+                <div className="font-bold text-white text-base mt-1">{card.title}</div>
+                <div className="text-sm text-white/60 mt-2 leading-relaxed">{card.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ─── INTERACTIVE 3D & CLI SHOWCASE SECTION ─── */}
       <section
@@ -455,7 +518,7 @@ export default function App() {
                 <span>AWS STUDENT BUILDER ARCHITECTURE</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-heading font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-black text-white mb-6 leading-tight">
                 Architect. Build. Deploy.
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
@@ -621,7 +684,7 @@ export default function App() {
 
                 <div className="mb-6">
                   <div className="text-xs font-mono uppercase tracking-wider text-[#4EF35E] font-bold">
-                    AWS STUDENT BUILDER COMMUNITY
+                    AWS STUDENT BUILDER GROUP
                   </div>
 
                   <h3 className="text-2xl font-black text-white mt-1">
@@ -729,7 +792,7 @@ export default function App() {
 
                   <button
                     type="submit"
-                    className="white-pill-btn w-full py-3 rounded-full text-sm font-bold text-center mt-6 cursor-pointer"
+                    className="purple-glow-btn w-full py-3 rounded-full text-sm font-bold text-center mt-6 cursor-pointer"
                   >
                     Complete Registration
                   </button>

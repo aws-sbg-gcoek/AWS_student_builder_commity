@@ -36,7 +36,7 @@ export function InteractiveTerminal() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto rounded-xl bg-[#0b0416] border border-purple-500/30 overflow-hidden font-mono text-xs shadow-2xl">
+    <div className="w-full max-w-xl mx-auto rounded-2xl bg-[#120824]/90 border border-purple-500/20 overflow-hidden font-mono text-xs shadow-2xl">
       {/* Terminal Title Bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-[#140826] border-b border-purple-500/20">
         <div className="flex items-center gap-2">

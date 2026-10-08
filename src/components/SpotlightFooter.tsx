@@ -181,15 +181,15 @@ export function SpotlightFooter({ onJoinClick }: SpotlightFooterProps = {}) {
           ref={textRef}
           className="relative w-full max-w-6xl mx-auto flex items-center justify-center text-center px-1 sm:px-4 py-2 sm:py-4"
         >
-          {/* Layer 1: Base Clearly Visible Metallic Violet/White Text */}
-          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-[88px] xl:text-[108px] font-black tracking-tight leading-none select-none uppercase text-zinc-400/80 filter drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] transition-colors whitespace-nowrap">
+          {/* Layer 1: Giant watermark base text */}
+          <h2 className="watermark-outline font-black tracking-tight leading-none select-none uppercase whitespace-nowrap text-5xl sm:text-7xl lg:text-8xl">
             AWS COMMUNITY
           </h2>
 
           {/* Layer 2: Glowing Electric Violet Spotlight Revealed Text (Masked to cursor coordinates) */}
           <h2 
             aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl md:text-7xl lg:text-[88px] xl:text-[108px] font-black tracking-tight leading-none select-none uppercase pointer-events-none text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-300 to-[#C084FC] filter drop-shadow-[0_0_35px_rgba(168,85,247,1)] whitespace-nowrap"
+            className="absolute inset-0 flex items-center justify-center font-black tracking-tight leading-none select-none uppercase pointer-events-none text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-300 to-[#C084FC] filter drop-shadow-[0_0_35px_rgba(168,85,247,1)] whitespace-nowrap text-5xl sm:text-7xl lg:text-8xl"
             style={{
               maskImage: `radial-gradient(circle 260px at ${textMousePos.x}px ${textMousePos.y}px, black 40%, transparent 100%)`,
               WebkitMaskImage: `radial-gradient(circle 260px at ${textMousePos.x}px ${textMousePos.y}px, black 40%, transparent 100%)`,
@@ -296,7 +296,7 @@ export function SpotlightFooter({ onJoinClick }: SpotlightFooterProps = {}) {
                   />
                   <button
                     type="submit"
-                    className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors cursor-pointer flex-shrink-0"
+                    className="purple-glow-btn p-2 rounded-xl text-white transition-colors cursor-pointer flex-shrink-0"
                   >
                     <Send className="w-3.5 h-3.5" />
                   </button>
@@ -375,7 +375,6 @@ export function SpotlightFooter({ onJoinClick }: SpotlightFooterProps = {}) {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                 <span>
-                  Dept. of CS & Engineering,<br />
                   Govt. College of Engg., Kolhapur (GCOEK),<br />
                   Maharashtra - 416012
                 </span>

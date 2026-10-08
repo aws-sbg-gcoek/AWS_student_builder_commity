@@ -210,7 +210,7 @@ function EventModal({ event, onClose }: { event: AppEvent; onClose: () => void }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-2xl" onClick={onClose}>
-      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0d041d] border border-purple-500/40 shadow-2xl text-white" onClick={e => e.stopPropagation()}>
+      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-2xl text-white" onClick={e => e.stopPropagation()}>
         {event.image && (
           <div className="relative w-full h-52 sm:h-64 overflow-hidden rounded-t-3xl flex-shrink-0">
             <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
@@ -222,7 +222,7 @@ function EventModal({ event, onClose }: { event: AppEvent; onClose: () => void }
           <button type="button" onClick={onClose} className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white transition-colors z-20"><X className="w-5 h-5" /></button>
           <div className="mb-6 pr-8">
             {!event.image && <span className={`text-[10px] font-mono font-bold px-3 py-1 rounded-full border ${style.badge} mb-3 inline-block`}>{event.type}</span>}
-            <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3" style={{ fontFamily: 'var(--font-heading)' }}>{event.title}</h3>
+            <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3">{event.title}</h3>
             <div className="flex flex-wrap gap-3 text-xs font-mono text-zinc-400">
               <span className="flex items-center gap-1.5 text-emerald-400"><Calendar className="w-3.5 h-3.5" />{event.date}</span>
               <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{event.time}</span>
@@ -348,9 +348,9 @@ function EventCard({ event, index, onClick }: { event: AppEvent; index: number; 
   const dustVisible = phase === 'assembling' || phase === 'dissolving';
 
   return (
-    <div ref={cardRef} className="group relative rounded-3xl cursor-pointer" style={{ minHeight: '560px' }} onClick={phase==='visible'?onClick:undefined}>
-      <canvas ref={canvasRef} className="absolute inset-0 rounded-3xl z-30 pointer-events-none" style={{ opacity: dustVisible?1:0 }} />
-      <div className="absolute inset-0 rounded-3xl border border-white/[0.07] overflow-hidden flex flex-col" style={{ background:'linear-gradient(145deg,#13082a,#09040f)', boxShadow:'0 0 0 1px rgba(255,255,255,0.04), 0 24px 60px -12px rgba(0,0,0,0.7)', opacity:cardVisible?1:0, transition:phase==='dissolving'?'opacity 0s':'opacity 0.04s' }}>
+    <div ref={cardRef} className="group relative rounded-2xl cursor-pointer" style={{ minHeight: '560px' }} onClick={phase==='visible'?onClick:undefined}>
+      <canvas ref={canvasRef} className="absolute inset-0 rounded-2xl z-30 pointer-events-none" style={{ opacity: dustVisible?1:0 }} />
+      <div className="absolute inset-0 rounded-2xl border border-purple-500/20 overflow-hidden flex flex-col" style={{ background:'#120824', boxShadow:'0 0 0 1px rgba(255,255,255,0.04), 0 24px 60px -12px rgba(0,0,0,0.7)', opacity:cardVisible?1:0, transition:phase==='dissolving'?'opacity 0s':'opacity 0.04s' }}>
         <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.025]" style={{ backgroundImage:`url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize:'128px' }} />
         <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-[90px] pointer-events-none z-0 opacity-20 group-hover:opacity-35 transition-opacity duration-700" style={{ background: style.accent }} />
         {event.image && (
@@ -369,7 +369,7 @@ function EventCard({ event, index, onClick }: { event: AppEvent; index: number; 
             <span className="flex items-center gap-1.5" style={{ color: style.accent }}><Calendar className="w-3.5 h-3.5" />{event.date}</span>
             <span className="text-zinc-500 flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{event.time}</span>
           </div>
-          <h3 className="text-[1.35rem] font-black text-white leading-snug tracking-tight mb-2 group-hover:text-purple-100 transition-colors" style={{ fontFamily:'var(--font-heading)' }}>{event.title}</h3>
+          <h3 className="text-[1.35rem] font-black text-white leading-snug tracking-tight mb-2 group-hover:text-purple-100 transition-colors">{event.title}</h3>
           <div className="flex items-center gap-1.5 text-xs text-zinc-500 mb-4"><MapPin className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />{event.location}</div>
           <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3 flex-grow mb-5">{event.desc}</p>
           {event.highlights && event.highlights.length > 0 && (
@@ -388,7 +388,7 @@ function EventCard({ event, index, onClick }: { event: AppEvent; index: number; 
               {event.whatsappLink && <MessageSquare className="w-4 h-4 text-green-400" />}
               {event.link && <ExternalLink className="w-4 h-4 text-zinc-500" />}
             </div>
-            <button onClick={e=>{e.stopPropagation();onClick();}} className="flex items-center gap-1.5 text-[12px] font-bold px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95" style={{ background:`${style.accent}18`, border:`1px solid ${style.accent}44`, color:style.accent }}>
+            <button onClick={e=>{e.stopPropagation();onClick();}} className="purple-glow-btn gap-1.5 text-[12px] font-bold px-4 py-2 rounded-xl hover:scale-105 active:scale-95">
               View Details <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -432,7 +432,7 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
                 <Terminal className="w-3.5 h-3.5 text-[#4EF35E]" />
                 <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-[#FF9900]">COMMUNITY EVENTS • GCOEK</span>
               </div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tight mb-6" style={{ animation:'fadeInUp 0.7s ease 0.1s both', fontFamily:'var(--font-heading)' }}>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tight mb-6" style={{ animation:'fadeInUp 0.7s ease 0.1s both' }}>
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">Events</span>
               </h1>
               <p className="text-base sm:text-lg text-zinc-400 max-w-lg mb-14 leading-relaxed" style={{ animation:'fadeInUp 0.7s ease 0.2s both' }}>
@@ -446,7 +446,7 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
                   { value:`${pastCount}`,           label:'Past Events',  icon:'✅', glow:'rgba(96,165,250,0.3)',  border:'border-blue-500/30',    bg:'bg-blue-900/20' },
                   { value:`${new Set(eventsData.map(e=>e.type)).size}`, label:'Event Types', icon:'⚡', glow:'rgba(251,191,36,0.3)', border:'border-amber-500/30', bg:'bg-amber-900/20' },
                 ].map((s,i) => (
-                  <div key={i} className={`relative flex items-center gap-3 px-5 py-4 rounded-2xl ${s.bg} ${s.border} border backdrop-blur-md overflow-hidden group hover:scale-105 transition-transform duration-300`} style={{ boxShadow:`0 0 24px ${s.glow}` }}>
+                  <div key={i} className="relative flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md overflow-hidden group hover:scale-105 transition-transform duration-300" style={{ boxShadow:`0 0 24px ${s.glow}` }}>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background:`radial-gradient(circle at 50% 50%, ${s.glow}, transparent 70%)` }} />
                     <span className="text-2xl relative z-10">{s.icon}</span>
                     <div className="relative z-10">
@@ -505,10 +505,10 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
         </section>
 
         {/* ── FILTER BAR ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-14 p-4 sm:p-5 rounded-2xl border border-white/[0.07] backdrop-blur-md" style={{ background:'linear-gradient(135deg,#130828,#0a0418)', boxShadow:'0 0 0 1px rgba(255,255,255,0.04),0 20px 40px -12px rgba(0,0,0,0.6),0 0 40px -10px rgba(168,85,247,0.12)' }}>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-14 p-4 sm:p-5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md" style={{ boxShadow:'0 0 0 1px rgba(255,255,255,0.04),0 20px 40px -12px rgba(0,0,0,0.6),0 0 40px -10px rgba(168,85,247,0.12)' }}>
           <div className="flex items-center gap-1 p-1 rounded-xl bg-black/30 border border-white/[0.05]">
             {(['all','upcoming','past'] as const).map(f => (
-              <button key={f} onClick={() => setFilter(f)} className={`text-xs font-bold px-5 py-2 rounded-lg transition-all duration-200 capitalize tracking-wide ${filter===f?'bg-purple-600 text-white shadow-[0_0_16px_rgba(147,51,234,0.5)]':'text-zinc-400 hover:text-white hover:bg-white/5'}`}>
+              <button key={f} onClick={() => setFilter(f)} className={`text-xs font-bold px-5 py-2 rounded-lg transition-all duration-200 capitalize tracking-wide border ${filter===f?'bg-purple-600/50 text-white shadow-[0_0_16px_rgba(124,58,237,0.5)]':'text-zinc-400 hover:text-white hover:bg-white/5'}`}>
                 {f==='all'?'All Events':f.charAt(0).toUpperCase()+f.slice(1)}
               </button>
             ))}
@@ -517,10 +517,9 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
             <Filter className="w-3.5 h-3.5 text-zinc-600 flex-shrink-0" />
             {types.map(t => {
               const active = typeFilter === t;
-              const ts = t !== 'All' ? getStyle(t) : null;
               return (
-                <button key={t} onClick={() => setTypeFilter(t)} className="text-[11px] font-mono font-bold px-3.5 py-1.5 rounded-xl border transition-all duration-200 hover:scale-105"
-                  style={active&&ts?{ background:`${ts.accent}22`, border:`1px solid ${ts.accent}55`, color:ts.accent, boxShadow:`0 0 12px ${ts.accent}44` }:active?{ background:'rgba(168,85,247,0.2)', border:'1px solid rgba(168,85,247,0.5)', color:'#D8B4FE', boxShadow:'0 0 12px rgba(168,85,247,0.3)' }:{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.06)', color:'#71717a' }}>
+                <button key={t} onClick={() => setTypeFilter(t)} className={`text-[11px] font-mono font-bold px-3.5 py-1.5 rounded-xl border transition-all duration-200 hover:scale-105 ${active ? 'bg-purple-600/50 text-white shadow-[0_0_12px_rgba(124,58,237,0.3)]' : ''}`}
+                  style={active ? undefined : { background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.06)', color:'#71717a' }}>
                   {t}
                 </button>
               );
@@ -556,7 +555,7 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
                 <Images className="w-3.5 h-3.5 text-purple-400" />
                 Community Moments
               </div>
-              <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight" style={{ fontFamily:'var(--font-heading)' }}>
+              <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
                 Event{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">Gallery</span>
               </h2>
@@ -583,7 +582,7 @@ export function EventsPage({ onNavigateHome, onJoinClick }: EventsPageProps) {
         <div className="mt-24 flex flex-col items-center text-center">
           <div className="w-full h-px bg-white/[0.06] mb-12" />
           <p className="text-zinc-400 text-sm mb-6">Want to be part of the next event?</p>
-          <button onClick={onJoinClick} className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-purple-600/20 border border-purple-500/40 text-white font-semibold text-sm hover:bg-purple-600/35 hover:border-purple-400 transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_0_24px_rgba(168,85,247,0.25)]">
+          <button onClick={onJoinClick} className="purple-glow-btn group gap-2.5 px-8 py-3.5 rounded-full font-semibold text-sm hover:scale-105 active:scale-95">
             Join the Community
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
