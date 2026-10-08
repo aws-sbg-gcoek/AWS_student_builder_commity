@@ -320,7 +320,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
   return (
     <section 
       id="events" 
-      className="relative py-20 sm:py-28 bg-[#07020E] border-b border-purple-900/30 overflow-visible"
+      className="relative py-20 sm:py-28 bg-black border-b border-purple-900/30 overflow-visible"
     >
       <div id="team" className="absolute -top-20" />
       {/* Background Ambience and Fine Grid */}
@@ -337,7 +337,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.25)]"
         >
-          <Flame className="w-3.5 h-3.5 text-[#4EF35E] animate-pulse" />
+          <Flame className="w-3.5 h-3.5 text-[#6feb2c] animate-pulse" />
           <span>UPCOMING SESSIONS • HACKATHONS • SWAG FESTS</span>
         </motion.div>
 
@@ -346,10 +346,10 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-4 sm:mb-5"
+          className="font-clash text-3xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-tight mb-4 sm:mb-5"
         >
           Our Events &{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#6feb2c]">
             Hands-on Experiences
           </span>
         </motion.h2>
@@ -370,10 +370,10 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-6 sm:mt-8 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-6 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#130728]/80 border border-purple-500/20 backdrop-blur-md"
+          className="mt-6 sm:mt-8 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-6 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#121212]/80 border border-purple-500/20 backdrop-blur-md"
         >
           <span className="text-[11px] sm:text-xs font-mono text-zinc-300 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#4EF35E]" />
+            <span className="w-2 h-2 rounded-full bg-[#6feb2c]" />
             <strong>4 Major Events</strong>
           </span>
           <span className="text-zinc-600 hidden sm:inline">•</span>
@@ -399,7 +399,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                 onClick={() => scrollToCard(idx)}
                 className={`px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   isActive
-                    ? 'bg-purple-600/30 text-white border border-purple-400/60 shadow-[0_0_15px_rgba(168,85,247,0.35)] scale-105'
+                    ? 'bg-[#9553e6]/30 text-white border border-purple-400/60 shadow-[0_0_15px_rgba(168,85,247,0.35)] scale-105'
                     : 'bg-black/40 text-zinc-400 border border-white/10 hover:border-purple-500/30 hover:text-zinc-200'
                 }`}
               >
@@ -447,13 +447,13 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
 
                 {/* ── Inner Animated Card with Scale-Down & Drop-Shadow Stacking ── */}
                 <div 
-                  className={`card-inner-motion relative rounded-2xl bg-[#120824]/90 border ${event.borderColor} shadow-[0_-18px_45px_rgba(0,0,0,0.95),0_10px_30px_rgba(0,0,0,0.8)] p-4 sm:p-7 lg:p-9 backdrop-blur-2xl transition-all duration-150 ease-out overflow-hidden group origin-top`}
+                  className={`card-inner-motion relative rounded-2xl bg-[#141414]/90 border ${event.borderColor} shadow-[0_-18px_45px_rgba(0,0,0,0.95),0_10px_30px_rgba(0,0,0,0.8)] p-4 sm:p-7 lg:p-9 backdrop-blur-2xl transition-all duration-150 ease-out overflow-hidden group origin-top`}
                 >
                   {/* Glowing top line accent with individual event color */}
                   <div 
                     className="absolute top-0 left-0 right-0 h-1.5 opacity-90 transition-opacity"
                     style={{
-                      background: `linear-gradient(90deg, transparent, ${event.accentColor}, #A855F7, transparent)`
+                      background: `linear-gradient(90deg, transparent, ${event.accentColor}, #9553e6, transparent)`
                     }}
                   />
 
@@ -494,7 +494,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         {/* Bottom Image Caption & Click Hint */}
                         <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 flex items-center justify-between text-xs text-white bg-black/70 backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-2 rounded-lg sm:rounded-xl border border-white/10">
                           <span className="flex items-center gap-1 font-medium text-[10px] sm:text-[11px]">
-                            <Sparkles className="w-3 h-3 text-[#4EF35E]" />
+                            <Sparkles className="w-3 h-3 text-[#6feb2c]" />
                             Photo {currentImgIdx + 1} of {event.images.length}
                           </span>
                           <span className="text-purple-300 font-mono text-[10px] sm:text-[11px] underline flex items-center gap-1 group-hover/img:text-white">
@@ -515,7 +515,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                             }}
                             className={`relative flex-1 h-9 sm:h-13 rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
                               currentImgIdx === imgIdx
-                                ? 'border-[#4EF35E] scale-102 shadow-[0_0_12px_rgba(78,243,94,0.4)]'
+                                ? 'border-[#6feb2c] scale-102 shadow-[0_0_12px_rgba(111,235,44,0.4)]'
                                 : 'border-white/10 opacity-60 hover:opacity-100'
                             }`}
                           >
@@ -531,7 +531,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                       {/* Date, Time & Venue */}
                       <div>
                         <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-mono text-purple-300 mb-1.5 sm:mb-2">
-                          <span className="inline-flex items-center gap-1 text-[#4EF35E] font-semibold">
+                          <span className="inline-flex items-center gap-1 text-[#6feb2c] font-semibold">
                             <Calendar className="w-3.5 h-3.5" />
                             {event.date}
                           </span>
@@ -558,7 +558,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                           </span>
                           <span className="text-zinc-600">•</span>
                           <span className="flex items-center gap-1 text-zinc-300">
-                            <Users className="w-3.5 h-3.5 text-[#4EF35E] flex-shrink-0" />
+                            <Users className="w-3.5 h-3.5 text-[#6feb2c] flex-shrink-0" />
                             {event.attendees}
                           </span>
                         </div>
@@ -572,7 +572,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         <div className="space-y-1.5 mb-3 hidden sm:block">
                           {event.highlights.slice(0, 2).map((item, i) => (
                             <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#4EF35E] flex-shrink-0 mt-0.5" />
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#6feb2c] flex-shrink-0 mt-0.5" />
                               <span>{item}</span>
                             </div>
                           ))}
@@ -581,7 +581,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         {/* Pricing & Free Access Strip */}
                         <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-black/40 border border-white/10 flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                           <div className="flex items-center gap-2">
-                            <div className="p-1 rounded-lg bg-emerald-500/20 text-[#4EF35E]">
+                            <div className="p-1 rounded-lg bg-emerald-500/20 text-[#6feb2c]">
                               <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             </div>
                             <div>
@@ -603,7 +603,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         <button
                           type="button"
                           onClick={() => openModal(event)}
-                           className="purple-glow-btn text-white text-xs sm:text-sm font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full inline-flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                           className="purple-glow-btn button-bordercolor text-white text-xs sm:text-sm font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full inline-flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform"
                         >
                           <span>View Details</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -612,7 +612,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         <button
                           type="button"
                           onClick={onJoinClick}
-                           className="purple-glow-btn text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full cursor-pointer hover:scale-105 active:scale-95 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                           className="purple-glow-btn button-bordercolor text-xs sm:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full cursor-pointer hover:scale-105 active:scale-95 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.25)]"
                         >
                           RSVP Free Seat
                         </button>
@@ -633,7 +633,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
       {/* ─── FULL-SCREEN EVENT DETAILS & PHOTO LIGHTBOX MODAL ─── */}
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
-          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0c031c] border border-purple-500/40 shadow-2xl p-6 sm:p-8 text-white">
+          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#141414] border border-purple-500/40 shadow-2xl p-6 sm:p-8 text-white animate-card-entrance">
             
             {/* Close Button */}
             <button
@@ -654,7 +654,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                   {selectedEvent.category}
                 </span>
                 <span className="text-xs font-mono text-zinc-400 flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-[#4EF35E]" /> {selectedEvent.date}
+                  <Calendar className="w-3.5 h-3.5 text-[#6feb2c]" /> {selectedEvent.date}
                 </span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
@@ -681,7 +681,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                     onClick={() => setActiveModalImage(imgUrl)}
                     className={`relative w-24 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all cursor-pointer ${
                       activeModalImage === imgUrl
-                        ? 'border-[#4EF35E] scale-105 shadow-[0_0_12px_rgba(78,243,94,0.4)]'
+                                ? 'border-[#6feb2c] scale-105 shadow-[0_0_12px_rgba(111,235,44,0.4)]'
                         : 'border-transparent opacity-60 hover:opacity-100'
                     }`}
                   >
@@ -713,7 +713,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                   <div className="space-y-2">
                     {selectedEvent.highlights.map((h, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
-                        <CheckCircle2 className="w-4 h-4 text-[#4EF35E] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#6feb2c] flex-shrink-0 mt-0.5" />
                         <span>{h}</span>
                       </div>
                     ))}
@@ -729,7 +729,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                     {selectedEvent.schedule.map((slot, i) => (
                       <div key={i} className="relative">
                         <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple-500 border border-white" />
-                        <div className="text-xs font-mono text-[#4EF35E] font-bold">{slot.time}</div>
+                        <div className="text-xs font-mono text-[#6feb2c] font-bold">{slot.time}</div>
                         <div className="text-xs sm:text-sm text-white font-medium">{slot.activity}</div>
                       </div>
                     ))}
@@ -741,7 +741,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
               <div className="space-y-6">
                 
                 {/* Speaker Card */}
-                <div className="p-4 rounded-2xl bg-[#170a30] border border-purple-500/20">
+                <div className="p-4 rounded-2xl bg-[#141414] border border-purple-500/20">
                   <div className="text-[10px] font-mono text-zinc-400 mb-2">SESSION MENTOR / SPEAKER</div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-purple-700/40 border border-purple-400 flex items-center justify-center font-bold text-white font-mono">
@@ -756,7 +756,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                 </div>
 
                 {/* Swags Box */}
-                <div className="p-4 rounded-2xl bg-[#170a30] border border-purple-500/20">
+                <div className="p-4 rounded-2xl bg-[#141414] border border-purple-500/20">
                   <div className="text-[10px] font-mono text-zinc-400 mb-1">OFFICIAL SWAGS & PERKS</div>
                   <div className="flex items-start gap-2">
                     <Award className="w-5 h-5 text-[#FF9900] flex-shrink-0 mt-0.5" />
@@ -766,7 +766,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
 
                 {/* RSVP Card */}
                 <div className="p-5 rounded-2xl bg-gradient-to-br from-purple-900/40 to-indigo-900/40 border border-purple-500/40 text-center">
-                  <div className="text-xs font-mono text-[#4EF35E] font-bold mb-1">
+                  <div className="text-xs font-mono text-[#6feb2c] font-bold mb-1">
                     {selectedEvent.pricing}
                   </div>
                   <div className="text-xs text-zinc-300 mb-4">
@@ -774,7 +774,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                   </div>
 
                   {isRsvpd ? (
-                    <div className="py-2.5 px-4 rounded-full bg-emerald-500/20 border border-emerald-400 text-[#4EF35E] text-xs font-bold flex items-center justify-center gap-2">
+                    <div className="py-2.5 px-4 rounded-full bg-emerald-500/20 border border-emerald-400 text-[#6feb2c] text-xs font-bold flex items-center justify-center gap-2">
                       <CheckCircle2 className="w-4 h-4" />
                       <span>RSVP Confirmed! See you there!</span>
                     </div>
@@ -785,7 +785,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
                         setIsRsvpd(true);
                         setTimeout(() => onJoinClick?.(), 600);
                       }}
-                       className="purple-glow-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+                       className="purple-glow-btn button-bordercolor w-full py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
                     >
                       Confirm Free Registration
                     </button>

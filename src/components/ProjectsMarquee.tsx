@@ -18,8 +18,8 @@ export interface ProjectCard {
   techStack: string[];
   description: string;
   architectureDetails: string[];
-  githubUrl: string;
-  liveDemoUrl: string;
+  githubUrl?: string;
+  liveDemoUrl?: string;
   contributors: { name: string; role: string }[];
 }
 
@@ -87,8 +87,6 @@ const PROJECTS_DATA: ProjectCard[] = [
       'Time-series storage and fast analytical queries with Amazon Timestream',
       'Frontend web dashboard hosted on AWS Amplify'
     ],
-    githubUrl: 'https://github.com/aws-samples',
-    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
       { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
@@ -110,8 +108,6 @@ const PROJECTS_DATA: ProjectCard[] = [
       'Event-driven facial verification trigger via S3 upload to Lambda',
       'Sub-second log creation in DynamoDB database'
     ],
-    githubUrl: 'https://github.com/aws-samples',
-    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
       { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
@@ -133,8 +129,6 @@ const PROJECTS_DATA: ProjectCard[] = [
       'Automated data crawling and cataloging with AWS Glue',
       'Interactive SQL analytics over S3 data lake using Amazon Athena'
     ],
-    githubUrl: 'https://github.com/aws-samples',
-    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
       { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
@@ -156,8 +150,6 @@ const PROJECTS_DATA: ProjectCard[] = [
       'Dynamic traffic routing using Application Load Balancer',
       'Automated container image storage in Amazon ECR'
     ],
-    githubUrl: 'https://github.com/aws-samples',
-    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
       { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
@@ -179,8 +171,6 @@ const PROJECTS_DATA: ProjectCard[] = [
       'Serverless fulfillment logic running on AWS Lambda',
       'FAQ knowledge base lookups from Amazon DynamoDB'
     ],
-    githubUrl: 'https://github.com/aws-samples',
-    liveDemoUrl: 'https://github.com/aws-samples',
     contributors: [
       { name: 'AWS Student Builder Group', role: 'Open Source' }
     ]
@@ -189,6 +179,20 @@ const PROJECTS_DATA: ProjectCard[] = [
 
 interface ProjectsMarqueeProps {
   onViewAllProjects?: () => void;
+}
+
+// ─── KODR unified accent ramp — overrides per-project badge colors at render ───
+// Data block above keeps its original badgeColor values untouched; all badges
+// render through this Kodr token ramp instead.
+const KODR_BADGE_RAMP = [
+  'bg-[#9553e6]/15 text-[#AC69FF] border-[#9553e6]/40',
+  'bg-[#6feb2c]/10 text-[#6feb2c] border-[#6feb2c]/40',
+  'bg-[#FF9900]/10 text-[#FF9900] border-[#FF9900]/40',
+];
+
+function kodrBadgeClass(projectId: string): string {
+  const found = PROJECTS_DATA.findIndex((p) => p.id === projectId);
+  return KODR_BADGE_RAMP[(found < 0 ? 0 : found) % KODR_BADGE_RAMP.length];
 }
 
 export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}) {
@@ -216,7 +220,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
   const duplicatedProjects = [...PROJECTS_DATA, ...PROJECTS_DATA];
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-[#07020E] border-b border-purple-900/30">
+    <section id="projects" className="py-24 relative overflow-hidden bg-black border-b border-purple-900/30">
       
       {/* Background Lighting & Atmosphere */}
       <div className="absolute top-[20%] right-[15%] w-[550px] h-[550px] bg-purple-900/15 blur-[170px] rounded-full pointer-events-none" />
@@ -226,13 +230,13 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
       {/* ── Section Title & Header ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 relative z-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.25)]">
-          <Code2 className="w-3.5 h-3.5 text-[#4EF35E]" />
+          <Code2 className="w-3.5 h-3.5 text-[#6feb2c]" />
           <span>PRODUCTION CLOUD PROJECTS & ARCHITECTURES</span>
         </div>
 
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-5">
+        <h2 className="font-clash text-3xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-tight mb-5">
           Projects Built by{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#6feb2c]">
             Our Builders
           </span>
         </h2>
@@ -243,7 +247,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
 
         {/* Hover hint */}
         <div className="mt-4 flex items-center justify-center gap-2 text-xs font-mono text-zinc-500">
-          <Pause className="w-3 h-3 text-[#4EF35E]" />
+          <Pause className="w-3 h-3 text-[#6feb2c]" />
           <span>Hover over carousel to pause • Click image to inspect full architecture</span>
         </div>
       </div>
@@ -252,8 +256,8 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
       <div className="relative w-full overflow-hidden mask-fade-edges py-4">
         
         {/* Left & Right Subtle Fade Overlay Gradients for smooth edge transparency */}
-        <div className="absolute top-0 left-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-[#07020E] via-[#07020E]/70 to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 right-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-[#07020E] via-[#07020E]/70 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 left-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-black via-black/70 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 right-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-black via-black/70 to-transparent z-20 pointer-events-none" />
 
         {/* Continuous Infinite Track */}
         <div className="projects-marquee-track gap-6 sm:gap-8 px-4">
@@ -265,7 +269,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
               <div
                 key={`${project.id}-${index}`}
                 onClick={() => setSelectedProject(project)}
-                className="w-[280px] sm:w-[340px] md:w-[380px] flex-shrink-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-xl p-3.5 sm:p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(147,51,234,0.35)] cursor-pointer group flex flex-col justify-between"
+                className="w-[280px] sm:w-[340px] md:w-[380px] flex-shrink-0 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-xl p-3.5 sm:p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(147,51,234,0.35)] cursor-pointer group flex flex-col justify-between"
               >
                 {/* ── Card Project Screenshot Showcase (Realistic Window Frame) ── */}
                 <div className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black/60 shadow-inner group/img">
@@ -292,14 +296,14 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
 
                   {/* Top Status Badge */}
                   <div className="absolute top-8 left-3 flex items-center gap-1.5">
-                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border backdrop-blur-md shadow-sm ${project.badgeColor}`}>
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border backdrop-blur-md shadow-sm ${kodrBadgeClass(project.id)}`}>
                       {project.badge}
                     </span>
                   </div>
 
                   {/* Version tag (Bottom Left) */}
-                  <span className="absolute bottom-2.5 left-3 text-[10px] font-mono px-2 py-0.5 rounded-md bg-black/80 text-[#4EF35E] border border-white/10 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-[#4EF35E]" />
+                  <span className="absolute bottom-2.5 left-3 text-[10px] font-mono px-2 py-0.5 rounded-md bg-black/80 text-[#6feb2c] border border-white/10 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-[#6feb2c]" />
                     {project.version}
                   </span>
 
@@ -328,7 +332,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
                     {project.techStack.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1c0e3a] text-purple-200 border border-purple-500/20"
+                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#141414] text-purple-200 border border-purple-500/20"
                       >
                         {tech}
                       </span>
@@ -376,7 +380,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
       {/* ─── INTERACTIVE HIGH-RES PROJECT ARCHITECTURE & DETAILS MODAL ─── */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
-          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-[#120824]/90 border border-purple-500/20 shadow-2xl p-6 sm:p-8 text-white">
+          <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-[#141414]/90 border border-purple-500/20 shadow-2xl p-6 sm:p-8 text-white animate-card-entrance">
             
             {/* Close Button */}
             <button
@@ -390,13 +394,13 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
             {/* Modal Header */}
             <div className="mb-6 pr-8">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className={`px-3 py-0.5 rounded-full text-xs font-mono font-bold border ${selectedProject.badgeColor}`}>
+                <span className={`px-3 py-0.5 rounded-full text-xs font-mono font-bold border ${kodrBadgeClass(selectedProject.id)}`}>
                   {selectedProject.badge}
                 </span>
                 <span className="text-xs font-mono text-purple-300 bg-purple-950/60 border border-purple-500/30 px-2.5 py-0.5 rounded-full">
                   {selectedProject.category}
                 </span>
-                <span className="text-xs font-mono text-[#4EF35E] bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="text-xs font-mono text-[#6feb2c] bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" /> {selectedProject.version}
                 </span>
                 <span className="text-xs font-mono text-zinc-400 flex items-center gap-1">
@@ -418,8 +422,8 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   <span className="text-xs font-mono text-zinc-400 ml-2">https://{selectedProject.id}.aws.cloud</span>
                 </div>
-                <span className="text-[11px] font-mono text-[#4EF35E] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#4EF35E] animate-ping" />
+                <span className="text-[11px] font-mono text-[#6feb2c] flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#6feb2c] animate-ping" />
                   Live AWS Production
                 </span>
               </div>
@@ -434,7 +438,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
               {/* Bottom image overlay bar */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 flex flex-wrap items-center justify-between text-xs text-zinc-300">
                 <span className="font-mono text-purple-200">System Architecture: High-Availability Cloud Deployment</span>
-                <span className="text-[#4EF35E] font-mono font-semibold">100% Deployed on AWS</span>
+                <span className="text-[#6feb2c] font-mono font-semibold">100% Deployed on AWS</span>
               </div>
             </div>
 
@@ -459,7 +463,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
                   <div className="space-y-2.5">
                     {selectedProject.architectureDetails.map((detail, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
-                        <Check className="w-4 h-4 text-[#4EF35E] flex-shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#6feb2c] flex-shrink-0 mt-0.5" />
                         <span>{detail}</span>
                       </div>
                     ))}
@@ -488,7 +492,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
               <div className="space-y-6">
                 
                 {/* Contributors */}
-                <div className="p-4 rounded-2xl bg-[#170a30] border border-purple-500/20">
+                <div className="p-4 rounded-2xl bg-[#141414] border border-purple-500/20">
                   <div className="text-[10px] font-mono text-zinc-400 mb-3">STUDENT BUILDERS / CONTRIBUTORS</div>
                   <div className="space-y-2.5">
                     {selectedProject.contributors.map((c, i) => (
@@ -505,27 +509,31 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
                   </div>
                 </div>
 
-                {/* Action Links */}
+                {/* Action Links (guarded — githubUrl / liveDemoUrl are optional) */}
                 <div className="space-y-3">
+                  {selectedProject.githubUrl ? (
                   <a
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 rounded-full bg-[#1e0e3d] hover:bg-[#281352] border border-purple-500/40 text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg"
+                    className="w-full py-3 rounded-full bg-[#141414] hover:bg-[#1f1f1f] border border-purple-500/40 text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg"
                   >
                     <Github className="w-4 h-4" />
                     <span>View GitHub Source Repository</span>
                   </a>
+                  ) : null}
 
+                  {selectedProject.liveDemoUrl ? (
                   <a
                     href={selectedProject.liveDemoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="purple-glow-btn w-full py-3 rounded-full text-xs sm:text-sm font-bold gap-2 cursor-pointer"
+                    className="purple-glow-btn button-bordercolor w-full py-3 rounded-full text-xs sm:text-sm font-bold gap-2 cursor-pointer"
                   >
                     <span>Launch Live Interactive App</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
+                  ) : null}
                 </div>
 
               </div>

@@ -31,7 +31,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#07020E]/90 backdrop-blur-xl border-b border-purple-900/30 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)]'
+          ? 'bg-black/90 backdrop-blur-xl border-b border-purple-900/30 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)]'
           : 'bg-transparent py-6'
       }`}
     >
@@ -51,23 +51,23 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
               <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">
                 {/* 3 top pins */}
-                <rect x="14" y="2" width="4" height="6" fill="#A855F7" rx="0.5" />
-                <rect x="22" y="2" width="4" height="6" fill="#A855F7" rx="0.5" />
-                <rect x="30" y="2" width="4" height="6" fill="#A855F7" rx="0.5" />
+                <rect x="14" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
+                <rect x="22" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
+                <rect x="30" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
                 {/* 3 bottom pins */}
-                <rect x="14" y="40" width="4" height="6" fill="#A855F7" rx="0.5" />
-                <rect x="22" y="40" width="4" height="6" fill="#A855F7" rx="0.5" />
-                <rect x="30" y="40" width="4" height="6" fill="#A855F7" rx="0.5" />
+                <rect x="14" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
+                <rect x="22" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
+                <rect x="30" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
                 {/* 3 left pins */}
-                <rect x="2" y="14" width="6" height="4" fill="#A855F7" rx="0.5" />
-                <rect x="2" y="22" width="6" height="4" fill="#A855F7" rx="0.5" />
-                <rect x="2" y="30" width="6" height="4" fill="#A855F7" rx="0.5" />
+                <rect x="2" y="14" width="6" height="4" fill="#9553e6" rx="0.5" />
+                <rect x="2" y="22" width="6" height="4" fill="#9553e6" rx="0.5" />
+                <rect x="2" y="30" width="6" height="4" fill="#9553e6" rx="0.5" />
                 {/* 3 right pins */}
-                <rect x="40" y="14" width="6" height="4" fill="#A855F7" rx="0.5" />
-                <rect x="40" y="22" width="6" height="4" fill="#A855F7" rx="0.5" />
-                <rect x="40" y="30" width="6" height="4" fill="#A855F7" rx="0.5" />
+                <rect x="40" y="14" width="6" height="4" fill="#9553e6" rx="0.5" />
+                <rect x="40" y="22" width="6" height="4" fill="#9553e6" rx="0.5" />
+                <rect x="40" y="30" width="6" height="4" fill="#9553e6" rx="0.5" />
                 {/* Main hollow square frame */}
-                <rect x="8" y="8" width="32" height="32" stroke="#A855F7" strokeWidth="6" rx="1" fill="#07020E" />
+                <rect x="8" y="8" width="32" height="32" stroke="#9553e6" strokeWidth="6" rx="1" fill="#000000" />
               </svg>
             </div>
             
@@ -94,7 +94,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
                     onClick={() => onTabChange?.(link.name)}
                     className={`relative px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium tracking-wide rounded-full transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-purple-600/50 text-white border shadow-[0_0_15px_rgba(124,58,237,0.3)]'
+                        ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white border shadow-[0_0_15px_rgba(149,83,230,0.45)]'
                         : 'text-[#9c93af] hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -110,7 +110,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
             <button
               type="button"
               onClick={onJoinClick}
-              className="purple-glow-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide gap-1.5 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(124,58,237,0.35)]"
+              className="purple-glow-btn button-bordercolor px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide gap-1.5 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(124,58,237,0.35)]"
             >
               Join Now!
             </button>
@@ -130,7 +130,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
 
       {/* ── Mobile Navigation Drawer ── */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#080212]/95 backdrop-blur-2xl border-b border-purple-500/30 px-6 py-5 shadow-2xl">
+        <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-2xl border-b border-purple-500/30 px-6 py-5 shadow-2xl">
           <div className="flex flex-col space-y-2">
             {navLinks.map((link) => {
               const isActive = activeTab.toLowerCase() === link.name.toLowerCase();
@@ -144,7 +144,7 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
                   }}
                   className={`text-left px-4 py-2.5 rounded-xl text-sm font-medium tracking-wide transition-colors ${
                     isActive
-                      ? 'bg-purple-600/30 text-white border border-purple-500/40'
+                      ? 'bg-[#9553e6]/30 text-white border border-purple-500/40'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
                   }`}
                 >

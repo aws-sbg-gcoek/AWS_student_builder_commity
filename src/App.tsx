@@ -147,10 +147,10 @@ export default function App() {
     { name: 'DynamoDB', color: '#38BDF8' },
     { name: 'Amazon EC2', color: '#FF9900' },
     { name: 'CloudFormation', color: '#EC4899' },
-    { name: 'Rekognition', color: '#A855F7' },
+    { name: 'Rekognition', color: '#9553e6' },
     { name: 'Amplify', color: '#FF9900' },
     { name: 'API Gateway', color: '#38BDF8' },
-    { name: 'IoT Core', color: '#4EF35E' },
+    { name: 'IoT Core', color: '#6feb2c' },
     { name: 'AWS CDK', color: '#22C55E' },
     { name: 'Cognito', color: '#E10098' },
     { name: 'CloudWatch', color: '#3178C6' },
@@ -184,7 +184,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white overflow-x-clip">
+    <div className="min-h-screen bg-black text-white flex flex-col font-sans relative selection:bg-[#9553e6] selection:text-white overflow-x-clip">
       {/* ─── Smooth Flowing Light Purple Cursor Glow ─── */}
       <CursorGlow />
 
@@ -263,12 +263,12 @@ export default function App() {
         </div>
 
         {/* Floating Mini Highlight Badges on Desktop */}
-        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#14082c]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute left-8 top-1/2 -translate-y-8 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20">
-          <span className="flex h-2 w-2 rounded-full bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
+        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#141414]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute left-8 top-1/2 -translate-y-8 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20">
+          <span className="flex h-2 w-2 rounded-full bg-[#6feb2c] shadow-[0_0_8px_#6feb2c]" />
           <span>500+ Active Builders</span>
         </div>
 
-        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#14082c]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute right-8 top-1/2 -translate-y-16 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20" style={{ animationDelay: '-3.5s' }}>
+        <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#141414]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute right-8 top-1/2 -translate-y-16 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20" style={{ animationDelay: '-3.5s' }}>
           <span className="text-[#FF9900]">☁️</span>
           <span>100% Free Sandbox Labs</span>
         </div>
@@ -277,19 +277,19 @@ export default function App() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center">
 
           {/* Eyebrow pill — Freshers Welcome */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/35 shadow-[0_0_24px_rgba(168,85,247,0.3)] mb-6 hover:border-purple-400/70 transition-all duration-300">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#141414]/90 border border-purple-500/35 shadow-[0_0_24px_rgba(168,85,247,0.3)] mb-6 hover:border-purple-400/70 transition-all duration-300">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6feb2c] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6feb2c] shadow-[0_0_8px_#6feb2c]" />
             </span>
             <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF9900]">
               Freshers Welcome • Class of 2029 • Official AWS Student Builder Chapter GCOEK
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black text-white leading-[1.08] tracking-tight max-w-5xl mx-auto mb-6">
+          <h1 className="font-clash text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-semibold text-white leading-[1.08] tracking-tight max-w-5xl mx-auto mb-6">
             Welcome to{' '}
-            <span className="neon-green-glow text-[#4EF35E] font-black inline-block px-1">
+            <span className="neon-green-glow text-shadow-glow text-[#6feb2c] font-semibold inline-block px-1">
               AWS
             </span>{' '}
             <span className="block mt-1 bg-gradient-to-r from-white via-purple-100 to-indigo-200 bg-clip-text text-transparent">
@@ -309,7 +309,7 @@ export default function App() {
                   .getElementById('interactive-section')
                   ?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="purple-glow-btn text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gap-2 group cursor-pointer hover:scale-105 active:scale-95"
+              className="purple-glow-btn button-bordercolor text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gap-2 group cursor-pointer hover:scale-105 active:scale-95"
             >
               <span>Explore Program</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -330,14 +330,14 @@ export default function App() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-4">
 
           <div className="flex justify-end items-center mb-3">
-            <div className="inline-flex p-1 rounded-full bg-[#120826]/80 border border-purple-500/20 backdrop-blur-md">
+            <div className="inline-flex p-1 rounded-full bg-[#121212]/80 border border-purple-500/20 backdrop-blur-md">
 
               <button
                 type="button"
                 onClick={() => setStatMode('career')}
                 className={`text-[11px] font-medium px-3.5 py-1 rounded-full transition-all cursor-pointer ${
                   statMode === 'career'
-                    ? 'bg-purple-600/50 text-white shadow-[0_0_10px_rgba(147,51,234,0.3)]'
+                    ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_10px_rgba(149,83,230,0.45)]'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -349,7 +349,7 @@ export default function App() {
                 onClick={() => setStatMode('club')}
                 className={`text-[11px] font-medium px-3.5 py-1 rounded-full transition-all cursor-pointer ${
                   statMode === 'club'
-                    ? 'bg-purple-600/50 text-white shadow-[0_0_10px_rgba(147,51,234,0.3)]'
+                    ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_10px_rgba(149,83,230,0.45)]'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -361,7 +361,7 @@ export default function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {/* Card 1 */}
-            <div className="stat-card-image p-6 sm:p-7 flex items-center justify-between group">
+            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
               <div>
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
                   <span>{statMode === 'career' ? '7.5' : '940+'}</span>
@@ -383,7 +383,7 @@ export default function App() {
             </div>
 
             {/* Card 2 */}
-            <div className="stat-card-image p-6 sm:p-7 flex items-center justify-between group">
+            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
               <div>
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
                   <span>{statMode === 'career' ? '47' : '50+'}</span>
@@ -405,7 +405,7 @@ export default function App() {
             </div>
 
             {/* Card 3 */}
-            <div className="stat-card-image p-6 sm:p-7 flex items-center justify-between group">
+            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
               <div>
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
                   <span>{statMode === 'career' ? '300+' : '30+'}</span>
@@ -424,7 +424,7 @@ export default function App() {
             </div>
 
             {/* Card 4 */}
-            <div className="stat-card-image p-6 sm:p-7 flex items-center justify-between group">
+            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
               <div>
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
                   <span>{statMode === 'career' ? '10' : '100%'}</span>
@@ -450,7 +450,7 @@ export default function App() {
       </section>
 
       {/* ─── MARQUEE TECH TICKER ─── */}
-      <div className="relative overflow-hidden py-3 bg-[#0a0316]/90 border-y border-purple-500/20 backdrop-blur-md">
+      <div className="relative overflow-hidden py-3 bg-black/90 border-y border-purple-500/20 backdrop-blur-md">
         {[0, 1].map((row) => (
           <div key={row} aria-hidden={row === 1} className="ticker-track items-center gap-8">
             {TECH_TICKER_ITEMS.map((item, i) => (
@@ -470,14 +470,14 @@ export default function App() {
       </div>
 
       {/* ─── WHAT WE DO ─── */}
-      <section id="what-we-do" className="bg-[#07020E] py-20 sm:py-24 relative overflow-hidden border-b border-purple-900/30">
+      <section id="what-we-do" className="bg-black py-20 sm:py-24 relative overflow-hidden border-b border-purple-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#4EF35E]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#6feb2c]" />
               <span>WHAT WE DO</span>
             </div>
-            <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight mb-4">
+            <h2 className="font-clash text-3xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-tight mb-4">
               Learn. Build.{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
                 Ship to Cloud.
@@ -489,8 +489,8 @@ export default function App() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {WHAT_WE_DO.map((card, i) => (
-              <div key={card.title} className="stat-card-image p-6 sm:p-7 group">
-                <div className="text-2xl font-black text-[#4EF35E] font-mono mb-2">
+              <div key={card.title} className="stat-card-image gradient-border p-6 sm:p-7 group">
+                <div className="text-2xl font-black text-[#6feb2c] font-mono mb-2">
                   0{i + 1}
                 </div>
                 <div className="font-bold text-white text-base mt-1">{card.title}</div>
@@ -504,7 +504,7 @@ export default function App() {
       {/* ─── INTERACTIVE 3D & CLI SHOWCASE SECTION ─── */}
       <section
         id="interactive-section"
-        className="py-24 relative overflow-hidden bg-[#090314]/95 border-b border-purple-900/30"
+        className="py-24 relative overflow-hidden bg-black/95 border-b border-purple-900/30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -514,11 +514,11 @@ export default function App() {
             <div className="lg:w-1/2">
 
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
-                <Sparkles className="w-3.5 h-3.5 text-[#4EF35E]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#6feb2c]" />
                 <span>AWS STUDENT BUILDER ARCHITECTURE</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="font-clash text-3xl sm:text-5xl font-semibold text-white mb-6 leading-tight">
                 Architect. Build. Deploy.
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
@@ -532,8 +532,8 @@ export default function App() {
 
               <div className="grid grid-cols-2 gap-4 mb-8">
 
-                <div className="p-4 rounded-xl bg-[#120824]/90 border border-purple-500/20">
-                  <div className="text-2xl font-black text-[#4EF35E] font-mono">
+                <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
+                  <div className="text-2xl font-black text-[#6feb2c] font-mono">
                     01
                   </div>
                   <div className="font-bold text-white text-sm mt-1">
@@ -544,7 +544,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#120824]/90 border border-purple-500/20">
+                <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
                   <div className="text-2xl font-black text-purple-400 font-mono">
                     02
                   </div>
@@ -562,7 +562,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setIsJoinModalOpen(true)}
-                  className="purple-glow-btn text-white text-xs sm:text-sm font-semibold px-7 py-3 rounded-full inline-flex items-center gap-2 cursor-pointer"
+                  className="purple-glow-btn button-bordercolor text-white text-xs sm:text-sm font-semibold px-7 py-3 rounded-full inline-flex items-center gap-2 cursor-pointer"
                 >
                   <span>Join The Builder Club</span>
                   <ArrowRight className="w-4 h-4" />
@@ -573,14 +573,14 @@ export default function App() {
             {/* Right Column */}
             <div className="lg:w-1/2 w-full flex flex-col items-center">
 
-              <div className="flex items-center gap-2 p-1.5 bg-[#120726] border border-purple-500/30 rounded-full mb-4 shadow-xl">
+              <div className="flex items-center gap-2 p-1.5 bg-[#121212] border border-purple-500/30 rounded-full mb-4 shadow-xl">
 
                 <button
                   type="button"
                   onClick={() => setInteractiveMode('3d')}
                   className={`text-xs font-mono px-4 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     interactiveMode === '3d'
-                      ? 'bg-purple-600 text-white font-bold shadow-[0_0_15px_rgba(147,51,234,0.4)]'
+                      ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white font-bold shadow-[0_0_15px_rgba(149,83,230,0.45)]'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -593,7 +593,7 @@ export default function App() {
                   onClick={() => setInteractiveMode('cli')}
                   className={`text-xs font-mono px-4 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     interactiveMode === 'cli'
-                      ? 'bg-purple-600 text-white font-bold shadow-[0_0_15px_rgba(147,51,234,0.4)]'
+                      ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white font-bold shadow-[0_0_15px_rgba(149,83,230,0.45)]'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -603,9 +603,9 @@ export default function App() {
 
               </div>
 
-              <div className="w-full max-w-lg rounded-2xl bg-[#0f0720]/90 border border-purple-500/30 backdrop-blur-xl shadow-[0_12px_45px_rgba(0,0,0,0.6)] overflow-hidden">
+              <div className="w-full max-w-lg rounded-2xl bg-[#141414]/90 border border-purple-500/30 backdrop-blur-xl shadow-[0_12px_45px_rgba(0,0,0,0.6)] overflow-hidden">
                 {/* Console Window Header with Traffic Light Dots */}
-                <div className="flex items-center justify-between px-4 py-2.5 bg-[#14082b] border-b border-purple-500/25">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#121212] border-b border-purple-500/25">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
@@ -647,6 +647,20 @@ export default function App() {
 
       {/* ─── FOOTER ─── */}
       <SpotlightFooter onJoinClick={() => navigateTo('join')} />
+
+      {/* ─── MOBILE STICKY CTA (Kodr-style bottom bar, home only) ─── */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#121212]/95 backdrop-blur-md border-t border-white/10 px-5 py-4 sm:hidden">
+        <button
+          type="button"
+          onClick={() => navigateTo('join')}
+          className="purple-glow-btn button-bordercolor w-full py-3.5 rounded-xl text-base font-semibold text-white flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] transition-all"
+        >
+          <span>Join the Club — It&apos;s Free</span>
+          <ArrowRight className="w-5 h-5" />
+        </button>
+      </div>
+      {/* Spacer so the sticky CTA never covers footer content on mobile */}
+      <div aria-hidden="true" className="h-[84px] sm:hidden" />
         </>
       )}
 
@@ -654,7 +668,7 @@ export default function App() {
       {isJoinModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
 
-          <div className="relative w-full max-w-md p-6 sm:p-8 rounded-2xl bg-[#0f0622] border border-purple-500/40 shadow-2xl">
+          <div className="relative w-full max-w-md p-6 sm:p-8 rounded-2xl bg-[#141414] border border-purple-500/40 shadow-2xl animate-card-entrance">
 
             <button
               type="button"
@@ -667,7 +681,7 @@ export default function App() {
             {joinSubmitted ? (
 
               <div className="text-center py-8">
-                <CheckCircle2 className="w-14 h-14 text-[#4EF35E] mx-auto mb-4 animate-bounce" />
+                <CheckCircle2 className="w-14 h-14 text-[#6feb2c] mx-auto mb-4 animate-bounce" />
 
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Welcome Aboard!
@@ -683,7 +697,7 @@ export default function App() {
               <div>
 
                 <div className="mb-6">
-                  <div className="text-xs font-mono uppercase tracking-wider text-[#4EF35E] font-bold">
+                  <div className="text-xs font-mono uppercase tracking-wider text-[#6feb2c] font-bold">
                     AWS STUDENT BUILDER GROUP
                   </div>
 
@@ -717,7 +731,7 @@ export default function App() {
                         })
                       }
                       placeholder="e.g. Yash Sharma"
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#1a0c36] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                     />
                   </div>
 
@@ -737,7 +751,7 @@ export default function App() {
                         })
                       }
                       placeholder="e.g. yash@college.edu"
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#1a0c36] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-purple-500/30 text-white text-sm focus:outline-none focus:border-purple-400"
                     />
                   </div>
 
@@ -756,7 +770,7 @@ export default function App() {
                             branch: e.target.value
                           })
                         }
-                        className="w-full px-3 py-2.5 rounded-lg bg-[#1a0c36] border border-purple-500/30 text-white text-xs focus:outline-none focus:border-purple-400"
+                        className="w-full px-3 py-2.5 rounded-lg bg-[#141414] border border-purple-500/30 text-white text-xs focus:outline-none focus:border-purple-400"
                       >
                         <option>Computer Science</option>
                         <option>Information Tech</option>
@@ -779,7 +793,7 @@ export default function App() {
                             year: e.target.value
                           })
                         }
-                        className="w-full px-3 py-2.5 rounded-lg bg-[#1a0c36] border border-purple-500/30 text-white text-xs focus:outline-none focus:border-purple-400"
+                        className="w-full px-3 py-2.5 rounded-lg bg-[#141414] border border-purple-500/30 text-white text-xs focus:outline-none focus:border-purple-400"
                       >
                         <option>1st Year (Fresher)</option>
                         <option>2nd Year</option>
@@ -792,7 +806,7 @@ export default function App() {
 
                   <button
                     type="submit"
-                    className="purple-glow-btn w-full py-3 rounded-full text-sm font-bold text-center mt-6 cursor-pointer"
+                    className="purple-glow-btn button-bordercolor w-full py-3 rounded-full text-sm font-bold text-center mt-6 cursor-pointer"
                   >
                     Complete Registration
                   </button>
