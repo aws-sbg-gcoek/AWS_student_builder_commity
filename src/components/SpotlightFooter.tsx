@@ -145,7 +145,7 @@ export function SpotlightFooter({ onJoinClick }: SpotlightFooterProps = {}) {
   ];
 
   return (
-    <footer className="relative bg-[#000000] text-white border-t border-purple-950/60 overflow-hidden select-none">
+    <footer className="relative bg-transparent text-white border-t border-purple-950/60 overflow-hidden select-none">
       
       {/* ─── 1. TOP HERO SECTION: INTERACTIVE MOUSE-TRACKING VIOLET SPOTLIGHT OVER "AWS COMMUNITY" ─── */}
       <div 

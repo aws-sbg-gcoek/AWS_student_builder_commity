@@ -320,7 +320,7 @@ export function StickyEventsStack({ onJoinClick }: StickyEventsStackProps) {
   return (
     <section 
       id="events" 
-      className="relative py-20 sm:py-28 bg-black border-b border-purple-900/30 overflow-visible"
+      className="relative py-20 sm:py-28 bg-transparent border-b border-purple-900/30 overflow-visible"
     >
       <div id="team" className="absolute -top-20" />
       {/* Background Ambience and Fine Grid */}

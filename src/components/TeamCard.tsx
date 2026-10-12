@@ -144,10 +144,11 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
       className="
         card
         team-card
+        gradient-border
         group
         relative
         rounded-2xl
-        bg-[#120824]/90 border border-purple-500/20
+        bg-[#141414]/90 border border-purple-500/20
         backdrop-blur-md
         opacity-100
         hover:shadow-[0_25px_60px_rgba(139,92,246,0.3)]
@@ -192,15 +193,15 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
 
       {/* ── Photo / Avatar Container ── */}
       <div
-        className="relative aspect-[6/7] w-full overflow-hidden rounded-t-2xl bg-[#120826]"
+        className="relative aspect-[6/7] w-full overflow-hidden rounded-t-2xl bg-[#141414]"
         style={{ transform: 'translateZ(10px)', transformStyle: 'preserve-3d' }}
       >
         {/* Status Chip (Top Right) */}
         <div
-          className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a0316]/85 border border-purple-500/30 backdrop-blur-md shadow-lg group-hover:border-purple-400/60 transition-colors pointer-events-none"
+          className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/85 border border-purple-500/30 backdrop-blur-md shadow-lg group-hover:border-purple-400/60 transition-colors pointer-events-none"
           style={{ transform: 'translateZ(32px)' }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#4EF35E] shadow-[0_0_8px_#4EF35E] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#6feb2c] shadow-[0_0_8px_#6feb2c] animate-pulse" />
           <span className="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">
             Builder
           </span>
@@ -211,7 +212,7 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
           className="absolute bottom-3.5 left-4 z-20 pointer-events-none"
           style={{ transform: 'translateZ(30px)' }}
         >
-          <span className="px-2.5 py-1 rounded-lg bg-[#0e041e]/90 border border-purple-500/35 backdrop-blur-md text-[10px] font-mono text-[#FF9900] font-bold tracking-wide shadow-md">
+          <span className="px-2.5 py-1 rounded-lg bg-black/90 border border-purple-500/35 backdrop-blur-md text-[10px] font-mono text-[#FF9900] font-bold tracking-wide shadow-md">
             {member.department.replace('Dept', '').trim()}
           </span>
         </div>
@@ -226,9 +227,9 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
           />
         ) : (
-          <div className="flex flex-col h-full w-full items-center justify-center bg-gradient-to-br from-[#1c0c38] via-[#110526] to-[#07020E] p-6 text-center select-none relative overflow-hidden">
+          <div className="flex flex-col h-full w-full items-center justify-center bg-gradient-to-br from-[#1c0c38] via-[#141414] to-black p-6 text-center select-none relative overflow-hidden">
             <div className="absolute inset-0 bg-hero-grid opacity-30 pointer-events-none" />
-            <div className="w-20 h-20 rounded-2xl bg-purple-900/60 border border-purple-500/40 flex items-center justify-center shadow-[0_0_24px_rgba(168,85,247,0.35)] mb-3 z-10 group-hover:scale-110 transition-transform">
+            <div className="w-20 h-20 rounded-2xl bg-purple-900/40 border border-purple-500/40 flex items-center justify-center shadow-[0_0_24px_rgba(168,85,247,0.35)] mb-3 z-10 group-hover:scale-110 transition-transform">
               <span className="text-3xl font-black text-white font-mono tracking-wider">
                 {initials}
               </span>
@@ -243,7 +244,7 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
         )}
 
         {/* Gradient shadow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0720] via-transparent to-transparent opacity-85 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85 pointer-events-none" />
       </div>
 
       {/* ── Card Content ── */}
@@ -279,9 +280,10 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
             data-member-name
             className="
               origin-center
+              font-clash
               text-xl
               sm:text-2xl
-              font-bold
+              font-semibold
               tracking-tight
               text-white
               transition-all

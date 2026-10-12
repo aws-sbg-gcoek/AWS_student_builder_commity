@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import App from './App';
 import './index.css';
 
@@ -8,14 +10,13 @@ import './index.css';
 function initLenis(): void {
   if (typeof window === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-  let rafId = 0;
-  const raf = (time: number): void => {
-    lenis.raf(time);
-    rafId = requestAnimationFrame(raf);
-  };
-  rafId = requestAnimationFrame(raf);
-  void rafId;
+  const lenis = new Lenis({ duration: 0.85, smoothWheel: true });
+  // Sync Lenis with GSAP ScrollTrigger — fixes pin/scrub lag & jitter.
+  // Single clock via gsap ticker (no competing rAF loops).
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
 }
 
 initLenis();

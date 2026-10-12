@@ -1,14 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* ═══ KODR BOOTCAMP TYPE TOKENS (display: Clash / body: Helvetica Neue) ═══ */
+  --font-heading: "Clash Grotesk", "Clash Display", "Helvetica Neue", system-ui, sans-serif;
+  --font-display: "Clash Display", "Clash Grotesk", "Helvetica Neue", system-ui, sans-serif;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-clash: "Clash Grotesk", "Clash Display", sans-serif;
+  --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --color-purple-base: #07020E;
-  --color-purple-card: #120826;
-  --color-purple-accent: #7C3AED;
-  --color-neon-green: #4EF35E;
+  /* ═══ KODR PALETTE — legacy names kept, values re-pointed to Kodr ═══ */
+  --color-purple-base: #000000;
+  --color-purple-card: #141414;
+  --color-purple-accent: #9553e6;
+  --color-neon-green: #6feb2c;
+
+  /* ═══ KODR CANONICAL TOKENS (NOTE: never name a token --color-base: it hijacks Tailwind's text-base font-size utility) ═══ */
+  --color-page: #000000;
+  --color-surface: #121212;
+  --color-surface-2: #141414;
+  --color-primary: #9553e6;
+  --color-secondary: #6feb2c;
+  --color-cta-from: #AC69FF;
+  --color-cta-to: #7200FF;
 }
 
 html {
@@ -16,11 +30,13 @@ html {
   scrollbar-width: none;
   -ms-overflow-style: none;
   overflow-x: clip;
+  color: #fff;
+  background-color: #000;
 }
 html::-webkit-scrollbar { display: none; }
 
 body {
-  background-color: #07020E;
+  background-color: #000000;
   color: #FFFFFF;
   font-family: var(--font-sans);
   overflow-x: clip;
@@ -36,25 +52,25 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* ═══ EXACT PURPLE LIGHTING FROM REFERENCE IMAGE ═══ */
+/* ═══ KODR PURPLE ATMOSPHERE ON BLACK BASE ═══ */
 .bg-purple-atmosphere {
-  background: 
-    radial-gradient(ellipse 65% 55% at 85% 15%, rgba(124, 58, 237, 0.48) 0%, rgba(91, 33, 182, 0.28) 40%, transparent 70%),
-    radial-gradient(circle 800px at 50% 25%, rgba(109, 40, 217, 0.32) 0%, rgba(30, 10, 60, 0.45) 50%, transparent 75%),
-    radial-gradient(circle 500px at 10% 35%, rgba(88, 28, 135, 0.22) 0%, transparent 60%),
-    #07020E;
+  background:
+    radial-gradient(ellipse 65% 55% at 85% 15%, rgba(149, 83, 230, 0.48) 0%, rgba(114, 0, 255, 0.28) 40%, transparent 70%),
+    radial-gradient(circle 800px at 50% 25%, rgba(149, 83, 230, 0.32) 0%, rgba(20, 20, 20, 0.45) 50%, transparent 75%),
+    radial-gradient(circle 500px at 10% 35%, rgba(114, 0, 255, 0.22) 0%, transparent 60%),
+    #000000;
 }
 
-/* ═══ FINE PURPLE GRID LINES WITH AWS IN BACK ═══ */
+/* ═══ FINE KODR-PURPLE GRID LINES WITH AWS IN BACK ═══ */
 .bg-hero-grid {
   background-image:
-    linear-gradient(to right, rgba(168, 85, 247, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(168, 85, 247, 0.08) 1px, transparent 1px),
-    url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='80' y='96' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='32' fill='none' stroke='rgba(168,85,247,0.13)' stroke-width='1.5' text-anchor='middle' letter-spacing='4'%3EAWS%3C/text%3E%3C/svg%3E");
+    linear-gradient(to right, rgba(149, 83, 230, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(149, 83, 230, 0.08) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='80' y='96' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='32' fill='none' stroke='rgba(149,83,230,0.13)' stroke-width='1.5' text-anchor='middle' letter-spacing='4'%3EAWS%3C/text%3E%3C/svg%3E");
   background-size: 40px 40px, 40px 40px, 160px 160px;
 }
 
-/* ═══ WATERMARK OUTLINE ═══ */
+/* ═══ WATERMARK OUTLINE (Clash display) ═══ */
 .watermark-outline {
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.09);
   color: transparent;
@@ -62,51 +78,134 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* ═══ NEON LIME GREEN GLOW ═══ */
+/* ═══ KODR LIME GLOW (#6feb2c) ═══ */
 .neon-green-glow {
-  color: #4EF35E;
-  text-shadow: 0 0 20px rgba(78, 243, 94, 0.85), 0 0 45px rgba(78, 243, 94, 0.45);
+  color: #6feb2c;
+  text-shadow: 0 0 20px rgba(111, 235, 44, 0.85), 0 0 45px rgba(111, 235, 44, 0.45);
 }
 
-/* ═══ GLOWING PURPLE BUTTON ═══ */
+/* ═══ KODR text-shadow-glow (verbatim recipe) ═══ */
+.text-shadow-glow {
+  text-shadow: 0 0 15px #6eeb2ca6, 0 0 30px #6eeb2c4d;
+}
+
+/* ═══ KODR CTA BUTTON — gradient #AC69FF -> #7200FF ═══ */
 .purple-glow-btn {
-  background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%);
-  box-shadow: 0 0 25px rgba(124, 58, 237, 0.65);
+  background: linear-gradient(135deg, #AC69FF 0%, #9553e6 50%, #7200FF 100%);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(149, 83, 230, 0.65);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .purple-glow-btn:hover {
-  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
-  box-shadow: 0 0 40px rgba(147, 51, 234, 0.9);
+  background: linear-gradient(135deg, #AC69FF 0%, #9553e6 50%, #7200FF 100%);
+  filter: brightness(1.12);
+  box-shadow: 0 0 40px rgba(149, 83, 230, 0.9);
   transform: translateY(-2px);
 }
 
-/* ═══ GLOSSY WHITE PILL BUTTON ═══ */
+/* ═══ LIGHT PILL BUTTON ON KODR BLACK ═══ */
 .white-pill-btn {
   background: #FFFFFF;
-  color: #07020E;
+  color: #121212;
   font-weight: 600;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
   transition: all 0.2s ease;
 }
 .white-pill-btn:hover {
-  background: #F4F4F5;
+  background: #ECE6FF;
   box-shadow: 0 0 32px rgba(255, 255, 255, 0.45);
   transform: translateY(-1px);
 }
 
-/* ═══ STAT CARDS FROM REFERENCE IMAGE ═══ */
+/* ═══ STAT CARDS — KODR SURFACE #141414 + PRIMARY RING ═══ */
 .stat-card-image {
-  background: rgba(16, 9, 32, 0.85);
+  background: rgba(20, 20, 20, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(124, 58, 237, 0.35);
+  border: 1px solid rgba(149, 83, 230, 0.35);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .stat-card-image:hover {
-  border-color: rgba(168, 85, 247, 0.65);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.25), 0 12px 28px rgba(0, 0, 0, 0.6);
+  border-color: rgba(172, 105, 255, 0.65);
+  box-shadow: 0 0 30px rgba(149, 83, 230, 0.25), 0 12px 28px rgba(0, 0, 0, 0.6);
   transform: translateY(-3px);
+}
+
+/* ═══ KODR 1px GRADIENT RING — button-bordercolor (verbatim mask-composite recipe) ═══ */
+.button-bordercolor {
+  border-radius: 2rem;
+  position: relative;
+}
+.button-bordercolor:before {
+  content: "";
+  border-radius: inherit;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  -webkit-mask-source-type: auto, auto;
+  background: linear-gradient(#c095f9, #944bed);
+  padding: 1px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  -webkit-mask-position: 0 0, 0 0;
+  -webkit-mask-size: auto, auto;
+  -webkit-mask-repeat: repeat, repeat;
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  mask-mode: match-source, match-source;
+}
+
+/* ═══ KODR gradient-border + gradient-border2 (verbatim mask-composite recipes) ═══ */
+.gradient-border {
+  border-radius: 15px;
+  position: relative;
+}
+.gradient-border:before {
+  content: "";
+  border-radius: inherit;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  -webkit-mask-source-type: auto, auto;
+  background: linear-gradient(#905bda, #1e083d);
+  padding: 1px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  -webkit-mask-position: 0 0, 0 0;
+  -webkit-mask-size: auto, auto;
+  -webkit-mask-repeat: repeat, repeat;
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  mask-mode: match-source, match-source;
+}
+.gradient-border2 {
+  border-radius: 15px;
+  position: relative;
+}
+.gradient-border2:before {
+  content: "";
+  border-radius: inherit;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  -webkit-mask-source-type: auto, auto;
+  background: linear-gradient(160deg, #905bda, #000);
+  padding: 1px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  -webkit-mask-position: 0 0, 0 0;
+  -webkit-mask-size: auto, auto;
+  -webkit-mask-repeat: repeat, repeat;
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-origin: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  mask-mode: match-source, match-source;
 }
 
 /* ═══ MARQUEE TICKER ═══ */
@@ -120,6 +219,21 @@ h1, h2, h3, h4, h5, h6 {
   animation: marquee 25s linear infinite;
 }
 .ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ═══ KODR RFM MARQUEE — translateX 0% -> -100%, 19.3s linear infinite ═══ */
+@keyframes rfm-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.rfm-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: rfm-scroll 19.3s linear infinite;
+  will-change: transform;
+}
+.rfm-marquee-track:hover {
   animation-play-state: paused;
 }
 
@@ -178,10 +292,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ═══ KODR cardEntrance — opacity 0->1, translateY 16px, scale .99->1, 400ms ═══ */
 @keyframes cardEntrance {
   from {
     opacity: 0;
-    transform: translateY(28px) scale(0.97);
+    transform: translateY(16px) scale(0.99);
   }
   to {
     opacity: 1;
@@ -212,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-card-entrance {
-  animation: cardEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: cardEntrance 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-shimmer-beam {
@@ -276,3 +391,155 @@ h1, h2, h3, h4, h5, h6 {
 }
 .snap-dissolve { animation: snapDissolve 0.9s cubic-bezier(0.4,0,1,1) forwards; }
 .snap-assemble { animation: snapAssemble 1.1s cubic-bezier(0,0,0.2,1) forwards; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CLOUD UNIVERSE UTILITIES (vibe-designer slice — scroll-driven R3F
+   "Cloud Universe" stage + UniverseFallback static poster).
+   - Only NEW `universe-*` class/keyframe names (never rename existing
+     tokens; never add a --color-base-like name — it hijacks Tailwind's
+     `text-base` font-size utility).
+   - Palette refs reuse existing Kodr tokens via var(): --color-primary
+     (#9553e6), --color-secondary (#6feb2c), --color-cta-from (#AC69FF),
+     --color-cta-to (#7200FF), --color-surface (#121212).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Sticky-stage helpers: pin the 3D canvas while steps scroll past ── */
+.universe-sticky-wrap {
+  position: relative;
+}
+.universe-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+}
+.universe-scroll-steps {
+  position: relative;
+  z-index: 10;
+}
+.universe-step-spacer {
+  min-height: 120svh;
+}
+
+/* ── Crossfade step classes: frontend agent toggles .is-active on scroll ── */
+.universe-step {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.universe-step.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.universe-step.is-exiting {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+/* ── Aurora drift keyframes (fallback poster + stage backdrop tint) ── */
+@keyframes universeAuroraA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(4%, 3%, 0) scale(1.08); }
+}
+@keyframes universeAuroraB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50%      { transform: translate3d(-4%, -3%, 0) scale(1); }
+}
+.universe-aurora-a {
+  animation: universeAuroraA 14s ease-in-out infinite;
+  will-change: transform;
+}
+.universe-aurora-b {
+  animation: universeAuroraB 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Star twinkle for the static poster ── */
+@keyframes universeTwinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.85); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+.universe-star {
+  animation: universeTwinkle 3.2s ease-in-out infinite;
+}
+
+/* ── Film grain overlay (SVG noise, no assets, no WebGL) ── */
+.universe-grain {
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* ── Fallback poster entrance ── */
+@keyframes universeFallbackIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.universe-fallback {
+  animation: universeFallbackIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Reduced motion: freeze every universe animation ── */
+@media (prefers-reduced-motion: reduce) {
+  .universe-aurora-a,
+  .universe-aurora-b,
+  .universe-star,
+  .universe-fallback {
+    animation: none;
+  }
+  .universe-step {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ═══ SITE VIDEO BACKGROUND (fixed Mux HLS layer, scroll-safe) ═══
+   Fixed + z-index -1: content on every route scrolls above it with no
+   listeners. Fallback gradient always painted (no black flash); the video
+   fades in only once frames flow. The scrim keeps copy readable. */
+.site-video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #050208;
+  pointer-events: none;
+}
+.site-video-bg-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(149, 83, 230, 0.28) 0%, rgba(114, 0, 255, 0.12) 45%, transparent 70%),
+    radial-gradient(ellipse 40% 32% at 82% 88%, rgba(111, 235, 44, 0.07) 0%, transparent 60%),
+    #050208;
+}
+.site-video-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.site-video-bg-video.is-ready {
+  opacity: 0.34;
+}
+.site-video-bg-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 30%, transparent 30%, rgba(0, 0, 0, 0.42) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.62) 0%, rgba(5, 2, 12, 0.5) 42%, rgba(0, 0, 0, 0.7) 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-video-bg-video {
+    transition: none;
+  }
+}

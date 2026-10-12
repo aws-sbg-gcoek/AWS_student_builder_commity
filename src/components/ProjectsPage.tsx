@@ -9,15 +9,15 @@ interface ProjectsPageProps {
   onJoinClick: () => void;
 }
 
-// Purple-theme palettes — all cards stay on-brand, with subtle variation
+// Kodr unified palettes — #141414 surface, Kodr accent ramp (purple / lime / orange)
 const CARD_PALETTES = [
-  { bg: '#0B0515', grad: 'linear-gradient(145deg,#160a2e,#0B0515)', accent: '#A78BFA', glow: 'rgba(167,139,250,0.22)', tag: 'bg-violet-500/15 text-violet-300 border-violet-500/25' },
-  { bg: '#0d0620', grad: 'linear-gradient(145deg,#1a0d3a,#0d0620)', accent: '#C084FC', glow: 'rgba(192,132,252,0.22)', tag: 'bg-purple-500/15 text-purple-300 border-purple-500/25' },
-  { bg: '#090418', grad: 'linear-gradient(145deg,#130930,#090418)', accent: '#818CF8', glow: 'rgba(129,140,248,0.22)', tag: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/25' },
-  { bg: '#0e0525', grad: 'linear-gradient(145deg,#1c0c3f,#0e0525)', accent: '#D8B4FE', glow: 'rgba(216,180,254,0.22)', tag: 'bg-fuchsia-500/15 text-fuchsia-200 border-fuchsia-500/25' },
-  { bg: '#0a0420', grad: 'linear-gradient(145deg,#150836,#0a0420)', accent: '#A855F7', glow: 'rgba(168,85,247,0.22)',  tag: 'bg-purple-600/15 text-purple-300 border-purple-600/25' },
-  { bg: '#0c0522', grad: 'linear-gradient(145deg,#17093a,#0c0522)', accent: '#7C3AED', glow: 'rgba(124,58,237,0.22)',  tag: 'bg-violet-600/15 text-violet-300 border-violet-600/25' },
-  { bg: '#0b0418', grad: 'linear-gradient(145deg,#14082e,#0b0418)', accent: '#E879F9', glow: 'rgba(232,121,249,0.22)', tag: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/25' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#1c0c38,#141414)', accent: '#AC69FF', glow: 'rgba(149,83,230,0.22)', tag: 'bg-[#9553e6]/15 text-[#AC69FF] border-[#9553e6]/40' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#1a0d3a,#141414)', accent: '#6feb2c', glow: 'rgba(111,235,44,0.20)', tag: 'bg-[#6feb2c]/10 text-[#6feb2c] border-[#6feb2c]/40' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#130930,#141414)', accent: '#38BDF8', glow: 'rgba(56,189,248,0.22)', tag: 'bg-sky-500/15 text-sky-300 border-sky-500/25' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#1c0c3f,#141414)', accent: '#FF9900', glow: 'rgba(255,153,0,0.20)', tag: 'bg-[#FF9900]/10 text-[#FF9900] border-[#FF9900]/40' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#150836,#141414)', accent: '#9553e6', glow: 'rgba(149,83,230,0.22)',  tag: 'bg-purple-600/15 text-purple-300 border-purple-600/25' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#17093a,#141414)', accent: '#C084FC', glow: 'rgba(192,132,252,0.22)',  tag: 'bg-violet-600/15 text-violet-300 border-violet-600/25' },
+  { bg: '#141414', grad: 'linear-gradient(145deg,#14082e,#141414)', accent: '#E879F9', glow: 'rgba(232,121,249,0.22)', tag: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/25' },
 ];
 
 function FlipCard({
@@ -73,10 +73,10 @@ function FlipCard({
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
-            background: '#120824',
+            background: '#141414',
             boxShadow: `0 0 0 1px rgba(255,255,255,0.05), 0 32px 80px -16px rgba(0,0,0,0.8), 0 0 60px -10px ${palette.glow}`,
           }}
-          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 overflow-hidden flex flex-col group"
+          className="absolute inset-0 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 overflow-hidden flex flex-col group"
         >
           {/* Noise grain */}
           <div
@@ -112,8 +112,8 @@ function FlipCard({
               </span>
               {/* Live badge */}
               {project.liveDemo && (
-                <span className="absolute top-3 right-3 flex items-center gap-1.5 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-black/50 border border-white/10 text-emerald-400 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span className="absolute top-3 right-3 flex items-center gap-1.5 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-black/50 border border-white/10 text-[#6feb2c] backdrop-blur-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#6feb2c] animate-ping" />
                   Live
                 </span>
               )}
@@ -124,7 +124,7 @@ function FlipCard({
           <div className="relative z-10 flex flex-col flex-grow p-6 pt-5">
             {/* Title */}
             <h3
-              className="text-[1.5rem] font-black text-white leading-[1.15] tracking-tight mb-2"
+              className="font-clash text-[1.5rem] font-semibold text-white leading-[1.15] tracking-tight mb-2"
             >
               {project.title}
             </h3>
@@ -194,7 +194,7 @@ function FlipCard({
                 )}
                 <button
                   onClick={e => { e.stopPropagation(); onNavigateToProject(project.id); }}
-                    className="purple-glow-btn gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-xl hover:scale-105 active:scale-95"
+                    className="purple-glow-btn button-bordercolor inline-flex items-center gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-xl hover:scale-105 active:scale-95"
                 >
                   Explore
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -216,10 +216,10 @@ function FlipCard({
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
-            background: '#120824',
+            background: '#141414',
             boxShadow: `0 0 0 1px rgba(255,255,255,0.05), 0 32px 80px -16px rgba(0,0,0,0.8)`,
           }}
-          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 overflow-hidden flex flex-col items-center justify-center"
+          className="absolute inset-0 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 overflow-hidden flex flex-col items-center justify-center"
         >
           {/* Big radial glow */}
           <div
@@ -255,7 +255,7 @@ function FlipCard({
                 {project.category}
               </div>
               {/* Big bold title — the premium moment */}
-              <h3 className="text-2xl font-black text-white leading-tight">
+              <h3 className="font-clash text-2xl font-semibold text-white leading-tight">
                 {project.title}
               </h3>
               {project.tagline && (
@@ -296,7 +296,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
   }, []);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white pt-24 overflow-x-hidden">
+    <div ref={pageRef} className="min-h-screen bg-transparent text-white flex flex-col font-sans relative selection:bg-[#9553e6] selection:text-white pt-24 overflow-x-hidden">
       {/* Background grid */}
       <div className="fixed inset-0 pointer-events-none bg-hero-grid opacity-30 z-0" />
 
@@ -325,14 +325,14 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
             <div className="flex flex-col items-start text-left z-10 px-2">
               {/* Pill badge */}
               <div
-                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/30 shadow-[0_0_24px_rgba(168,85,247,0.25)] mb-10"
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#141414]/90 border border-purple-500/30 shadow-[0_0_24px_rgba(168,85,247,0.25)] mb-10"
                 style={{ animation: 'fadeInDown 0.6s ease both' }}
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6feb2c] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6feb2c]" />
                 </span>
-                <Terminal className="w-3.5 h-3.5 text-[#4EF35E]" />
+                <Terminal className="w-3.5 h-3.5 text-[#6feb2c]" />
                 <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-[#FF9900]">
                   COMMUNITY SHOWCASE • GCOEK
                 </span>
@@ -340,11 +340,11 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
 
               {/* Headline */}
               <h1
-                className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tight mb-6"
+                className="font-clash text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold text-white leading-[1.05] tracking-tight mb-6"
                 style={{ animation: 'fadeInUp 0.7s ease 0.15s both' }}
               >
                 Our{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-purple-200">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
                   Projects
                 </span>
               </h1>
@@ -367,7 +367,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
                 style={{ animation: 'fadeInUp 0.7s ease 0.4s both' }}
               >
                 {[
-                  { value: `${projectsData.length}`, label: 'Projects',     icon: '🚀', accent: '#4EF35E',  glow: 'rgba(78,243,94,0.2)',   border: 'rgba(78,243,94,0.25)',   bg: 'rgba(78,243,94,0.06)' },
+                  { value: `${projectsData.length}`, label: 'Projects',     icon: '🚀', accent: '#6feb2c',  glow: 'rgba(111,235,44,0.2)',   border: 'rgba(111,235,44,0.25)',   bg: 'rgba(111,235,44,0.06)' },
                   { value: '3+',                     label: 'AI & ML',      icon: '🤖', accent: '#C084FC',  glow: 'rgba(192,132,252,0.2)', border: 'rgba(192,132,252,0.25)', bg: 'rgba(192,132,252,0.06)' },
                   { value: '100%',                   label: 'Cloud Native', icon: '☁️', accent: '#60A5FA',  glow: 'rgba(96,165,250,0.2)',  border: 'rgba(96,165,250,0.25)',  bg: 'rgba(96,165,250,0.06)' },
                   { value: 'AWS',                    label: 'Powered',      icon: '⚡', accent: '#FF9900',  glow: 'rgba(255,153,0,0.2)',   border: 'rgba(255,153,0,0.25)',   bg: 'rgba(255,153,0,0.06)' },
@@ -393,8 +393,8 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
                 style={{ animation: 'fadeInUp 0.7s ease 0.55s both', background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.07)' }}
               >
                 <span className="relative flex h-2 w-2 flex-shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6feb2c] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6feb2c]" />
                 </span>
                 <span className="text-[12px] font-mono text-zinc-400">
                   <span className="text-white font-bold">{projectsData.filter(p => p.liveDemo).length}</span> live demos
@@ -579,13 +579,13 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
               </svg>
 
               {/* Floating badges (outside SVG) */}
-              <div className="absolute top-[4%] left-[8%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#160a2e]/95 border border-[#4EF35E]/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-[#4EF35E] shadow-[0_0_12px_rgba(78,243,94,0.2)] z-10" style={{ animationDelay: '-1s' }}>
+              <div className="absolute top-[4%] left-[8%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#141414]/95 border border-[#6feb2c]/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-[#6feb2c] shadow-[0_0_12px_rgba(111,235,44,0.2)] z-10" style={{ animationDelay: '-1s' }}>
                 ✓ Deployed
               </div>
-              <div className="absolute top-[8%] right-[6%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#1a0e0a]/95 border border-[#FF9900]/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-[#FF9900] shadow-[0_0_12px_rgba(255,153,0,0.2)] z-10" style={{ animationDelay: '-3s' }}>
+              <div className="absolute top-[8%] right-[6%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#141414]/95 border border-[#FF9900]/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-[#FF9900] shadow-[0_0_12px_rgba(255,153,0,0.2)] z-10" style={{ animationDelay: '-3s' }}>
                 ⚡ AWS
               </div>
-              <div className="absolute bottom-[10%] left-[4%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#160a2e]/95 border border-purple-500/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.2)] z-10" style={{ animationDelay: '-5s' }}>
+              <div className="absolute bottom-[10%] left-[4%] flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#141414]/95 border border-purple-500/40 backdrop-blur-md animate-float-slow text-[11px] font-mono font-bold text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.2)] z-10" style={{ animationDelay: '-5s' }}>
                 &lt;/&gt; Open Source
               </div>
 
@@ -615,7 +615,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
               placeholder="Search by name, category, or tech (e.g. FraudLens, AWS, Docker)..."
               className="w-full pl-12 pr-5 py-4 rounded-2xl text-white text-sm placeholder-zinc-500 focus:outline-none transition-all backdrop-blur-md"
               style={{
-                background: 'linear-gradient(135deg,rgba(22,10,46,0.9),rgba(13,6,32,0.9))',
+                background: 'linear-gradient(135deg,rgba(20,20,20,0.9),rgba(18,18,18,0.9))',
                 border: '1px solid rgba(168,85,247,0.2)',
                 boxShadow: '0 0 0 0 transparent',
               }}
@@ -641,7 +641,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 border ${active ? 'bg-purple-600/50 text-white shadow-[0_0_18px_rgba(124,58,237,0.5)]' : ''}`}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 border ${active ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_18px_rgba(149,83,230,0.5)] border-transparent' : ''}`}
                   style={active ? undefined : {
                     background: 'rgba(255,255,255,0.04)',
                     border: '1px solid rgba(255,255,255,0.08)',
@@ -696,7 +696,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
       {/* ── SUBMIT YOUR WORK CTA ── */}
       <div className="relative overflow-hidden border-t border-white/[0.06]">
         {/* Background */}
-        <div className="absolute inset-0 bg-[#07020E]" />
+        <div className="absolute inset-0 bg-black" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-purple-700/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute inset-0 bg-hero-grid opacity-20 pointer-events-none" />
 
@@ -710,7 +710,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
 
           {/* Headline */}
           <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6"
+            className="font-clash text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight mb-6"
           >
             Have a project to showcase?
           </h2>
@@ -735,7 +735,7 @@ export function ProjectsPage({ onNavigateHome, onNavigateToProject, onJoinClick 
             </a>
             <a
               href="mailto:awssbggcoek@gmail.com"
-              className="purple-glow-btn gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:scale-105 active:scale-95"
+              className="purple-glow-btn button-bordercolor inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:scale-105 active:scale-95"
             >
               {/* Email icon */}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.586 5.379a2 2 0 0 0 2.828 0L22 7"/></svg>

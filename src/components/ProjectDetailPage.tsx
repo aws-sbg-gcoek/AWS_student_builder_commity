@@ -20,11 +20,11 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#07020E] text-white flex flex-col items-center justify-center pt-24">
-        <h2 className="text-3xl font-bold mb-4">Project Not Found</h2>
+      <div className="min-h-screen bg-transparent text-white flex flex-col items-center justify-center pt-24">
+        <h2 className="font-clash text-3xl font-semibold mb-4">Project Not Found</h2>
         <button
           onClick={onNavigateProjects}
-          className="purple-glow-btn px-6 py-3 rounded-full font-semibold gap-2"
+          className="purple-glow-btn button-bordercolor px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Projects
@@ -34,7 +34,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
   }
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white pt-24 overflow-x-hidden">
+    <div ref={pageRef} className="min-h-screen bg-transparent text-white flex flex-col font-sans relative selection:bg-[#9553e6] selection:text-white pt-24 overflow-x-hidden">
       {/* ─── Background Watermarks & Checks Overlay ─── */}
       <div className="fixed inset-0 pointer-events-none bg-hero-grid opacity-35 z-0" />
 
@@ -62,7 +62,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
             {/* Creator Image (if available) */}
             {project.creatorImage && (
               <div className="flex-shrink-0">
-                <div className="w-48 h-48 sm:w-56 sm:h-56 bg-[#120824]/90 border border-purple-500/20 rounded-2xl overflow-hidden relative shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col justify-end">
+                <div className="w-48 h-48 sm:w-56 sm:h-56 bg-[#141414]/90 gradient-border border border-purple-500/20 rounded-2xl overflow-hidden relative shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col justify-end">
                   {/* Accent bottom border line */}
                   <div className="absolute bottom-0 left-0 w-full h-1.5 z-10" style={{ backgroundColor: project.color }} />
                   <img
@@ -75,7 +75,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
             )}
 
             <div className="flex-grow flex flex-col items-start pt-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-xs font-mono mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-mono mb-4">
                 <User className="w-4 h-4" style={{ color: project.color }} />
                 <span className="text-xs font-bold tracking-widest uppercase" style={{ color: project.color }}>
                   {project.role}
@@ -86,7 +86,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
                 {project.creator}
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight tracking-tight">
+              <h1 className="font-clash text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-4 leading-tight tracking-tight">
                 {project.title}
               </h1>
               
@@ -100,7 +100,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
                     href={project.liveDemo}
                     target="_blank"
                     rel="noreferrer"
-                    className="purple-glow-btn px-6 py-2.5 rounded-lg text-sm font-bold gap-2 hover:scale-105 active:scale-95"
+                    className="purple-glow-btn button-bordercolor inline-flex items-center px-6 py-2.5 rounded-xl text-sm font-bold gap-2 hover:scale-105 active:scale-95"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Live Demo
@@ -111,7 +111,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-6 py-2.5 rounded-lg bg-[#180a32]/90 border border-purple-500/35 text-white hover:border-purple-400 hover:bg-purple-900/40 text-sm font-bold flex items-center gap-2 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:scale-105 active:scale-95"
+                    className="px-6 py-2.5 rounded-xl bg-[#141414]/90 border border-purple-500/35 text-white hover:border-purple-400 hover:bg-white/5 text-sm font-bold flex items-center gap-2 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:scale-105 active:scale-95"
                   >
                     <Github className="w-4 h-4" />
                     GitHub
@@ -128,22 +128,22 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
           {/* MAIN CONTENT (2/3 width) */}
           <div className="lg:col-span-2 space-y-10">
             <section>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                 About the Project
               </h2>
-              <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 text-zinc-300 leading-relaxed text-base">
+              <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 text-zinc-300 leading-relaxed text-base">
                 {project.description}
               </div>
             </section>
 
             {project.id === 'devinsight-guardian' && (
               <section>
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                   How It Works
                 </h2>
-                <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 text-zinc-300 leading-relaxed text-base">
+                <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 text-zinc-300 leading-relaxed text-base">
                   Guardian observes GitHub activity, analyzes 30 days of patterns, computes productivity and burnout metrics, applies agent memory, generates personalized coaching insights, and delivers the results through a morning email.
                 </div>
               </section>
@@ -151,11 +151,11 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
 
             {project.id === 'fraudlens-ai' && (
               <section>
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                   How It Works
                 </h2>
-                <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 text-zinc-300 leading-relaxed text-base space-y-4">
+                <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 text-zinc-300 leading-relaxed text-base space-y-4">
                   <p>The platform analyzes multiple forms of evidence and connects their findings to support investigators through a unified workflow:</p>
                   <div className="flex flex-wrap items-center gap-2 text-sm font-mono text-purple-300 bg-black/20 p-4 rounded-xl border border-white/5">
                     <span>Evidence</span> <span className="text-zinc-600">→</span>
@@ -172,7 +172,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
 
             {project.features && project.features.length > 0 && (
               <section>
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                   <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                   Key Features
                 </h2>
@@ -190,12 +190,12 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
             {project.id === 'fraudlens-ai' && (
               <>
                 <section>
-                  <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                  <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                     <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                     DevOps + MLOps
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 text-zinc-300">
+                    <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 text-zinc-300">
                       <h3 className="text-white font-bold mb-3 flex items-center gap-2"><Server className="w-4 h-4 text-blue-400" /> DevOps Pipeline</h3>
                       <div className="flex flex-col gap-2 text-sm font-mono text-blue-200 bg-black/20 p-3 rounded-xl border border-white/5">
                         <span>GitHub</span> <span className="text-zinc-600 ml-2">↓</span>
@@ -205,7 +205,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
                         <span className="text-green-400">Production</span>
                       </div>
                     </div>
-                    <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 text-zinc-300">
+                    <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 text-zinc-300">
                       <h3 className="text-white font-bold mb-3 flex items-center gap-2"><Activity className="w-4 h-4 text-green-400" /> MLOps Workflow</h3>
                       <div className="flex flex-col gap-2 text-sm font-mono text-green-200 bg-black/20 p-3 rounded-xl border border-white/5">
                         <span>Data</span> <span className="text-zinc-600 ml-2">↓</span>
@@ -227,11 +227,11 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                  <h2 className="font-clash text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                     <span className="w-1.5 h-6 rounded-full" style={{ backgroundColor: project.color }} />
                     Forensic Analysis
                   </h2>
-                  <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20">
+                  <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20">
                     <div className="flex flex-wrap gap-3">
                       {['Forensic Viewer', 'OCR Bounding Boxes', 'Heatmap / Tamper Indicators', 'Edge Analysis', 'Contrast Analysis', 'Layout Analysis'].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-zinc-300 bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm">
@@ -249,7 +249,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
           {/* SIDEBAR (1/3 width) */}
           <div className="space-y-6">
             
-            <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md">
+            <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 backdrop-blur-md">
               <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <Code className="w-5 h-5 text-purple-400" />
                 Tech Stack
@@ -264,7 +264,7 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
             </div>
 
             {project.awsServices && project.awsServices.length > 0 && (
-              <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md">
+              <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 backdrop-blur-md">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                   <Cloud className="w-5 h-5 text-[#FF9900]" />
                   {project.id === 'fraudlens-ai' ? 'AWS / Cloud' : 'AWS Services'}
@@ -279,8 +279,8 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
               </div>
             )}
 
-            <div className="p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-xs font-mono mb-4">
+            <div className="p-6 rounded-2xl bg-[#141414]/90 gradient-border border border-purple-500/20 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-mono mb-4">
                 <div className="w-6 h-[1px]" style={{ backgroundColor: project.color }} />
                 <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: project.color }}>
                   CREATOR
@@ -291,10 +291,10 @@ export function ProjectDetailPage({ projectId, onNavigateProjects, onJoinClick }
               </h3>
               <div className="flex items-center gap-4">
                 {project.creatorImage ? (
-                  <img src={project.creatorImage} alt={project.creator} className="w-12 h-12 rounded bg-[#120826] border border-white/10 object-cover object-top" />
+                  <img src={project.creatorImage} alt={project.creator} className="w-12 h-12 rounded bg-[#141414] border border-white/10 object-cover object-top" />
                 ) : (
-                  <div className="w-12 h-12 rounded bg-gradient-to-tr from-purple-600 to-[#4EF35E] p-0.5 flex items-center justify-center">
-                    <div className="w-full h-full rounded bg-[#120826] flex items-center justify-center text-lg font-bold text-white">
+                  <div className="w-12 h-12 rounded bg-gradient-to-tr from-purple-600 to-[#6feb2c] p-0.5 flex items-center justify-center">
+                    <div className="w-full h-full rounded bg-[#141414] flex items-center justify-center text-lg font-bold text-white">
                       {project.creator.charAt(0)}
                     </div>
                   </div>

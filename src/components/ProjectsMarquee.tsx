@@ -220,7 +220,7 @@ export function ProjectsMarquee({ onViewAllProjects }: ProjectsMarqueeProps = {}
   const duplicatedProjects = [...PROJECTS_DATA, ...PROJECTS_DATA];
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-black border-b border-purple-900/30">
+    <section id="projects" className="py-24 relative overflow-hidden bg-transparent border-b border-purple-900/30">
       
       {/* Background Lighting & Atmosphere */}
       <div className="absolute top-[20%] right-[15%] w-[550px] h-[550px] bg-purple-900/15 blur-[170px] rounded-full pointer-events-none" />

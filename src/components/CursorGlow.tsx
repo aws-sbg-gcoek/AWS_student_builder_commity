@@ -88,14 +88,14 @@ export function CursorGlow() {
         <div
           className={`rounded-full transition-all duration-300 ease-out pointer-events-none ${
             isClicking
-              ? 'w-24 h-24 bg-purple-500/40 blur-xl scale-75'
+              ? 'w-24 h-24 bg-[#9553e6]/40 blur-xl scale-75'
               : isHovering
-              ? 'w-48 h-48 bg-gradient-to-r from-purple-400/35 via-violet-300/30 to-indigo-400/35 blur-2xl scale-110'
-              : 'w-36 h-36 bg-gradient-to-r from-purple-500/25 via-violet-400/20 to-purple-600/25 blur-2xl'
+              ? 'w-48 h-48 bg-gradient-to-r from-[#AC69FF]/35 via-[#9553e6]/30 to-[#7200FF]/35 blur-2xl scale-110'
+              : 'w-36 h-36 bg-gradient-to-r from-[#9553e6]/25 via-[#AC69FF]/20 to-[#7200FF]/25 blur-2xl'
           }`}
           style={{
-            backgroundColor: 'rgba(124,58,237,0.25)',
-            boxShadow: '0 0 45px rgba(124,58,237,0.25)',
+            backgroundColor: 'rgba(149,83,230,0.25)',
+            boxShadow: '0 0 45px rgba(149,83,230,0.25)',
           }}
         />
       </div>
@@ -108,10 +108,10 @@ export function CursorGlow() {
         <div
           className={`rounded-full transition-all duration-150 pointer-events-none ${
             isClicking
-              ? 'w-2 h-2 bg-purple-200 shadow-[0_0_12px_#C084FC]'
+              ? 'w-2 h-2 bg-[#E9D5FF] shadow-[0_0_12px_#AC69FF]'
               : isHovering
-              ? 'w-3.5 h-3.5 bg-white border border-purple-300 shadow-[0_0_20px_#C084FC]'
-              : 'w-2.5 h-2.5 bg-[#C084FC] shadow-[0_0_12px_#A855F7]'
+              ? 'w-3.5 h-3.5 bg-white border border-[#AC69FF] shadow-[0_0_20px_#AC69FF]'
+              : 'w-2.5 h-2.5 bg-[#AC69FF] shadow-[0_0_12px_#9553e6]'
           }`}
         />
       </div>

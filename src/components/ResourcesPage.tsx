@@ -37,8 +37,8 @@ const ROADMAP_STEPS: RoadmapStep[] = [
     title: 'Step 1: Cloud Fundamentals',
     description: 'Understand what cloud computing is, deployment models, and service models (IaaS, PaaS, SaaS).',
     badge: 'STAGE 01',
-    badgeColor: 'bg-emerald-500/20 text-[#4EF35E] border-emerald-500/40',
-    accentColor: '#4EF35E',
+    badgeColor: 'bg-emerald-500/20 text-[#6feb2c] border-emerald-500/40',
+    accentColor: '#6feb2c',
     links: [
       { title: 'AWS Getting Started', url: 'https://aws.amazon.com/getting-started/', actionText: 'LEARN →' },
       { title: 'Cloud Practitioner Training', url: 'https://aws.amazon.com/training/learn-about/cloud-practitioner/', actionText: 'LEARN →' },
@@ -68,8 +68,8 @@ const ROADMAP_STEPS: RoadmapStep[] = [
     title: 'Step 3: Security & Identity',
     description: 'Master IAM (Identity and Access Management) and basic cloud security principles.',
     badge: 'STAGE 03',
-    badgeColor: 'bg-purple-500/20 text-[#A855F7] border-purple-500/40',
-    accentColor: '#A855F7',
+    badgeColor: 'bg-purple-500/20 text-[#9553e6] border-purple-500/40',
+    accentColor: '#9553e6',
     links: [
       { title: 'IAM – Getting Started', url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started.html', actionText: 'OPEN DOCS →' },
       { title: 'AWS Security Documentation', url: 'https://docs.aws.amazon.com/security/', actionText: 'OPEN DOCS →' },
@@ -147,7 +147,7 @@ const GITHUB_RESOURCES: ResourceLink[] = [
 ];
 
 // ─── Particle dust animation engine ──────────────────────────────────────────
-const DUST_COLORS = ['#7C3AED', '#9333EA', '#A855F7', '#C084FC', '#D8B4FE', '#6D28D9', '#8B5CF6', '#E879F9', '#4C1D95', '#4EF35E', '#38BDF8', '#FF9900'];
+const DUST_COLORS = ['#9553e6', '#AC69FF', '#7200FF', '#B07EF0', '#8A3FF0', '#6D28D9', '#1e083d', '#6feb2c', '#38BDF8', '#FF9900', '#ffffff', '#ede9fe'];
 
 function runDust(canvas: HTMLCanvasElement, cardW: number, cardH: number, mode: 'dissolve' | 'assemble', onDone: () => void) {
   const ctx = canvas.getContext('2d');
@@ -307,7 +307,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
       >
         {/* ── FRONT SIDE ── */}
         <div
-          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-5 backdrop-blur-xl flex flex-col justify-between shadow-lg transition-colors"
+          className="absolute inset-0 rounded-2xl bg-[#141414]/90 border border-purple-500/20 p-5 backdrop-blur-xl flex flex-col justify-between shadow-lg transition-colors"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <div>
@@ -337,7 +337,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
 
         {/* ── BACK SIDE ── */}
         <div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1a083b] via-[#100529] to-[#0a021b] border border-emerald-500/60 p-5 backdrop-blur-xl flex flex-col justify-between shadow-2xl"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1e083d] via-[#141414] to-black border border-emerald-500/60 p-5 backdrop-blur-xl flex flex-col justify-between shadow-2xl"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -361,7 +361,7 @@ function DevResourceFlipCard({ item, actionStyle }: { item: ResourceLink; action
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="purple-glow-btn w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2"
+            className="purple-glow-btn button-bordercolor w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2 inline-flex items-center justify-center"
           >
             <span>Launch Resource</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -393,7 +393,7 @@ function GitHubResourceFlipCard({ item }: { item: ResourceLink }) {
       >
         {/* ── FRONT SIDE ── */}
         <div
-          className="absolute inset-0 rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 backdrop-blur-xl flex items-start gap-4 shadow-lg transition-colors"
+          className="absolute inset-0 rounded-2xl bg-[#141414]/90 border border-purple-500/20 p-6 backdrop-blur-xl flex items-start gap-4 shadow-lg transition-colors"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform flex-shrink-0">
@@ -424,7 +424,7 @@ function GitHubResourceFlipCard({ item }: { item: ResourceLink }) {
 
         {/* ── BACK SIDE ── */}
         <div
-          className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#210c4d] via-[#140632] to-[#0b021d] border border-purple-400/60 p-6 backdrop-blur-xl flex flex-col justify-between shadow-2xl"
+          className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#1e083d] via-[#141414] to-black border border-purple-400/60 p-6 backdrop-blur-xl flex flex-col justify-between shadow-2xl"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -453,7 +453,7 @@ function GitHubResourceFlipCard({ item }: { item: ResourceLink }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="purple-glow-btn w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2"
+            className="purple-glow-btn button-bordercolor w-full py-2.5 rounded-xl text-xs font-mono font-bold gap-2 inline-flex items-center justify-center"
           >
             <span>Explore Repository on GitHub</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -488,16 +488,16 @@ function CreativeFloatingVault() {
             filter: 'drop-shadow(0 24px 48px rgba(168,85,247,0.4)) drop-shadow(0 8px 24px rgba(0,0,0,0.7))',
           }}
         >
-          <rect x="22" y="44" width="190" height="180" rx="22" fill="#150734" opacity="0.8" />
-          <rect x="16" y="38" width="190" height="180" rx="22" fill="#2d1259" />
+          <rect x="22" y="44" width="190" height="180" rx="22" fill="#141414" opacity="0.8" />
+          <rect x="16" y="38" width="190" height="180" rx="22" fill="#1e083d" />
 
-          <rect x="10" y="30" width="190" height="180" rx="22" fill="#0c031c" />
-          <rect x="10" y="30" width="190" height="180" rx="22" fill="url(#vaultCoverGrad)" stroke="#a855f7" strokeWidth="2" />
+          <rect x="10" y="30" width="190" height="180" rx="22" fill="#000000" />
+          <rect x="10" y="30" width="190" height="180" rx="22" fill="url(#vaultCoverGrad)" stroke="#9553e6" strokeWidth="2" />
 
-          <rect x="10" y="30" width="28" height="180" rx="14" fill="#a855f7" opacity="0.9" />
+          <rect x="10" y="30" width="28" height="180" rx="14" fill="#9553e6" opacity="0.9" />
           <line x1="24" y1="42" x2="24" y2="198" stroke="#ffffff" strokeWidth="2" strokeDasharray="6 4" opacity="0.6" />
 
-          <rect x="44" y="46" width="144" height="148" rx="12" fill="#180b38" stroke="#38bdf8" strokeWidth="1" opacity="0.8" />
+          <rect x="44" y="46" width="144" height="148" rx="12" fill="#1e083d" stroke="#38bdf8" strokeWidth="1" opacity="0.8" />
 
           <path
             d="M84 135 C84 122, 95 112, 108 112 C113 103, 124 97, 137 97 C153 97, 166 108, 169 123 C178 124, 185 132, 185 142 C185 152, 177 160, 167 160 L87 160 C76 160, 68 151, 68 140 C68 130, 75 122, 84 121 Z"
@@ -514,8 +514,8 @@ function CreativeFloatingVault() {
           />
           <polygon points="154,142 163,148 156,155" fill="#FF9900" />
 
-          <circle cx="70" cy="70" r="4" fill="#4ef35e" />
-          <line x1="70" y1="70" x2="110" y2="70" stroke="#4ef35e" strokeWidth="1.5" strokeDasharray="3 3" />
+          <circle cx="70" cy="70" r="4" fill="#6feb2c" />
+          <line x1="70" y1="70" x2="110" y2="70" stroke="#6feb2c" strokeWidth="1.5" strokeDasharray="3 3" />
           
           <circle cx="165" cy="70" r="4" fill="#38bdf8" />
           <line x1="165" y1="70" x2="135" y2="70" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" />
@@ -528,8 +528,8 @@ function CreativeFloatingVault() {
             </linearGradient>
 
             <linearGradient id="cloudGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#c084fc" />
-              <stop offset="100%" stopColor="#7c3aed" />
+              <stop offset="0%" stopColor="#AC69FF" />
+              <stop offset="100%" stopColor="#9553e6" />
             </linearGradient>
           </defs>
         </svg>
@@ -542,11 +542,11 @@ function CreativeFloatingVault() {
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FF9900] to-amber-600 flex items-center justify-center shadow-[0_0_24px_rgba(255,153,0,0.6)] border border-amber-300/40">
               <Sparkles className="w-7 h-7 text-white animate-pulse" />
             </div>
-            <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#4EF35E] border-2 border-[#07020E] animate-ping" />
+            <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#6feb2c] border-2 border-black animate-ping" />
           </div>
         </div>
 
-        <div className="absolute top-[12%] -left-6 w-3 h-3 rounded-full bg-[#4EF35E] shadow-[0_0_10px_#4EF35E] animate-float-slow" style={{ animationDelay: '-1s' }} />
+        <div className="absolute top-[12%] -left-6 w-3 h-3 rounded-full bg-[#6feb2c] shadow-[0_0_10px_#6feb2c] animate-float-slow" style={{ animationDelay: '-1s' }} />
         <div className="absolute bottom-[22%] -left-4 w-2.5 h-2.5 rounded-full bg-[#38BDF8] shadow-[0_0_10px_#38BDF8] animate-float-slow" style={{ animationDelay: '-3.5s' }} />
         <div className="absolute top-[65%] -right-6 w-3 h-3 rounded-full bg-[#FF9900] shadow-[0_0_10px_#FF9900] animate-float-slow" style={{ animationDelay: '-2s' }} />
       </div>
@@ -562,7 +562,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
 
   const getActionBadgeStyle = (actionText: string) => {
     if (actionText.includes('START LAB') || actionText.includes('START QUEST')) {
-      return 'bg-emerald-500/20 text-[#4EF35E] border-emerald-500/30 hover:bg-emerald-500/30';
+      return 'bg-emerald-500/20 text-[#6feb2c] border-emerald-500/30 hover:bg-emerald-500/30';
     }
     if (actionText.includes('OPEN DOCS') || actionText.includes('VIEW REPO')) {
       return 'bg-cyan-500/20 text-[#38BDF8] border-cyan-500/30 hover:bg-cyan-500/30';
@@ -576,7 +576,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
   const isMatch = (text: string) => text.toLowerCase().includes(searchQuery.toLowerCase());
 
   return (
-    <div className="min-h-screen bg-[#07020E] text-white flex flex-col pt-24 font-sans relative overflow-x-hidden selection:bg-purple-600 selection:text-white">
+    <div className="min-h-screen bg-transparent text-white flex flex-col pt-24 font-sans relative overflow-x-hidden selection:bg-[#9553e6] selection:text-white">
       
       {/* ── Background Ambient Glow Effects & Fine Mesh Overlay ── */}
       <div className="fixed inset-0 pointer-events-none bg-hero-grid opacity-30 z-0" />
@@ -603,19 +603,19 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
           
           {/* Left Text Content */}
           <div className="lg:col-span-7 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/30 shadow-[0_0_24px_rgba(168,85,247,0.25)] mb-6">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#141414]/90 border border-purple-500/30 shadow-[0_0_24px_rgba(168,85,247,0.25)] mb-6">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EF35E]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6feb2c] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6feb2c]" />
               </span>
-              <Terminal className="w-3.5 h-3.5 text-[#4EF35E]" />
+              <Terminal className="w-3.5 h-3.5 text-[#6feb2c]" />
               <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-[#FF9900]">
                 KNOWLEDGE VAULT • GCOEK
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[1.05]">
-              Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#4EF35E]">Resources</span>
+            <h1 className="font-clash text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-5 leading-[1.05]">
+              Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-[#6feb2c]">Resources</span>
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-light max-w-2xl">
@@ -660,7 +660,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
               placeholder="Search resources, topics, services (e.g. S3, Lambda, IAM, Certifications)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[#14082e]/90 border border-purple-500/30 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 text-sm sm:text-base backdrop-blur-xl transition-all shadow-inner"
+              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[#141414]/90 border border-purple-500/30 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 text-sm sm:text-base backdrop-blur-xl transition-all shadow-inner"
             />
             {searchQuery && (
               <button
@@ -683,8 +683,8 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer border ${
                   selectedCategory === cat
-                    ? 'bg-purple-600/50 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]'
-                    : 'bg-[#180d35]/70 text-zinc-400 hover:text-white border-purple-900/30 hover:border-purple-600/40'
+                    ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_15px_rgba(149,83,230,0.4)]'
+                    : 'bg-[#141414]/70 text-zinc-400 hover:text-white border-purple-900/30 hover:border-purple-600/40'
                 }`}
               >
                 {cat}
@@ -707,7 +707,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Compass className="w-4 h-4" />
                 <span>Structured Pathway</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-clash font-extrabold text-white mt-1">
                 Cloud Beginner Roadmap
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -726,7 +726,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
 
                 return (
                   <AssemblyCard key={step.stepNumber}>
-                    <div className="relative group rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300">
+                    <div className="relative group rounded-2xl bg-[#141414]/90 border border-purple-500/20 gradient-border p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300">
                       
                       {/* Glowing Accent line top */}
                       <div 
@@ -773,7 +773,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.03, y: -2 }}
                             whileTap={{ scale: 0.97 }}
-                            className="flex items-center justify-between p-4 rounded-xl bg-[#1c0e3a]/60 border border-purple-900/40 hover:border-purple-500/60 hover:bg-[#25134d]/80 text-zinc-200 hover:text-white transition-all group/link cursor-pointer shadow-md"
+                            className="flex items-center justify-between p-4 rounded-xl bg-[#141414]/60 border border-purple-900/40 hover:border-purple-500/60 hover:bg-[#1e083d]/80 text-zinc-200 hover:text-white transition-all group/link cursor-pointer shadow-md"
                           >
                             <span className="font-medium text-sm line-clamp-2 leading-snug group-hover/link:text-purple-200">
                               {link.title}
@@ -802,7 +802,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Rocket className="w-4 h-4" />
                 <span>Hands-On Experience</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-clash font-extrabold text-white mt-1">
                 Interactive Learning – Learn by Doing
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -818,7 +818,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -6, scale: 1.02 }}
-                    className="relative flex flex-col justify-between p-6 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-xl group transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.4)] h-full"
+                    className="relative flex flex-col justify-between p-6 rounded-2xl bg-[#141414]/90 border border-purple-500/20 gradient-border backdrop-blur-xl group transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.4)] h-full"
                   >
                     <div className="space-y-3">
                       <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
@@ -855,7 +855,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Globe className="w-4 h-4" />
                 <span>Frontend & Fullstack</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-clash font-extrabold text-white mt-1">
                 Web Development – Static Website & Web Dev on AWS
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -871,7 +871,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5, scale: 1.02 }}
-                    className="flex flex-col justify-between p-5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-xl group transition-all shadow-md h-full"
+                    className="flex flex-col justify-between p-5 rounded-2xl bg-[#141414]/90 border border-purple-500/20 gradient-border backdrop-blur-xl group transition-all shadow-md h-full"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
@@ -910,7 +910,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                 <Award className="w-4 h-4" />
                 <span>Industry Recognition</span>
               </div>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl font-clash font-extrabold text-white mt-1">
                 Certification Guide – AWS Certified Cloud Practitioner
               </h2>
               <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -920,7 +920,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
 
             {/* Featured Certification Banner Card */}
             <AssemblyCard>
-              <div className="relative rounded-2xl bg-[#120824]/90 border border-purple-500/20 p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_35px_rgba(255,153,0,0.15)] overflow-hidden">
+              <div className="relative rounded-2xl bg-[#141414]/90 border border-purple-500/20 gradient-border p-6 sm:p-8 backdrop-blur-xl shadow-[0_10px_35px_rgba(255,153,0,0.15)] overflow-hidden">
                 <div className="absolute right-0 top-0 w-80 h-80 bg-amber-500/10 blur-3xl pointer-events-none rounded-full" />
                 
                 <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -929,7 +929,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       <Award className="w-3.5 h-3.5" />
                       <span>FOUNDATIONAL LEVEL (CLF-C02)</span>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                    <h3 className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
                       AWS Certified Cloud Practitioner
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
@@ -942,7 +942,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       href="https://aws.amazon.com/certification/certified-cloud-practitioner/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="purple-glow-btn px-6 py-3 rounded-full text-sm font-semibold gap-2"
+                      className="purple-glow-btn button-bordercolor px-6 py-3 rounded-full text-sm font-semibold gap-2 inline-flex items-center justify-center"
                     >
                       <span>View Exam Portal</span>
                       <ExternalLink className="w-4 h-4" />
@@ -951,7 +951,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       href="https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="purple-glow-btn px-6 py-3 rounded-full text-sm font-semibold gap-2"
+                      className="purple-glow-btn button-bordercolor px-6 py-3 rounded-full text-sm font-semibold gap-2 inline-flex items-center justify-center"
                     >
                       <span>Download Exam Guide</span>
                       <ArrowUpRight className="w-4 h-4" />
@@ -968,7 +968,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02, y: -2 }}
-                      className="flex items-center justify-between p-3.5 rounded-xl bg-[#120625]/80 border border-purple-900/40 hover:border-amber-500/50 hover:bg-[#1f093a] text-zinc-200 transition-all cursor-pointer"
+                      className="flex items-center justify-between p-3.5 rounded-xl bg-[#141414]/80 border border-purple-900/40 hover:border-amber-500/50 hover:bg-[#1e083d] text-zinc-200 transition-all cursor-pointer"
                     >
                       <span className="text-xs sm:text-sm font-medium line-clamp-1">{item.title}</span>
                       <span className="ml-2 px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-[#FF9900] border border-amber-500/30 whitespace-nowrap">
@@ -996,7 +996,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     <Terminal className="w-4 h-4" />
                     <span>Technical Hub</span>
                   </div>
-                  <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+                  <h2 className="text-2xl sm:text-4xl font-clash font-extrabold text-white mt-1">
                     Developer Resources – Extra Dev Resources
                   </h2>
                   <p className="text-sm sm:text-base text-zinc-400 mt-1">
@@ -1024,7 +1024,7 @@ export function ResourcesPage({ onNavigateHome, onJoinClick }: ResourcesPageProp
                     <Github className="w-4 h-4" />
                     <span>Open Source Repositories</span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                  <h2 className="text-2xl sm:text-3xl font-clash font-extrabold text-white mt-1">
                     GitHub Resources
                   </h2>
                   <p className="text-sm sm:text-base text-zinc-400 mt-1">

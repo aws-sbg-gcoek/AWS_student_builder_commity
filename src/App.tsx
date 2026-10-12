@@ -7,13 +7,106 @@ import { EventsPage } from './components/EventsPage';
 import { ResourcesPage } from './components/ResourcesPage';
 import { JoinUsPage } from './components/JoinUsPage';
 import { RupeeGrowthIcon, HandshakeShieldIcon, TrophyPodiumIcon, GraduationCapsIcon } from './components/StatIcons';
-import { ThreeCanvas } from './components/ThreeCanvas';
-import { InteractiveTerminal } from './components/InteractiveTerminal';
+import { teamMembers } from './data/team';
+import { eventsData } from './data/events';
+import { projectsData } from './data/projects';
+import UniverseLoader from './components/CloudUniverse/UniverseLoader';
 import { StickyEventsStack } from './components/StickyEventsStack';
+import { JourneySection } from './components/JourneySection';
 import { ProjectsMarquee } from './components/ProjectsMarquee';
 import { SpotlightFooter } from './components/SpotlightFooter';
 import { CursorGlow } from './components/CursorGlow';
-import { ChevronRight, Cloud, Sparkles, Terminal, CheckCircle2, ArrowRight, X, Users } from 'lucide-react';
+import { SiteVideoBackground } from './components/SiteVideoBackground';
+import { ChevronRight, Sparkles, CheckCircle2, ArrowRight, X, Users } from 'lucide-react';
+
+function CloudUniverseFallback() {
+  return (
+    <div className="flex h-full min-h-[240px] w-full flex-col items-center justify-center gap-4 rounded-2xl border border-purple-500/30 bg-[#0b0b14] p-6">
+      <div className="relative flex h-20 w-20 items-center justify-center">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-600/30" />
+        <span className="relative inline-flex h-12 w-12 rounded-full bg-gradient-to-br from-[#9553e6] to-[#c4b5fd] shadow-[0_0_40px_rgba(149,83,230,0.8)]" />
+      </div>
+      <span className="font-mono text-[11px] font-medium text-purple-300/80">
+        aws-mesh://cloud-core-v3
+      </span>
+    </div>
+  );
+}
+
+function CloudUniverseSection({ onJoin }: { onJoin: () => void }) {
+  return (
+    <section
+      id="interactive-section"
+      className="relative overflow-hidden border-b border-purple-900/30 bg-transparent"
+    >
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-2 lg:gap-12 lg:px-8">
+
+        {/* Canvas — top on mobile, right on desktop */}
+        <div className="order-1 h-[320px] w-full sm:h-[420px] lg:order-2 lg:h-[560px]">
+          <UniverseLoader fallback={<CloudUniverseFallback />} />
+        </div>
+
+        {/* Copy — badge, headline, description, cards, CTA */}
+        <div className="order-2 lg:order-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#6feb2c]" />
+            <span>AWS STUDENT BUILDER ARCHITECTURE</span>
+          </div>
+
+          <h2 className="font-clash text-3xl sm:text-5xl font-semibold text-white mb-6 leading-tight">
+            Architect. Build. Deploy.
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
+              Production Cloud Skills.
+            </span>
+          </h2>
+
+          <p className="text-zinc-300 leading-relaxed mb-8 max-w-xl text-base">
+            Join our college developer community to master modern serverless architectures, microservices, containerization, and AWS Bedrock GenAI models. Every workshop includes hands-on labs and project reviews.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
+              <div className="text-2xl font-black text-[#6feb2c] font-mono">
+                01
+              </div>
+              <div className="font-bold text-white text-sm mt-1">
+                Full-Stack Cloud
+              </div>
+              <div className="text-xs text-zinc-400 mt-1">
+                React, Node.js, AWS Lambda & S3 pipelines
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
+              <div className="text-2xl font-black text-purple-400 font-mono">
+                02
+              </div>
+              <div className="font-bold text-white text-sm mt-1">
+                Free AWS Credits
+              </div>
+              <div className="text-xs text-zinc-400 mt-1">
+                Sponsored accounts, sandbox labs & certifications
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <button
+              type="button"
+              onClick={onJoin}
+              className="purple-glow-btn button-bordercolor text-white text-xs sm:text-sm font-semibold px-7 py-3 rounded-full inline-flex items-center gap-2 cursor-pointer"
+            >
+              <span>Join The Builder Club</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'team' | 'projects' | 'project-detail' | 'events' | 'resources' | 'join'>(() => {
@@ -49,8 +142,6 @@ export default function App() {
     return 'Home';
   });
 
-  const [statMode, setStatMode] = useState<'career' | 'club'>('career');
-  const [interactiveMode, setInteractiveMode] = useState<'3d' | 'cli'>('3d');
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [joinSubmitted, setJoinSubmitted] = useState(false);
 
@@ -184,7 +275,9 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans relative selection:bg-[#9553e6] selection:text-white overflow-x-clip">
+    <div className="min-h-screen bg-transparent text-white flex flex-col font-sans relative z-[1] selection:bg-[#9553e6] selection:text-white overflow-x-clip">
+      {/* ─── Fixed Mux stream behind every route — content scrolls above it ─── */}
+      <SiteVideoBackground />
       {/* ─── Smooth Flowing Light Purple Cursor Glow ─── */}
       <CursorGlow />
 
@@ -245,7 +338,7 @@ export default function App() {
           {/* ─── HERO SECTION ─── */}
           <section
             id="home"
-        className="relative min-h-[92vh] flex flex-col justify-between pt-32 pb-14 overflow-hidden bg-purple-atmosphere"
+        className="relative min-h-[92vh] flex flex-col justify-between pt-32 pb-14 overflow-hidden bg-transparent"
       >
         {/* Subtle Fine Grid Mesh Overlay */}
         <div className="absolute inset-0 bg-hero-grid opacity-80 pointer-events-none" />
@@ -265,12 +358,12 @@ export default function App() {
         {/* Floating Mini Highlight Badges on Desktop */}
         <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#141414]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute left-8 top-1/2 -translate-y-8 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20">
           <span className="flex h-2 w-2 rounded-full bg-[#6feb2c] shadow-[0_0_8px_#6feb2c]" />
-          <span>500+ Active Builders</span>
+          <span>940+ Members</span>
         </div>
 
         <div className="hidden lg:flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#141414]/85 border border-purple-500/30 backdrop-blur-md text-xs font-mono text-purple-200 absolute right-8 top-1/2 -translate-y-16 animate-float-slow shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-20" style={{ animationDelay: '-3.5s' }}>
           <span className="text-[#FF9900]">☁️</span>
-          <span>100% Free Sandbox Labs</span>
+          <span>100% Free To Join</span>
         </div>
 
         {/* ── Main Hero Content ── */}
@@ -309,7 +402,7 @@ export default function App() {
                   .getElementById('interactive-section')
                   ?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="purple-glow-btn button-bordercolor text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gap-2 group cursor-pointer hover:scale-105 active:scale-95"
+              className="purple-glow-btn button-bordercolor text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-3.5 sm:py-4 rounded-full inline-flex items-center justify-center whitespace-nowrap gap-2 group cursor-pointer hover:scale-105 active:scale-95"
             >
               <span>Explore Program</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -318,7 +411,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => navigateTo('team')}
-              className="px-7 py-3.5 sm:py-4 rounded-full bg-transparent text-white/80 border border-white/15 hover:bg-white/5 hover:text-white text-sm sm:text-base font-semibold inline-flex items-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95"
+              className="px-7 py-3.5 sm:py-4 rounded-full bg-transparent text-white/80 border border-white/15 hover:bg-white/5 hover:text-white text-sm sm:text-base font-semibold inline-flex items-center justify-center whitespace-nowrap gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95"
             >
               <Users className="w-4 h-4 text-[#FF9900]" />
               <span>Meet The Team</span>
@@ -329,119 +422,90 @@ export default function App() {
         {/* ── Bottom: 4 Glass Stat Cards ── */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-4">
 
-          <div className="flex justify-end items-center mb-3">
-            <div className="inline-flex p-1 rounded-full bg-[#121212]/80 border border-purple-500/20 backdrop-blur-md">
-
-              <button
-                type="button"
-                onClick={() => setStatMode('career')}
-                className={`text-[11px] font-medium px-3.5 py-1 rounded-full transition-all cursor-pointer ${
-                  statMode === 'career'
-                    ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_10px_rgba(149,83,230,0.45)]'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-              >
-                Placement Stats
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setStatMode('club')}
-                className={`text-[11px] font-medium px-3.5 py-1 rounded-full transition-all cursor-pointer ${
-                  statMode === 'club'
-                    ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_10px_rgba(149,83,230,0.45)]'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-              >
-                AWS Club Stats
-              </button>
+          <div className="flex justify-start items-center mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#121212]/80 border border-purple-500/20 backdrop-blur-md">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-[#6feb2c] shadow-[0_0_8px_#6feb2c]" />
+              <span className="font-mono text-[11px] font-medium tracking-widest text-zinc-400 uppercase">
+                Club at a glance
+              </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
 
-            {/* Card 1 */}
-            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
+            {/* Card 1 — members (live-site count) */}
+            <div className="stat-card-image gradient-border p-6 xl:p-7 group">
+              <div className="mb-4 inline-flex rounded-xl bg-purple-950/30 p-2 transition-transform group-hover:scale-110">
+                <GraduationCapsIcon className="h-9 w-9 text-zinc-300 transition-colors group-hover:text-purple-300" />
+              </div>
               <div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
-                  <span>{statMode === 'career' ? '7.5' : '940+'}</span>
-                  <span className="text-xl sm:text-2xl font-bold text-zinc-300 ml-1.5">
-                    {statMode === 'career' ? 'Lakh' : 'Members'}
+                <div className="text-4xl xl:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
+                  <span>940+</span>
+                  <span className="text-xl xl:text-2xl font-bold text-zinc-300 ml-2 whitespace-nowrap">
+                    Members
                   </span>
                 </div>
 
                 <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
-                  {statMode === 'career'
-                    ? 'Average Package'
-                    : 'Active Student Members'}
+                  Across all branches
                 </div>
-              </div>
-
-              <div className="p-2 rounded-xl bg-purple-950/30 group-hover:scale-110 transition-transform">
-                <RupeeGrowthIcon className="w-12 h-12 text-zinc-300 group-hover:text-purple-300 transition-colors" />
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
+            {/* Card 2 — projects shipped */}
+            <div className="stat-card-image gradient-border p-6 xl:p-7 group">
+              <div className="mb-4 inline-flex rounded-xl bg-purple-950/30 p-2 transition-transform group-hover:scale-110">
+                <TrophyPodiumIcon className="h-9 w-9 text-zinc-300 transition-colors group-hover:text-purple-300" />
+              </div>
               <div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
-                  <span>{statMode === 'career' ? '47' : '50+'}</span>
-                  <span className="text-xl sm:text-2xl font-bold text-zinc-300 ml-1.5">
-                    {statMode === 'career' ? 'Lakh' : 'Projects'}
+                <div className="text-4xl xl:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
+                  <span>{projectsData.length}</span>
+                  <span className="text-xl xl:text-2xl font-bold text-zinc-300 ml-2 whitespace-nowrap">
+                    Projects
                   </span>
                 </div>
 
                 <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
-                  {statMode === 'career'
-                    ? 'Highest Package'
-                    : 'Deployed on AWS Cloud'}
+                  Shipped on AWS Cloud
                 </div>
-              </div>
-
-              <div className="p-2 rounded-xl bg-purple-950/30 group-hover:scale-110 transition-transform">
-                <HandshakeShieldIcon className="w-12 h-12 text-zinc-300 group-hover:text-purple-300 transition-colors" />
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
-              <div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
-                  <span>{statMode === 'career' ? '300+' : '30+'}</span>
-                </div>
-
-                <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
-                  {statMode === 'career'
-                    ? 'Hiring Partners'
-                    : 'Hands-on Labs Conducted'}
-                </div>
+            {/* Card 3 — events */}
+            <div className="stat-card-image gradient-border p-6 xl:p-7 group">
+              <div className="mb-4 inline-flex rounded-xl bg-purple-950/30 p-2 transition-transform group-hover:scale-110">
+                <HandshakeShieldIcon className="h-9 w-9 text-zinc-300 transition-colors group-hover:text-purple-300" />
               </div>
-
-              <div className="p-2 rounded-xl bg-purple-950/30 group-hover:scale-110 transition-transform">
-                <TrophyPodiumIcon className="w-12 h-12 text-zinc-300 group-hover:text-purple-300 transition-colors" />
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="stat-card-image gradient-border p-6 sm:p-7 flex items-center justify-between group">
               <div>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
-                  <span>{statMode === 'career' ? '10' : '100%'}</span>
-                  <span className="text-xl sm:text-2xl font-bold text-zinc-300 ml-1.5">
-                    {statMode === 'career' ? 'M+' : 'Free'}
+                <div className="text-4xl xl:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
+                  <span>{eventsData.length}</span>
+                  <span className="text-xl xl:text-2xl font-bold text-zinc-300 ml-2 whitespace-nowrap">
+                    Events
                   </span>
                 </div>
 
                 <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
-                  {statMode === 'career'
-                    ? 'Monthly Tech Reach'
-                    : 'Free For All Branches'}
+                  Workshops & meetups
                 </div>
               </div>
+            </div>
 
-              <div className="p-2 rounded-xl bg-purple-950/30 group-hover:scale-110 transition-transform">
-                <GraduationCapsIcon className="w-12 h-12 text-zinc-300 group-hover:text-purple-300 transition-colors" />
+            {/* Card 4 — core team + free */}
+            <div className="stat-card-image gradient-border p-6 xl:p-7 group">
+              <div className="mb-4 inline-flex rounded-xl bg-purple-950/30 p-2 transition-transform group-hover:scale-110">
+                <RupeeGrowthIcon className="h-9 w-9 text-zinc-300 transition-colors group-hover:text-purple-300" />
+              </div>
+              <div>
+                <div className="text-4xl xl:text-5xl font-black text-white tracking-tight leading-none flex items-baseline">
+                  <span>{teamMembers.length}</span>
+                  <span className="text-xl xl:text-2xl font-bold text-zinc-300 ml-2 whitespace-nowrap">
+                    Core team
+                  </span>
+                </div>
+
+                <div className="text-xs sm:text-sm text-zinc-400 font-medium mt-2">
+                  100% free for every student
+                </div>
               </div>
             </div>
 
@@ -450,7 +514,7 @@ export default function App() {
       </section>
 
       {/* ─── MARQUEE TECH TICKER ─── */}
-      <div className="relative overflow-hidden py-3 bg-black/90 border-y border-purple-500/20 backdrop-blur-md">
+      <div className="relative overflow-hidden py-3 bg-black/40 border-y border-purple-500/20 backdrop-blur-md">
         {[0, 1].map((row) => (
           <div key={row} aria-hidden={row === 1} className="ticker-track items-center gap-8">
             {TECH_TICKER_ITEMS.map((item, i) => (
@@ -470,7 +534,7 @@ export default function App() {
       </div>
 
       {/* ─── WHAT WE DO ─── */}
-      <section id="what-we-do" className="bg-black py-20 sm:py-24 relative overflow-hidden border-b border-purple-900/30">
+      <section id="what-we-do" className="bg-transparent py-20 sm:py-24 relative overflow-hidden border-b border-purple-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
@@ -501,141 +565,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─── INTERACTIVE 3D & CLI SHOWCASE SECTION ─── */}
-      <section
-        id="interactive-section"
-        className="py-24 relative overflow-hidden bg-black/95 border-b border-purple-900/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ─── CLOUD UNIVERSE (sticky 300vh scroll journey) ─── */}
+      <CloudUniverseSection onJoin={() => setIsJoinModalOpen(true)} />
 
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-
-            {/* Left Column */}
-            <div className="lg:w-1/2">
-
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
-                <Sparkles className="w-3.5 h-3.5 text-[#6feb2c]" />
-                <span>AWS STUDENT BUILDER ARCHITECTURE</span>
-              </div>
-
-              <h2 className="font-clash text-3xl sm:text-5xl font-semibold text-white mb-6 leading-tight">
-                Architect. Build. Deploy.
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300">
-                  Production Cloud Skills.
-                </span>
-              </h2>
-
-              <p className="text-zinc-300 leading-relaxed mb-8 max-w-xl text-base">
-                Join our college developer community to master modern serverless architectures, microservices, containerization, and AWS Bedrock GenAI models. Every workshop includes hands-on labs and project reviews.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-
-                <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
-                  <div className="text-2xl font-black text-[#6feb2c] font-mono">
-                    01
-                  </div>
-                  <div className="font-bold text-white text-sm mt-1">
-                    Full-Stack Cloud
-                  </div>
-                  <div className="text-xs text-zinc-400 mt-1">
-                    React, Node.js, AWS Lambda & S3 pipelines
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#141414]/90 border border-purple-500/20 gradient-border">
-                  <div className="text-2xl font-black text-purple-400 font-mono">
-                    02
-                  </div>
-                  <div className="font-bold text-white text-sm mt-1">
-                    Free AWS Credits
-                  </div>
-                  <div className="text-xs text-zinc-400 mt-1">
-                    Sponsored accounts, sandbox labs & certifications
-                  </div>
-                </div>
-
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <button
-                  type="button"
-                  onClick={() => setIsJoinModalOpen(true)}
-                  className="purple-glow-btn button-bordercolor text-white text-xs sm:text-sm font-semibold px-7 py-3 rounded-full inline-flex items-center gap-2 cursor-pointer"
-                >
-                  <span>Join The Builder Club</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="lg:w-1/2 w-full flex flex-col items-center">
-
-              <div className="flex items-center gap-2 p-1.5 bg-[#121212] border border-purple-500/30 rounded-full mb-4 shadow-xl">
-
-                <button
-                  type="button"
-                  onClick={() => setInteractiveMode('3d')}
-                  className={`text-xs font-mono px-4 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
-                    interactiveMode === '3d'
-                      ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white font-bold shadow-[0_0_15px_rgba(149,83,230,0.45)]'
-                      : 'text-zinc-400 hover:text-white'
-                  }`}
-                >
-                  <Cloud className="w-3.5 h-3.5" />
-                  3D Cloud Core
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setInteractiveMode('cli')}
-                  className={`text-xs font-mono px-4 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
-                    interactiveMode === 'cli'
-                      ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white font-bold shadow-[0_0_15px_rgba(149,83,230,0.45)]'
-                      : 'text-zinc-400 hover:text-white'
-                  }`}
-                >
-                  <Terminal className="w-3.5 h-3.5" />
-                  Interactive CLI
-                </button>
-
-              </div>
-
-              <div className="w-full max-w-lg rounded-2xl bg-[#141414]/90 border border-purple-500/30 backdrop-blur-xl shadow-[0_12px_45px_rgba(0,0,0,0.6)] overflow-hidden">
-                {/* Console Window Header with Traffic Light Dots */}
-                <div className="flex items-center justify-between px-4 py-2.5 bg-[#121212] border-b border-purple-500/25">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
-                  </div>
-                  <span className="font-mono text-[11px] text-purple-300/80 font-medium">
-                    {interactiveMode === '3d' ? 'aws-mesh://cloud-core-v3' : 'bash — aws-cli@gcoek-node'}
-                  </span>
-                  <div className="w-8" />
-                </div>
-
-                <div className="p-2">
-                  {interactiveMode === '3d' ? (
-                    <div>
-                      <ThreeCanvas />
-
-                      <div className="text-center text-xs font-mono text-zinc-400 pb-3">
-                        ✦ Click and drag inside to rotate the 3D Cloud Core
-                      </div>
-                    </div>
-                  ) : (
-                    <InteractiveTerminal />
-                  )}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* ─── BUILDER JOURNEY (hands tableau + track timeline) ─── */}
+      <JourneySection />
 
       {/* ─── EVENTS SECTION ─── */}
       <StickyEventsStack

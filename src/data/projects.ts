@@ -115,15 +115,28 @@ export const projectsData: Project[] = [
     category: 'IoT + Analytics',
     title: 'IoT Health Monitoring Dashboard',
     tagline: '"Real-time patient vitals monitoring."',
-    creator: 'AWS Student Builder Community',
+    creator: 'AWS Student Builder Group',
     projectImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
     role: 'Open Source',
     description: 'Real-time dashboard for monitoring patient vitals collected from simulated IoT devices. Uses MQTT for data ingestion and React for visualization.',
+    features: [
+      'Real-time vitals streaming over MQTT',
+      'Live threshold-based health alerts',
+      'Time-series vitals visualization',
+      'Multi-device fleet monitoring',
+      'Historical trend analysis'
+    ],
     techStack: [
       'IoT Core',
       'Amplify',
       'React',
       'Timestream'
+    ],
+    awsServices: [
+      'AWS IoT Core',
+      'Amazon Timestream',
+      'AWS Amplify',
+      'Amazon S3'
     ],
     color: '#38BDF8'
   },
@@ -132,15 +145,28 @@ export const projectsData: Project[] = [
     category: 'AI + Vision',
     title: 'Cloud Attendance System',
     tagline: '"Automated attendance tracking using facial recognition."',
-    creator: 'AWS Student Builder Community',
+    creator: 'AWS Student Builder Group',
     projectImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2000&auto=format&fit=crop',
     role: 'Open Source',
     description: 'An automated attendance tracking system using facial recognition. Students scan their faces at the entrance, and attendance is logged in a database.',
+    features: [
+      'Facial recognition check-in',
+      'Face collection enrollment',
+      'Real-time attendance logging',
+      'Duplicate entry prevention',
+      'Daily attendance reports'
+    ],
     techStack: [
       'Rekognition',
       'Lambda',
       'S3',
       'DynamoDB'
+    ],
+    awsServices: [
+      'Amazon Rekognition',
+      'AWS Lambda',
+      'Amazon S3',
+      'Amazon DynamoDB'
     ],
     color: '#A855F7'
   },
@@ -149,15 +175,29 @@ export const projectsData: Project[] = [
     category: 'Data Engineering',
     title: 'Automated Data Pipeline',
     tagline: '"Serverless ETL pipeline for data analytics."',
-    creator: 'AWS Student Builder Community',
+    creator: 'AWS Student Builder Group',
     projectImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
     role: 'Open Source',
     description: 'A serverless ETL pipeline that extracts data from external APIs, transforms it using Python, and loads it into a data warehouse for analysis.',
+    features: [
+      'Scheduled API data extraction',
+      'Python-based data transformation',
+      'Partitioned data lake storage',
+      'Glue catalog schema discovery',
+      'SQL analytics over S3 data'
+    ],
     techStack: [
       'Glue',
       'Athena',
       'S3',
       'Step Functions'
+    ],
+    awsServices: [
+      'AWS Glue',
+      'Amazon Athena',
+      'Amazon S3',
+      'AWS Step Functions',
+      'AWS Lambda'
     ],
     color: '#22C55E'
   },
@@ -166,15 +206,28 @@ export const projectsData: Project[] = [
     category: 'Cloud Architecture',
     title: 'Containerized Microservices',
     tagline: '"Scalable e-commerce backend with ECS."',
-    creator: 'AWS Student Builder Community',
+    creator: 'AWS Student Builder Group',
     projectImage: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2000&auto=format&fit=crop',
     role: 'Open Source',
     description: 'An e-commerce backend broken down into microservices, containerized with Docker, and orchestrated using Amazon ECS.',
+    features: [
+      'Independent product, cart and order services',
+      'Docker container packaging',
+      'Fargate serverless orchestration',
+      'ALB path-based routing',
+      'Auto-scaling under load'
+    ],
     techStack: [
       'ECS',
       'Fargate',
       'Docker',
       'ALB'
+    ],
+    awsServices: [
+      'Amazon ECS',
+      'AWS Fargate',
+      'Amazon ECR',
+      'Elastic Load Balancing'
     ],
     color: '#EC4899'
   },
@@ -183,14 +236,26 @@ export const projectsData: Project[] = [
     category: 'AI + NLP',
     title: 'Serverless Chatbot',
     tagline: '"Intelligent conversational agent for student queries."',
-    creator: 'AWS Student Builder Community',
+    creator: 'AWS Student Builder Group',
     projectImage: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2000&auto=format&fit=crop',
     role: 'Open Source',
     description: 'An intelligent conversational agent built using Amazon Lex and integrated with Slack for answering student queries about the club.',
+    features: [
+      'Natural language intent recognition',
+      'Slack channel integration',
+      'FAQ answers from DynamoDB knowledge base',
+      'Session context management',
+      'Fallback to human handoff'
+    ],
     techStack: [
       'Lex',
       'Lambda',
       'DynamoDB'
+    ],
+    awsServices: [
+      'Amazon Lex',
+      'AWS Lambda',
+      'Amazon DynamoDB'
     ],
     color: '#FF9900'
   }

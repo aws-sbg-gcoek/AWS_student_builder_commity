@@ -79,7 +79,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
   }, [filteredDepartments]);
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-[#07020E] text-white flex flex-col font-sans relative selection:bg-purple-600 selection:text-white pt-24 overflow-x-hidden">
+    <div ref={pageRef} className="min-h-screen bg-transparent text-white flex flex-col font-sans relative selection:bg-[#9553e6] selection:text-white pt-24 overflow-x-hidden">
       {/* ─── Background Watermarks & Checks Overlay ─── */}
       <div className="fixed inset-0 pointer-events-none bg-hero-grid opacity-35 z-0" />
 
@@ -109,7 +109,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
           <button
             type="button"
             onClick={onNavigateHome}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#160c2b] border border-purple-500/20 text-xs sm:text-sm text-purple-300 hover:text-white hover:border-purple-400 hover:bg-purple-900/30 transition-all cursor-pointer group shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#141414]/90 border border-purple-500/20 text-xs sm:text-sm text-purple-300 hover:text-white hover:border-purple-400 hover:bg-white/5 transition-all cursor-pointer group shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Home</span>
@@ -117,19 +117,19 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
         </div>
 
         {/* Badge with pulsing live dot */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#180d2f]/90 border border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.25)] mb-5 hover:border-purple-400 transition-colors">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#141414]/90 border border-purple-500/35 shadow-[0_0_20px_rgba(168,85,247,0.25)] mb-5 hover:border-purple-400 transition-colors">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EF35E] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#4EF35E] shadow-[0_0_8px_#4EF35E]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6feb2c] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#6feb2c] shadow-[0_0_8px_#6feb2c]" />
           </span>
           <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF9900]">
             AWS STUDENT BUILDER GROUP – GCOEK
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6">
+        <h1 className="font-clash text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
           Meet Our{' '}
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 via-violet-300 to-indigo-300 bg-clip-text text-transparent animate-gradient-text">
+          <span className="bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-300 bg-clip-text text-transparent animate-gradient-text">
             Core Team
           </span>
         </h1>
@@ -140,19 +140,19 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
 
         {/* Quick Highlights Bar with Interactive Micro-Animations */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 max-w-3xl mx-auto mb-12">
-          <div className="p-3.5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(147,51,234,0.2)] transition-all duration-300 cursor-default">
+          <div className="stat-card-image gradient-border p-3.5 text-center hover:-translate-y-1 transition-all duration-300 cursor-default">
             <div className="text-xl sm:text-2xl font-black text-purple-300 font-mono">6</div>
             <div className="text-xs text-zinc-400 font-medium mt-0.5">Departments</div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(78,243,94,0.15)] transition-all duration-300 cursor-default">
-            <div className="text-xl sm:text-2xl font-black text-[#4EF35E] font-mono">20+</div>
+          <div className="stat-card-image gradient-border p-3.5 text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(111,235,44,0.15)] transition-all duration-300 cursor-default">
+            <div className="text-xl sm:text-2xl font-black text-[#6feb2c] font-mono">20+</div>
             <div className="text-xs text-zinc-400 font-medium mt-0.5">Active Builders</div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,153,0,0.15)] transition-all duration-300 cursor-default">
+          <div className="stat-card-image gradient-border p-3.5 text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,153,0,0.15)] transition-all duration-300 cursor-default">
             <div className="text-xl sm:text-2xl font-black text-[#FF9900] font-mono">100%</div>
             <div className="text-xs text-zinc-400 font-medium mt-0.5">Student Driven</div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-[#120824]/90 border border-purple-500/20 backdrop-blur-md text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.15)] transition-all duration-300 cursor-default">
+          <div className="stat-card-image gradient-border p-3.5 text-center hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.15)] transition-all duration-300 cursor-default">
             <div className="text-xl sm:text-2xl font-black text-sky-400 font-mono">AWS</div>
             <div className="text-xs text-zinc-400 font-medium mt-0.5">Community Club</div>
           </div>
@@ -168,7 +168,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, role, or skill (e.g. Palak, AWS, Docker)..."
-              className="w-full pl-11 pr-10 py-3 rounded-full bg-[#120726]/90 border border-purple-500/30 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-purple-400 focus:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
+              className="w-full pl-11 pr-10 py-3 rounded-full bg-[#141414]/90 border border-purple-500/30 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-purple-400 focus:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
             />
             {searchQuery && (
               <button
@@ -194,14 +194,14 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
                   onClick={() => setSelectedDept(dept.value)}
                   className={`text-xs px-3.5 py-1.5 rounded-full font-medium transition-all duration-300 cursor-pointer flex items-center gap-1.5 border ${
                     isActive
-                      ? 'bg-purple-600/50 text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] scale-105'
-                      : 'bg-[#150a2c]/80 text-zinc-400 border-purple-500/20 hover:text-white hover:bg-purple-900/30 hover:scale-102'
+                      ? 'bg-gradient-to-b from-[#AC69FF] to-[#7200FF] text-white shadow-[0_0_15px_rgba(149,83,230,0.45)] scale-105 border-transparent'
+                      : 'bg-[#141414]/80 text-zinc-400 border-purple-500/20 hover:text-white hover:bg-white/5 hover:scale-102'
                   }`}
                 >
                   <span>{dept.label}</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono transition-colors ${
-                      isActive ? 'bg-purple-800 text-purple-200' : 'bg-white/10 text-zinc-400'
+                      isActive ? 'bg-white/20 text-white' : 'bg-white/10 text-zinc-400'
                     }`}
                   >
                     {count}
@@ -216,7 +216,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
       {/* ─── TEAM MEMBERS DIRECTORY ─── */}
       <section className="relative z-10 max-w-[1780px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 pb-24 flex-1 w-full">
         {totalVisibleCount === 0 ? (
-          <div className="text-center py-20 bg-[#120824]/90 border border-purple-500/20 rounded-2xl max-w-xl mx-auto p-8 animate-card-entrance">
+          <div className="text-center py-20 stat-card-image gradient-border max-w-xl mx-auto p-8 animate-card-entrance">
             <Users className="w-12 h-12 text-purple-400/50 mx-auto mb-3" />
             <h3 className="text-xl font-bold text-white mb-1">No Members Found</h3>
             <p className="text-xs sm:text-sm text-zinc-400 mb-6">
@@ -228,7 +228,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
                 setSearchQuery('');
                 setSelectedDept('all');
               }}
-              className="purple-glow-btn px-5 py-2 text-xs font-semibold hover:scale-105 active:scale-95 cursor-pointer"
+              className="purple-glow-btn button-bordercolor px-5 py-2 rounded-full text-xs font-semibold hover:scale-105 active:scale-95 cursor-pointer inline-flex items-center justify-center"
             >
               Reset Filters
             </button>
@@ -258,7 +258,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
 
                     {/* Department Title */}
                     <div className="relative z-10 px-3 text-center">
-                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-3">
+                      <h2 className="font-clash text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white flex items-center justify-center gap-3">
                         <span>{dept.label}</span>
                         <span className="text-xs sm:text-sm font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-900/60 border border-purple-500/30 text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.3)]">
                           {dept.members.length}
@@ -306,14 +306,14 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
         )}
 
         {/* ── Call to Action Banner ── */}
-        <div className="mt-32 max-w-4xl mx-auto rounded-2xl p-8 sm:p-12 bg-[#120824]/90 border border-purple-500/20 text-center relative overflow-hidden shadow-2xl">
+        <div className="mt-32 max-w-4xl mx-auto stat-card-image gradient-border p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/15 blur-3xl rounded-full pointer-events-none" />
           <div className="relative z-10">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#4EF35E]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#6feb2c]" />
               PASSIONATE ABOUT AWS & CLOUD?
             </span>
-            <h3 className="text-2xl sm:text-4xl font-black text-white mb-3">
+            <h3 className="font-clash text-2xl sm:text-4xl font-semibold text-white mb-3">
               Want to join our builder team?
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 max-w-xl mx-auto mb-8">
@@ -322,7 +322,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
             <button
               type="button"
               onClick={onJoinClick}
-              className="purple-glow-btn px-8 py-3.5 rounded-full text-sm font-bold tracking-wide gap-2 hover:scale-105 active:scale-95 cursor-pointer"
+              className="purple-glow-btn button-bordercolor px-8 py-3.5 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <span>Apply to Join Us</span>
               <ArrowRight className="w-4 h-4" />
