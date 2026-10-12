@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { SiteLogo } from './SiteLogo';
 
 interface NavbarProps {
   activeTab?: string;
@@ -47,28 +48,9 @@ export function Navbar({ activeTab = 'Home', onTabChange, onJoinClick }: NavbarP
             }}
             className="flex items-center space-x-3 group z-20 cursor-pointer"
           >
-            {/* Purple Chip Logo (SVG matching provided user image with fallback image) */}
+            {/* Pixel logo (matches site favicon + footer) */}
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
-              <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">
-                {/* 3 top pins */}
-                <rect x="14" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
-                <rect x="22" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
-                <rect x="30" y="2" width="4" height="6" fill="#9553e6" rx="0.5" />
-                {/* 3 bottom pins */}
-                <rect x="14" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
-                <rect x="22" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
-                <rect x="30" y="40" width="4" height="6" fill="#9553e6" rx="0.5" />
-                {/* 3 left pins */}
-                <rect x="2" y="14" width="6" height="4" fill="#9553e6" rx="0.5" />
-                <rect x="2" y="22" width="6" height="4" fill="#9553e6" rx="0.5" />
-                <rect x="2" y="30" width="6" height="4" fill="#9553e6" rx="0.5" />
-                {/* 3 right pins */}
-                <rect x="40" y="14" width="6" height="4" fill="#9553e6" rx="0.5" />
-                <rect x="40" y="22" width="6" height="4" fill="#9553e6" rx="0.5" />
-                <rect x="40" y="30" width="6" height="4" fill="#9553e6" rx="0.5" />
-                {/* Main hollow square frame */}
-                <rect x="8" y="8" width="32" height="32" stroke="#9553e6" strokeWidth="6" rx="1" fill="#000000" />
-              </svg>
+              <SiteLogo className="w-10 h-10 filter drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]" />
             </div>
             
             {/* Logo text: AWS Student Builder Group / - GCOEK */}
