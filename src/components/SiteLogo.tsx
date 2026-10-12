@@ -1,12 +1,18 @@
+const LOGO_URL =
+  'https://i.ibb.co/mCTP8GRn/AWS-Student-Builder-Group-RGB-Program-Icon-Purple.png';
+
 interface SiteLogoProps {
   className?: string;
 }
 
-/** AWS Student Builder Group pixel logo — exact artwork, matches public/images/logo.svg */
+/** AWS Student Builder Group logo — served from the shared image link */
 export function SiteLogo({ className = 'w-10 h-10' }: SiteLogoProps) {
   return (
-    <svg viewBox="0 0 3000 3000" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="AWS Student Builder Group logo">
-      <path d="M2333.33 3000H2000V2666.67H1666.67V3000H1333.33V2666.67H1000V3000H666.667V2333.33H2333.33V3000ZM666.667 2333.33H0V2000H333.333V1666.67H0V1333.33H333.333V1000H0V666.667H666.667V2333.33ZM3000 1000H2666.67V1333.33H3000V1666.67H2666.67V2000H3000V2333.33H2333.33V666.667H3000V1000ZM1000 333.333H1333.33V0H1666.67V333.333H2000V0H2333.33V666.667H666.667V0H1000V333.333Z" fill="#AD5CFF" />
-    </svg>
+    <img
+      src={LOGO_URL}
+      alt="AWS Student Builder Group logo"
+      className={`${className} object-contain`}
+      loading="eager"
+    />
   );
 }
