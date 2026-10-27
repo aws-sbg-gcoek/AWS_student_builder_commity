@@ -11,6 +11,7 @@ function initLenis(): void {
   if (typeof window === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const lenis = new Lenis({ duration: 0.85, smoothWheel: true });
+  (window as any).__lenis = lenis;
   // Sync Lenis with GSAP ScrollTrigger — fixes pin/scrub lag & jitter.
   // Single clock via gsap ticker (no competing rAF loops).
   gsap.registerPlugin(ScrollTrigger);

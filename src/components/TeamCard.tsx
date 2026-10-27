@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Linkedin, Mail, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Linkedin, Mail } from 'lucide-react';
 
 export interface TeamMember {
   department: string;
@@ -16,118 +16,11 @@ export interface TeamMember {
 interface TeamCardProps {
   member: TeamMember;
   index: number;
+  onSelect?: (member: TeamMember) => void;
 }
 
-const angle = 20;
-
-const lerp = (start: number, end: number, amount: number) => {
-  return (1 - amount) * start + amount * end;
-};
-
-const remap = (value: number, oldMax: number, newMax: number) => {
-  const newValue = ((value + oldMax) * (newMax * 2)) / (oldMax * 2) - newMax;
-  return Math.min(Math.max(newValue, -newMax), newMax);
-};
-
-export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
-  const cardRef = useRef<HTMLElement>(null);
+export const TeamCard: React.FC<TeamCardProps> = ({ member, onSelect }) => {
   const [imgError, setImgError] = useState(false);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    card.dataset.rotateX = '0';
-    card.dataset.rotateY = '0';
-    card.style.setProperty('--rotateX', '0deg');
-    card.style.setProperty('--rotateY', '0deg');
-
-    const name = card.querySelector<HTMLElement>('[data-member-name]');
-    const role = card.querySelector<HTMLElement>('[data-member-role]');
-    const glow = card.querySelector<HTMLElement>('[data-member-glow]');
-
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = card.getBoundingClientRect();
-      const centerX = (rect.left + rect.right) / 2;
-      const centerY = (rect.top + rect.bottom) / 2;
-      const posX = event.clientX - centerX;
-      const posY = event.clientY - centerY;
-      const x = remap(posX, rect.width / 2, angle);
-      const y = remap(posY, rect.height / 2, angle);
-      card.dataset.rotateX = x.toString();
-      card.dataset.rotateY = (-y).toString();
-
-      // Dynamic cursor glow positioning
-      if (glow) {
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
-        const percentX = (mouseX / rect.width) * 100;
-        const percentY = (mouseY / rect.height) * 100;
-        glow.style.left = `${percentX}%`;
-        glow.style.top = `${percentY}%`;
-        glow.style.opacity = '1';
-      }
-
-      // Parallax text shadow
-      if (name && role) {
-        name.style.textShadow = `0 0 16px rgba(168, 85, 247, 0.4), 0 0 30px rgba(139, 92, 246, 0.2)`;
-        role.style.textShadow = `0 0 10px rgba(168, 85, 247, 0.35)`;
-      }
-    };
-
-    const handleMouseEnter = () => {
-      if (glow) glow.style.opacity = '1';
-    };
-
-    const handleMouseLeave = () => {
-      card.dataset.rotateX = '0';
-      card.dataset.rotateY = '0';
-
-      if (glow) {
-        glow.style.left = '50%';
-        glow.style.top = '50%';
-        glow.style.opacity = '0';
-      }
-
-      if (name && role) {
-        name.style.textShadow = 'none';
-        role.style.textShadow = 'none';
-      }
-    };
-
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseenter', handleMouseEnter);
-    card.addEventListener('mouseleave', handleMouseLeave);
-
-    // 60FPS update loop using requestAnimationFrame with exact lerp logic
-    let animationFrameId: number;
-    const update = () => {
-      let currentX = parseFloat(card.style.getPropertyValue('--rotateY').slice(0, -1));
-      let currentY = parseFloat(card.style.getPropertyValue('--rotateX').slice(0, -1));
-      if (isNaN(currentX)) currentX = 0;
-      if (isNaN(currentY)) currentY = 0;
-
-      const targetX = parseFloat(card.dataset.rotateX || '0');
-      const targetY = parseFloat(card.dataset.rotateY || '0');
-
-      const nextX = lerp(currentX, targetX, 0.05);
-      const nextY = lerp(currentY, targetY, 0.05);
-
-      card.style.setProperty('--rotateY', nextX + 'deg');
-      card.style.setProperty('--rotateX', nextY + 'deg');
-
-      animationFrameId = requestAnimationFrame(update);
-    };
-
-    animationFrameId = requestAnimationFrame(update);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseenter', handleMouseEnter);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
 
   // Compute initials fallback
   const initials = member.name
@@ -140,7 +33,7 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
 
   return (
     <article
-      ref={cardRef}
+      onClick={() => onSelect?.(member)}
       className="
         card
         team-card
@@ -151,68 +44,37 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
         bg-[#141414]/90 border border-purple-500/20
         backdrop-blur-md
         opacity-100
-        hover:shadow-[0_25px_60px_rgba(139,92,246,0.3)]
+        hover:border-purple-500/60
+        hover:-translate-y-1.5
+        hover:shadow-[0_20px_50px_rgba(139,92,246,0.35)]
+        transition-all
+        duration-300
+        ease-out
         flex
         flex-col
-        cursor-default
+        cursor-pointer
       "
       data-team-card
-      data-rotate-x="0"
-      data-rotate-y="0"
     >
-      {/* Dynamic Cursor-following glow */}
-      <div
-        data-member-glow
-        className="
-          pointer-events-none
-          absolute
-          z-20
-          h-48
-          w-48
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          bg-purple-500/20
-          opacity-0
-          blur-3xl
-          transition-opacity
-          duration-300
-          ease-out
-        "
-        style={{
-          left: '50%',
-          top: '50%',
-        }}
-      />
+      {/* Corner ambient glow on hover */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-purple-600/10 blur-3xl transition-all duration-500 group-hover:bg-purple-500/25" />
 
       {/* Diagonal Shimmer Sweep on Hover */}
       <div className="pointer-events-none absolute -inset-full top-0 z-30 bg-gradient-to-r from-transparent via-purple-300/10 to-transparent -rotate-45 translate-x-[-120%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out" />
 
-      {/* Corner ambient glow */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-purple-600/10 blur-3xl transition-all duration-500 group-hover:bg-purple-500/25" />
-
       {/* ── Photo / Avatar Container ── */}
-      <div
-        className="relative aspect-[6/7] w-full overflow-hidden rounded-t-2xl bg-[#141414]"
-        style={{ transform: 'translateZ(10px)', transformStyle: 'preserve-3d' }}
-      >
+      <div className="relative aspect-[4/4.2] w-full overflow-hidden rounded-t-2xl bg-[#0e0a1a] flex items-center justify-center">
         {/* Status Chip (Top Right) */}
-        <div
-          className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/85 border border-purple-500/30 backdrop-blur-md shadow-lg group-hover:border-purple-400/60 transition-colors pointer-events-none"
-          style={{ transform: 'translateZ(32px)' }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#6feb2c] shadow-[0_0_8px_#6feb2c] animate-pulse" />
-          <span className="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">
+        <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/85 border border-purple-500/30 backdrop-blur-md shadow-md group-hover:border-purple-400/60 transition-colors pointer-events-none">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#6feb2c] shadow-[0_0_6px_#6feb2c] animate-pulse" />
+          <span className="text-[9.5px] font-mono font-bold text-zinc-300 uppercase tracking-wider">
             Builder
           </span>
         </div>
 
         {/* Department Chip (Bottom Left) */}
-        <div
-          className="absolute bottom-3.5 left-4 z-20 pointer-events-none"
-          style={{ transform: 'translateZ(30px)' }}
-        >
-          <span className="px-2.5 py-1 rounded-lg bg-black/90 border border-purple-500/35 backdrop-blur-md text-[10px] font-mono text-[#FF9900] font-bold tracking-wide shadow-md">
+        <div className="absolute bottom-2.5 left-3 z-20 pointer-events-none">
+          <span className="px-2 py-0.5 rounded-md bg-black/90 border border-purple-500/35 backdrop-blur-md text-[9.5px] font-mono text-[#FF9900] font-bold tracking-wide shadow-md">
             {member.department.replace('Dept', '').trim()}
           </span>
         </div>
@@ -224,53 +86,36 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="flex flex-col h-full w-full items-center justify-center bg-gradient-to-br from-[#1c0c38] via-[#141414] to-black p-6 text-center select-none relative overflow-hidden">
+          <div className="flex flex-col h-full w-full items-center justify-center bg-gradient-to-br from-[#1c0c38] via-[#141414] to-black p-4 text-center select-none relative overflow-hidden">
             <div className="absolute inset-0 bg-hero-grid opacity-30 pointer-events-none" />
-            <div className="w-20 h-20 rounded-2xl bg-purple-900/40 border border-purple-500/40 flex items-center justify-center shadow-[0_0_24px_rgba(168,85,247,0.35)] mb-3 z-10 group-hover:scale-110 transition-transform">
-              <span className="text-3xl font-black text-white font-mono tracking-wider">
+            <div className="w-16 h-16 rounded-xl bg-purple-900/40 border border-purple-500/40 flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.35)] mb-2 z-10 group-hover:scale-105 transition-transform">
+              <span className="text-2xl font-black text-white font-mono tracking-wider">
                 {initials}
               </span>
             </div>
-            <div className="z-10 text-[11px] font-mono font-bold uppercase tracking-widest text-[#FF9900]">
+            <div className="z-10 text-[10px] font-mono font-bold uppercase tracking-widest text-[#FF9900]">
               {member.department.replace('Dept', '').trim()}
             </div>
-            <div className="z-10 text-xs text-zinc-400 mt-1 font-medium">
+            <div className="z-10 text-[11px] text-zinc-400 mt-0.5 font-medium">
               AWS Student Builder Group
             </div>
           </div>
         )}
 
-        {/* Gradient shadow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85 pointer-events-none" />
+        {/* Soft bottom vignette so image transitions into card without cutting head/body */}
+        <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#141414] via-[#141414]/40 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Card Content ── */}
-      <div
-        className="relative z-30 p-6 sm:p-7 flex-1 flex flex-col justify-between"
-        style={{ transform: 'translateZ(20px)', transformStyle: 'preserve-3d' }}
-      >
+      <div className="relative z-30 p-4 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Role */}
           <p
             data-member-role
-            className="
-              mb-1.5
-              origin-center
-              font-mono
-              text-[12px]
-              sm:text-[13px]
-              font-bold
-              uppercase
-              tracking-[0.12em]
-              text-purple-300
-              transition-all
-              duration-200
-              ease-out
-            "
-            style={{ transform: 'translateZ(10px)' }}
+            className="mb-1 font-mono text-[11px] sm:text-[11.5px] font-bold uppercase tracking-[0.12em] text-purple-300"
           >
             {member.role}
           </p>
@@ -278,105 +123,90 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
           {/* Name */}
           <h3
             data-member-name
-            className="
-              origin-center
-              font-clash
-              text-xl
-              sm:text-2xl
-              font-semibold
-              tracking-tight
-              text-white
-              transition-all
-              duration-200
-              ease-out
-              group-hover:text-purple-100
-            "
-            style={{ transform: 'translateZ(15px)' }}
+            className="font-clash text-lg sm:text-xl font-semibold tracking-tight text-white transition-colors duration-200 group-hover:text-purple-100 leading-snug"
           >
             {member.name}
           </h3>
 
           {/* Description / Bio */}
           {member.bio && (
-            <p
-              className="mt-3 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-normal"
-              style={{ transform: 'translateZ(8px)' }}
-            >
+            <p className="mt-2 text-xs text-zinc-300/90 leading-relaxed font-normal line-clamp-2">
               {member.bio}
             </p>
           )}
 
           {/* Skills Badges */}
           {member.skills && member.skills.length > 0 && (
-            <div
-              className="mt-4 flex flex-wrap gap-2"
-              style={{ transform: 'translateZ(12px)' }}
-            >
-              {member.skills.map((skill) => (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {member.skills.slice(0, 4).map((skill) => (
                 <span
                   key={skill}
                   className="
-                    rounded-lg
+                    rounded-md
                     border
                     border-purple-400/25
                     bg-purple-900/40
-                    px-2.5
-                    py-1
-                    text-[11px]
+                    px-2
+                    py-0.5
+                    text-[10px]
                     font-semibold
                     text-purple-200
                     transition-all
-                    duration-300
+                    duration-200
                     group-hover:border-purple-400/50
                     group-hover:bg-purple-800/50
-                    hover:scale-105
                   "
                 >
                   {skill}
                 </span>
               ))}
+              {member.skills.length > 4 && (
+                <span className="rounded-md border border-purple-500/20 bg-purple-950/40 px-1.5 py-0.5 text-[9.5px] font-mono text-purple-300">
+                  +{member.skills.length - 4}
+                </span>
+              )}
             </div>
           )}
         </div>
 
         <div>
           {/* Divider */}
-          <div className="mt-5 h-px w-full bg-gradient-to-r from-purple-500/30 via-purple-500/10 to-transparent" />
+          <div className="mt-4 h-px w-full bg-gradient-to-r from-purple-500/30 via-purple-500/10 to-transparent" />
 
           {/* Social Links */}
           {(member.linkedin || member.email) && (
-            <div
-              className="mt-4 flex items-center gap-3"
-              style={{ transform: 'translateZ(18px)' }}
-            >
+            <div className="mt-3 flex items-center gap-2.5 relative z-30">
               {member.linkedin && (
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${member.name} LinkedIn`}
+                  onClick={(e) => e.stopPropagation()}
                   className="
                     inline-flex
-                    h-9
-                    w-9
+                    h-8
+                    w-8
                     items-center
                     justify-center
-                    rounded-xl
+                    rounded-lg
                     border
                     border-purple-500/25
                     bg-purple-950/40
                     text-purple-300
                     transition-all
-                    duration-300
+                    duration-200
                     hover:scale-110
                     hover:border-purple-400/70
                     hover:bg-purple-600/30
                     hover:text-white
                     cursor-pointer
                     shadow-sm
+                    relative
+                    z-30
                   "
                 >
-                  <Linkedin className="h-4 w-4" />
+                  <Linkedin className="h-3.5 w-3.5" />
                 </a>
               )}
 
@@ -384,73 +214,37 @@ export const TeamCard: React.FC<TeamCardProps> = ({ member, index }) => {
                 <a
                   href={`mailto:${member.email}`}
                   aria-label={`Email ${member.name}`}
+                  onClick={(e) => e.stopPropagation()}
                   className="
                     inline-flex
-                    h-9
-                    w-9
+                    h-8
+                    w-8
                     items-center
                     justify-center
-                    rounded-xl
+                    rounded-lg
                     border
                     border-purple-500/25
                     bg-purple-950/40
                     text-purple-300
                     transition-all
-                    duration-300
+                    duration-200
                     hover:scale-110
                     hover:border-purple-400/70
                     hover:bg-purple-600/30
                     hover:text-white
                     cursor-pointer
                     shadow-sm
+                    relative
+                    z-30
                   "
                 >
-                  <Mail className="h-4 w-4" />
+                  <Mail className="h-3.5 w-3.5" />
                 </a>
               )}
             </div>
           )}
         </div>
       </div>
-
-      <style>{`
-        .card,
-        .team-card {
-          isolation: isolate;
-          --rotateX: 0deg;
-          --rotateY: 0deg;
-          transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
-          transform-style: preserve-3d;
-          will-change: transform;
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card > *,
-        .team-card > * {
-          transform-style: preserve-3d;
-        }
-
-        [data-member-name],
-        [data-member-role] {
-          will-change: text-shadow;
-        }
-
-        [data-member-glow] {
-          will-change: left, top, opacity;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .card,
-          .team-card {
-            transform: none !important;
-          }
-          [data-member-name],
-          [data-member-role],
-          [data-member-glow] {
-            transition: none !important;
-          }
-        }
-      `}</style>
     </article>
   );
 };

@@ -105,7 +105,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
   const faqs = [
     {
       q: 'Who can join the AWS Student Builder Group?',
-      a: 'Any currently enrolled student at Government College of Engineering Karad (GCOEK) from any branch and year can join!',
+      a: 'Any currently enrolled student at Government College of Engineering Kolhapur (GCOEK) from any branch and year can join!',
     },
     {
       q: 'Do I need prior cloud or programming experience?',
@@ -152,10 +152,10 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
       {/* Main Split Section: Form on Right, Details on Left */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          
+
           {/* ── LEFT COLUMN: Why Join Us & What You Will Learn (7 cols on desktop) ── */}
           <div className="lg:col-span-6 xl:col-span-6 space-y-10">
-            
+
             {/* Why Join Us Card Group */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase text-[#6feb2c]">
@@ -241,9 +241,9 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
 
           {/* ── RIGHT COLUMN: Embedded Google Form (6 cols on desktop) ── */}
           <div className="lg:col-span-6 xl:col-span-6 sticky top-24">
-            
+
             <div className="rounded-2xl bg-[#141414]/90 border border-purple-500/20 gradient-border shadow-[0_0_50px_rgba(149,83,230,0.25)] overflow-hidden">
-              
+
               {/* Form Container Top Toolbar */}
               <div className="bg-[#121212] px-5 py-4 border-b border-purple-500/30 flex items-center justify-between flex-wrap gap-3">
                 <div className="flex items-center gap-2.5">
@@ -280,7 +280,7 @@ export function JoinUsPage({ onNavigateHome }: JoinUsPageProps) {
 
               {/* Form Iframe Body */}
               <div className="relative w-full bg-white min-h-[720px] sm:min-h-[780px] flex flex-col">
-                
+
                 {!iframeLoaded && (
                   <div className="absolute inset-0 bg-black flex flex-col items-center justify-center p-6 text-center z-10">
                     <div className="w-12 h-12 rounded-full border-4 border-purple-500/20 border-t-purple-500 animate-spin mb-4" />

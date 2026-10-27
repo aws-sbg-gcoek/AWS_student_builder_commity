@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { TeamCard } from './TeamCard';
+import type { TeamMember } from './TeamCard';
+import { TeamMemberModal } from './TeamMemberModal';
 
 import { teamMembers } from '../data/team';
 
@@ -33,6 +35,7 @@ const departments = [
 
 export const TeamSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -626,22 +629,12 @@ export const TeamSection: React.FC = () => {
                   ================================= */}
 
                   {firstMember && (
-                    <div
-                      className="
-                        mb-16
-                        flex
-                        justify-center
-                      "
-                    >
-                      <div
-                        className="
-                          w-full
-                          max-w-[560px]
-                        "
-                      >
+                    <div className="mb-10 flex justify-center">
+                      <div className="w-full max-w-[360px]">
                         <TeamCard
                           member={firstMember}
                           index={0}
+                          onSelect={setSelectedMember}
                         />
                       </div>
                     </div>
@@ -651,18 +644,7 @@ export const TeamSection: React.FC = () => {
                       MEMBER GRID
                   ================================= */}
 
-                  <div
-                    className="
-                      grid
-                      grid-cols-1
-                      gap-x-10
-                      gap-y-14
-                      sm:grid-cols-2
-                      lg:grid-cols-3
-                      lg:gap-x-12
-                      lg:gap-y-16
-                    "
-                  >
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8">
                     {remainingMembers.map(
                       (
                         member,
@@ -677,6 +659,7 @@ export const TeamSection: React.FC = () => {
                               ? 1
                               : 0)
                           }
+                          onSelect={setSelectedMember}
                         />
                       )
                     )}
@@ -813,6 +796,9 @@ export const TeamSection: React.FC = () => {
           }
         }
       `}</style>
+
+      {/* ─── TEAM MEMBER MODAL ─── */}
+      <TeamMemberModal member={selectedMember} onClose={() => setSelectedMember(null)} />
     </section>
   );
-};
+};

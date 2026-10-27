@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Search, Users, Sparkles, ArrowLeft, ArrowRight, ShieldCheck, Flame } from 'lucide-react';
 import { TeamCard } from './TeamCard';
+import type { TeamMember } from './TeamCard';
+import { TeamMemberModal } from './TeamMemberModal';
 import { teamMembers } from '../data/team';
 import { SpotlightFooter } from './SpotlightFooter';
 
@@ -22,6 +24,7 @@ const DEPARTMENTS = [
 export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
   const [selectedDept, setSelectedDept] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
 
   // Scroll to top when page mounts
@@ -275,15 +278,15 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
 
                   {/* Faculty Coordinator in Leadership */}
                   {facultyCoordinator && (
-                    <div className="mb-14 flex justify-center animate-card-entrance">
-                      <div className="w-full max-w-[560px]">
-                        <TeamCard member={facultyCoordinator} index={0} />
+                    <div className="mb-10 flex justify-center animate-card-entrance">
+                      <div className="w-full max-w-[360px]">
+                        <TeamCard member={facultyCoordinator} index={0} onSelect={setSelectedMember} />
                       </div>
                     </div>
                   )}
 
                   {/* Grid of Members with Staggered Entrance Animations */}
-                  <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-16">
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8">
                     {remainingMembers.map((member, index) => (
                       <div
                         key={member.id}
@@ -295,6 +298,7 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
                         <TeamCard
                           member={member}
                           index={index + (facultyCoordinator ? 1 : 0)}
+                          onSelect={setSelectedMember}
                         />
                       </div>
                     ))}
@@ -333,6 +337,9 @@ export function TeamPage({ onNavigateHome, onJoinClick }: TeamPageProps) {
 
       {/* ─── FOOTER ─── */}
       <SpotlightFooter />
+
+      {/* ─── TEAM MEMBER MODAL ─── */}
+      <TeamMemberModal member={selectedMember} onClose={() => setSelectedMember(null)} />
     </div>
   );
 }

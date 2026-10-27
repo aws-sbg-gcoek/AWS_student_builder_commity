@@ -334,15 +334,12 @@ h1, h2, h3, h4, h5, h6 {
   animation: shimmerBeam 3.5s ease-in-out infinite;
 }
 
-/* ═══ 3D TILT CARD PERSPECTIVE ANIMATION ═══ */
+/* ═══ TEAM & EVENT CARDS ═══ */
 .card,
 .team-card {
-  --rotateX: 0deg;
-  --rotateY: 0deg;
-  transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
-  transform-style: preserve-3d;
   will-change: transform;
 }
+
 
 /* ═══ AWS LOGO — SPIN + FLIP ANIMATIONS ═══ */
 
@@ -543,3 +540,27 @@ h1, h2, h3, h4, h5, h6 {
     transition: none;
   }
 }
+
+/* ═══ SLEEK DARK PURPLE SCROLLBAR FOR MODALS & PANELS ═══ */
+.custom-modal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-modal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(14, 10, 26, 0.4);
+  border-radius: 9999px;
+}
+.custom-modal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.45);
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+.custom-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.8);
+}
+.custom-modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.45) rgba(14, 10, 26, 0.4);
+  -webkit-overflow-scrolling: touch;
+}
+
