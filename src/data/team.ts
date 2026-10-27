@@ -411,6 +411,18 @@ export const teamMembers: TeamMember[] = [
     image:
       "https://i.ibb.co/qY73yh3F/Scanned-20260316-2043-Vedika-Desai.jpg",
   },
+  {
+    department: "Media & Content Dept",
+    id: "abdul-samad",
+    name: "Abdul Samad",
+    role: "Associate Designer",
+    bio: "Supporting visual design and creative content creation for club events and communications.",
+    skills: ["Graphic Design", "Visual Communication", "Creativity"],
+    email: "mr.zaid.1029@gmail.com",
+    linkedin: "https://www.linkedin.com/in/abdul-samad-354023362/",
+    image:
+      "https://i.ibb.co/Cp8q0Sfw/file-00000000f1bc82118b681c8769c3c154-Abdul-Samad-Zaid.png",
+  },
 
   {
     department: "Media & Content Dept",
@@ -444,18 +456,7 @@ export const teamMembers: TeamMember[] = [
     image:
       "https://i.ibb.co/0y5QRFLp/IMG-20261011-190533-Dattatray-Dhole.png",
   },
-  {
-    department: "Media & Content Dept",
-    id: "abdul-samad",
-    name: "Abdul Samad",
-    role: "Associate Designer",
-    bio: "Supporting visual design and creative content creation for club events and communications.",
-    skills: ["Graphic Design", "Visual Communication", "Creativity"],
-    email: "mr.zaid.1029@gmail.com",
-    linkedin: "https://www.linkedin.com/in/abdul-samad-354023362/",
-    image:
-      "https://i.ibb.co/Cp8q0Sfw/file-00000000f1bc82118b681c8769c3c154-Abdul-Samad-Zaid.png",
-  },
+
 
   {
     department: "Media & Content Dept",
