@@ -467,7 +467,7 @@ export const teamMembers: TeamMember[] = [
     email: "shrutipaul53@gmail.com",
     linkedin: "",
     image:
-      "https://i.ibb.co/tPDc952j/file-0000000013688211a26f79127c663c9d-Shruti-Paul-41.png",
+      "https://i.ibb.co/4RnZt8mK/IMG-20260316-WA0049-Shruti-Paul-41.jpg",
   },
 
 
