@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     email: "powarvidula11@gmail.com",
     linkedin: "https://www.linkedin.com/in/vidula-p-372734294",
     image:
-      "https://i.ibb.co/5W0h4c8y/Whats-App-Image-2026-03-17-at-9-01-47-AM.jpg",
+      "https://i.ibb.co/KxvXGph2/file-00000000125c81fb92046550f24b9154-1.png",
   },
 
   {
@@ -411,18 +411,6 @@ export const teamMembers: TeamMember[] = [
     image:
       "https://i.ibb.co/qY73yh3F/Scanned-20260316-2043-Vedika-Desai.jpg",
   },
-  {
-    department: "Media & Content Dept",
-    id: "abdul-samad",
-    name: "Abdul Samad",
-    role: "Associate Designer",
-    bio: "Supporting visual design and creative content creation for club events and communications.",
-    skills: ["Graphic Design", "Visual Communication", "Creativity"],
-    email: "mr.zaid.1029@gmail.com",
-    linkedin: "https://www.linkedin.com/in/abdul-samad-354023362/",
-    image:
-      "https://i.ibb.co/Cp8q0Sfw/file-00000000f1bc82118b681c8769c3c154-Abdul-Samad-Zaid.png",
-  },
 
   {
     department: "Media & Content Dept",
@@ -456,7 +444,18 @@ export const teamMembers: TeamMember[] = [
     image:
       "https://i.ibb.co/0y5QRFLp/IMG-20261011-190533-Dattatray-Dhole.png",
   },
-
+  {
+    department: "Media & Content Dept",
+    id: "abdul-samad",
+    name: "Abdul Samad",
+    role: "Associate Designer",
+    bio: "Supporting visual design and creative content creation for club events and communications.",
+    skills: ["Graphic Design", "Visual Communication", "Creativity"],
+    email: "mr.zaid.1029@gmail.com",
+    linkedin: "https://www.linkedin.com/in/abdul-samad-354023362/",
+    image:
+      "https://i.ibb.co/Cp8q0Sfw/file-00000000f1bc82118b681c8769c3c154-Abdul-Samad-Zaid.png",
+  },
 
   {
     department: "Media & Content Dept",
@@ -468,7 +467,7 @@ export const teamMembers: TeamMember[] = [
     email: "shrutipaul53@gmail.com",
     linkedin: "",
     image:
-      "https://i.ibb.co/4RnZt8mK/IMG-20260316-WA0049-Shruti-Paul-41.jpg",
+      "https://i.ibb.co/tPDc952j/file-0000000013688211a26f79127c663c9d-Shruti-Paul-41.png",
   },
 
 
