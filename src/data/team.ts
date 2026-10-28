@@ -510,7 +510,7 @@ export const teamMembers: TeamMember[] = [
     skills: ["Public Relations", "Communication", "Networking"],
     email: "vk4578526@gmail.com",
     linkedin: "https://www.linkedin.com/in/vaishnavi-kale-762014389",
-    image: "https://i.ibb.co/PGbwbxfQ/Vaishnavi-Kale.jpg",
+    image: "https://i.ibb.co/Nd4KqTqj/Whats-App-Image-2026-10-20-at-9-21-46-PM.jpg",
   },
 
   {
